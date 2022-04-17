@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'register.dart';
+import 'package:project/pages/main_page.dart';
+import 'package:project/toast.dart';
+import 'register_page.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -15,12 +17,12 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: const Text("Login"),
       ),
       body: Form(
         key: _formKey,
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
               Padding(
@@ -28,11 +30,11 @@ class _LoginState extends State<Login> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan email anda",
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: const Icon(Icons.email),
                     labelText: "Email",
                     // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   autofocus: true,
                   validator: (value) {
@@ -47,11 +49,11 @@ class _LoginState extends State<Login> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan password anda",
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     labelText: "Password",
                     // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   obscureText: true,
                   validator: (value) {
@@ -61,16 +63,34 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
-              RaisedButton(
-                child: Text("Submit", style: TextStyle(color: Colors.white)),
-                color: Colors.blue,
+              ElevatedButton(
+                child: const Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Colors.blue,
+                  ),
+                ),
                 onPressed: () {
+                  // if (_formKey.currentState!.validate()) {
+                  //   Scaffold.of(context).showSnackBar(
+                  //     SnackBar(
+                  //       content: Text("Data sudah di submit"),
+                  //     ),
+                  //   );
+                  // }
                   if (_formKey.currentState!.validate()) {
-                    Scaffold.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Data sudah di submit"),
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainPage(),
                       ),
                     );
+
+                    var toast = Toast();
+                    toast.showToast(context);
                   }
                 },
               ),
