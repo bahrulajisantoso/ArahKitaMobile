@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project/pages/main_page.dart';
-import 'package:project/toast.dart';
-import 'register_page.dart';
+import 'package:project/main.dart';
+import 'package:project/pages/register_page.dart';
+import 'package:project/Notification/toast.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -12,6 +12,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+  final toast = ShowToast();
 
   @override
   Widget build(BuildContext context) {
@@ -74,46 +75,35 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 onPressed: () {
-                  // if (_formKey.currentState!.validate()) {
-                  //   Scaffold.of(context).showSnackBar(
-                  //     SnackBar(
-                  //       content: Text("Data sudah di submit"),
-                  //     ),
-                  //   );
-                  // }
                   if (_formKey.currentState!.validate()) {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MainPage(),
+                        builder: (context) => const Main(),
                       ),
                     );
-
-                    var toast = Toast();
-                    toast.showToast(context);
+                    toast.showToast('Login berhasil');
                   }
                 },
               ),
-              Padding(
-                padding: const EdgeInsets.all(0.0),
-                child: Row(
-                  children: <Widget>[
-                    const Text('Belum punya akun?'),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const Register(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Register',
-                        style: TextStyle(color: Colors.blue),
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text('Belum punya akun?'),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const Register(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(color: Colors.blue),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -2,31 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:project/pages/account.dart';
 import 'package:project/pages/home_page.dart';
 import 'package:project/pages/transactions.dart';
-// import 'pages/login_page.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      home: Main(),
-      debugShowCheckedModeBanner: false,
-    ),
-  );
-}
-
-class Main extends StatefulWidget {
-  const Main({Key? key}) : super(key: key);
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({Key? key}) : super(key: key);
 
   @override
-  State<Main> createState() => _MainState();
+  State<BottomNavigation> createState() => _BottomNavigationState();
 }
 
-class _MainState extends State<Main> {
+class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 0;
 
-  final screens = [
-    const HomePage(),
-    const TransactionPage(),
-    const AccountPage(),
+  // static const TextStyle optionStyle =
+  //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    TransactionPage(),
+    AccountPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -40,7 +32,7 @@ class _MainState extends State<Main> {
     return Scaffold(
       body: Center(
         // child: _widgetOptions.elementAt(_selectedIndex),
-        child: screens[_selectedIndex],
+        child: _widgetOptions[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -49,16 +41,16 @@ class _MainState extends State<Main> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.compare_arrows),
-            label: 'Transactions',
+            icon: Icon(Icons.business),
+            label: 'Business',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: 'Account',
+            icon: Icon(Icons.school),
+            label: 'School',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
     );

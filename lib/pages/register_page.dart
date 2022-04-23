@@ -118,38 +118,45 @@ class _LoginState extends State<Register> {
                   },
                 ),
               ),
-              RaisedButton(
-                child: Text("Submit", style: TextStyle(color: Colors.white)),
-                color: Colors.blue,
+              ElevatedButton(
+                child: const Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Colors.blue,
+                  ),
+                ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Scaffold.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Data sudah di submit"),
+                    Navigator.pop(
+                      context,
+                      Builder(
+                        builder: (context) => const Login(),
                       ),
                     );
                   }
                 },
               ),
-              Padding(
-                padding: const EdgeInsets.all(0.0),
-                child: Row(
-                  children: <Widget>[
-                    const Text('Sudah punya akun?'),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text('Sudah punya akun?'),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(
                         Builder(
                           builder: (context) => const Login(),
-                        );
-                      },
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(color: Colors.blue),
-                      ),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(color: Colors.blue),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
