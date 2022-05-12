@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:project/pages/account.dart';
 import 'package:project/pages/home_page.dart';
 import 'package:project/pages/transactions.dart';
-// import 'pages/login_page.dart';
 
 void main() {
   runApp(
