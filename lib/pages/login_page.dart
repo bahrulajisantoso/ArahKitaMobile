@@ -24,22 +24,7 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
-              Center(
-                child: Container(
-                  height: 200,
-                  width: 400,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.blueGrey,
-                      fontSize: 34,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    // textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
+              Image(image: AssetImage('images/logo.png')),
               Row(
                 children: <Widget>[
                   const Text('Silahkan Masuk Untuk Melanjutkan'),
