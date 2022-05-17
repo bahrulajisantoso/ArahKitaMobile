@@ -38,7 +38,6 @@ class _MainState extends State<Main> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        // child: _widgetOptions.elementAt(_selectedIndex),
         child: screens[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
