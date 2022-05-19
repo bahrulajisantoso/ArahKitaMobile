@@ -18,7 +18,7 @@ class _LoginState extends State<Register> {
       body: Form(
         key: _formKey,
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
               Padding(
@@ -26,11 +26,10 @@ class _LoginState extends State<Register> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Email",
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: const Icon(Icons.email_outlined),
                     labelText: "Masukkan Email Anda",
-                    // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   autofocus: true,
                   validator: (value) {
@@ -45,11 +44,10 @@ class _LoginState extends State<Register> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan Nama Anda",
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                     labelText: "Nama",
-                    // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   autofocus: true,
                   validator: (value) {
@@ -64,11 +62,10 @@ class _LoginState extends State<Register> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukkan Nomor HP Anda",
-                    prefixIcon: Icon(Icons.phone),
+                    prefixIcon: const Icon(Icons.phone),
                     labelText: "Nomor HP",
-                    // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   autofocus: true,
                   validator: (value) {
@@ -83,11 +80,10 @@ class _LoginState extends State<Register> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan Alamat Anda",
-                    prefixIcon: Icon(Icons.home_filled),
+                    prefixIcon: const Icon(Icons.home_filled),
                     labelText: "Alamat",
-                    // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   obscureText: true,
                   validator: (value) {
@@ -102,11 +98,10 @@ class _LoginState extends State<Register> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Minimal 8 karakter",
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     labelText: "Password",
-                    // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   obscureText: true,
                   validator: (value) {
@@ -121,11 +116,10 @@ class _LoginState extends State<Register> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan Password Anda",
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     labelText: "Konfirmasi Password",
-                    // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   obscureText: true,
                   validator: (value) {
@@ -142,7 +136,7 @@ class _LoginState extends State<Register> {
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 1, 121, 125),
+                    const Color.fromARGB(255, 1, 121, 125),
                   ),
                 ),
                 onPressed: () {

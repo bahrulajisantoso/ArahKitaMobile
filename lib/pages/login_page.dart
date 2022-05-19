@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:project/main.dart';
 import 'package:project/pages/register_page.dart';
 import 'package:project/Notification/toast.dart';
-import 'package:flutter/services.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -26,8 +25,8 @@ class _LoginState extends State<Login> {
             children: <Widget>[
               Image.asset("images/akbaru.png"),
               Row(
-                children: <Widget>[
-                  const Text('Silahkan Masuk Untuk Melanjutkan'),
+                children: const <Widget>[
+                  Text('Silahkan Masuk Untuk Melanjutkan'),
                 ],
               ),
               Padding(
@@ -35,7 +34,7 @@ class _LoginState extends State<Login> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan email anda",
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: const Icon(Icons.email_outlined),
                     labelText: "Email",
 
                     // icon: Icon(Icons.email),
@@ -55,7 +54,7 @@ class _LoginState extends State<Login> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan password anda",
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     labelText: "Password",
                     // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
@@ -76,7 +75,7 @@ class _LoginState extends State<Login> {
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 1, 121, 125),
+                    const Color.fromARGB(255, 1, 121, 125),
                   ),
                 ),
                 onPressed: () {

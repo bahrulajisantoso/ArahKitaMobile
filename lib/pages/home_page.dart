@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/API/get.dart';
+import 'package:project/pages/detail.wisata.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,22 +29,46 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Home Page"),
       ),
-      body: ListView.builder(
+      body: GridView.builder(
+        padding: const EdgeInsets.all(10.0),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+        ),
         itemCount: wisatas.length,
         itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              leading: const FlutterLogo(),
-              title: Text(wisatas[index].nama.toString()),
-              subtitle: Column(
+          return InkWell(
+            child: Card(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(wisatas[index].kategori.toString()),
-                  Text(wisatas[index].lokasi.toString()),
-                  Text(wisatas[index].hargaTiket.toString()),
+                  const Center(
+                    child: FlutterLogo(
+                      size: 100,
+                    ),
+                  ),
+                  Text(
+                    wisatas[index].nama.toString(),
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    wisatas[index].lokasi.toString(),
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    wisatas[index].hargaTiket.toString(),
+                    style: const TextStyle(fontSize: 20),
+                  ),
                 ],
               ),
             ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const DetailWisata(),
+                ),
+              );
+            },
           );
         },
       ),
