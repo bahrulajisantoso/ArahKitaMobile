@@ -14,9 +14,7 @@ class _LoginState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Register"),
-      ),
+      appBar: AppBar(),
       body: Form(
         key: _formKey,
         child: Container(
@@ -27,9 +25,28 @@ class _LoginState extends State<Register> {
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Masukan username anda",
+                    hintText: "Email",
+                    prefixIcon: Icon(Icons.email_outlined),
+                    labelText: "Masukkan Email Anda",
+                    // icon: Icon(Icons.email),
+                    border: OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(5.0)),
+                  ),
+                  autofocus: true,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Data tidak boleh kosong";
+                    }
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: "Masukan Nama Anda",
                     prefixIcon: Icon(Icons.person),
-                    labelText: "Username",
+                    labelText: "Nama",
                     // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
                         borderRadius: new BorderRadius.circular(5.0)),
@@ -37,7 +54,7 @@ class _LoginState extends State<Register> {
                   autofocus: true,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Email tidak boleh kosong";
+                      return "Data tidak boleh kosong";
                     }
                   },
                 ),
@@ -46,28 +63,9 @@ class _LoginState extends State<Register> {
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Masukan email anda",
-                    prefixIcon: Icon(Icons.email),
-                    labelText: "Email",
-                    // icon: Icon(Icons.email),
-                    border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
-                  ),
-                  autofocus: true,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Email tidak boleh kosong";
-                    }
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Masukan no hp anda",
+                    hintText: "Masukkan Nomor HP Anda",
                     prefixIcon: Icon(Icons.phone),
-                    labelText: "No hp",
+                    labelText: "Nomor HP",
                     // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
                         borderRadius: new BorderRadius.circular(5.0)),
@@ -75,7 +73,7 @@ class _LoginState extends State<Register> {
                   autofocus: true,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Email tidak boleh kosong";
+                      return "Data tidak boleh kosong";
                     }
                   },
                 ),
@@ -84,7 +82,26 @@ class _LoginState extends State<Register> {
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Masukan password anda",
+                    hintText: "Masukan Alamat Anda",
+                    prefixIcon: Icon(Icons.home_filled),
+                    labelText: "Alamat",
+                    // icon: Icon(Icons.lock),
+                    border: OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(5.0)),
+                  ),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Data tidak boleh kosong";
+                    }
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: "Minimal 8 karakter",
                     prefixIcon: Icon(Icons.lock),
                     labelText: "Password",
                     // icon: Icon(Icons.lock),
@@ -94,7 +111,7 @@ class _LoginState extends State<Register> {
                   obscureText: true,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Password tidak boleh kosong";
+                      return "Data tidak boleh kosong";
                     }
                   },
                 ),
@@ -103,9 +120,9 @@ class _LoginState extends State<Register> {
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Masukan konfirmasi password anda",
+                    hintText: "Masukan Password Anda",
                     prefixIcon: Icon(Icons.lock),
-                    labelText: "Konfirmasi password",
+                    labelText: "Konfirmasi Password",
                     // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
                         borderRadius: new BorderRadius.circular(5.0)),
@@ -113,7 +130,7 @@ class _LoginState extends State<Register> {
                   obscureText: true,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Konfirmasi password tidak boleh kosong";
+                      return "Data tidak boleh kosong";
                     }
                   },
                 ),

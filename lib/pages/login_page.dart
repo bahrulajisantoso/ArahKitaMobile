@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
-              Image(image: AssetImage('images/logo.png')),
+              Image.asset("images/akbaru.png"),
               Row(
                 children: <Widget>[
                   const Text('Silahkan Masuk Untuk Melanjutkan'),
