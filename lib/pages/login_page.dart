@@ -35,11 +35,12 @@ class _LoginState extends State<Login> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan email anda",
+                    prefixIcon: Icon(Icons.email_outlined),
                     labelText: "Email",
 
                     // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   autofocus: true,
                   validator: (value) {
@@ -54,10 +55,11 @@ class _LoginState extends State<Login> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "Masukan password anda",
+                    prefixIcon: Icon(Icons.lock),
                     labelText: "Password",
                     // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                   obscureText: true,
                   validator: (value) {
@@ -103,7 +105,7 @@ class _LoginState extends State<Login> {
                     },
                     child: const Text(
                       'Register',
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Color.fromARGB(255, 0, 10, 255)),
                     ),
                   ),
                 ],

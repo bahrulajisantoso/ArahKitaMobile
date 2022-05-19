@@ -137,12 +137,12 @@ class _LoginState extends State<Register> {
               ),
               ElevatedButton(
                 child: const Text(
-                  "Submit",
+                  "Daftar",
                   style: TextStyle(color: Colors.white),
                 ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.blue,
+                    Color.fromARGB(255, 1, 121, 125),
                   ),
                 ),
                 onPressed: () {
@@ -170,7 +170,7 @@ class _LoginState extends State<Register> {
                     },
                     child: const Text(
                       'Login',
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Color.fromARGB(255, 0, 10, 255)),
                     ),
                   ),
                 ],
