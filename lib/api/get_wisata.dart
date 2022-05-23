@@ -64,10 +64,6 @@ class GetWisata {
       for (int i = 0; i < listWisata.length; i++) {
         wisatas.add(Wisata.fromJson(listWisata[i]));
       }
-
-      // Iterable iterable = jsonDecode(response.body);
-      // List<Wisata> wisatas =
-      //     iterable.map((model) => Wisata.fromJson(model)).toList();
       return wisatas;
     } else {
       // If the server did not return a 200 OK response,

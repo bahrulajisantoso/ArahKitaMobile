@@ -9,13 +9,13 @@ class Wisata {
       this.lokasi,
       this.hargaTiket});
 
-  factory Wisata.fromJson(Map<String, dynamic> object) {
+  factory Wisata.fromJson(Map<String, dynamic> json) {
     return Wisata(
-        id: object['id'].toString(),
-        nama: object['nama_wisata'],
-        kategori: object['kategori'],
-        deskripsi: object['deskripsi'],
-        lokasi: object['lokasi'],
-        hargaTiket: object['harga_tiket']);
+        id: json['id'].toString(),
+        nama: json['nama_wisata'],
+        kategori: json['kategori'],
+        deskripsi: json['deskripsi'],
+        lokasi: json['lokasi'],
+        hargaTiket: json['harga_tiket']);
   }
 }

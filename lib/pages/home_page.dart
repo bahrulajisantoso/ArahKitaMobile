@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/api/get_wisata.dart';
 import 'package:project/model/wisata.dart';
 import 'package:project/pages/detail.wisata.dart';
+import 'package:project/pages/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,9 +16,7 @@ class _HomePageState extends State<HomePage> {
 
   getData() async {
     wisatas = await GetWisata.getWisatas();
-    setState(() {
-      wisatas = wisatas;
-    });
+    setState(() {});
   }
 
   @override
@@ -31,6 +30,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home Page"),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Login(),
+              ),
+            );
+          },
+          child: const Icon(Icons.arrow_back),
+        ),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10.0),
