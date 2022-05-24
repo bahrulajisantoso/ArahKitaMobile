@@ -14,8 +14,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _index = 0;
   List<Wisata> _wisatas = [];
-  String? _nama, _lokasi, _harga;
+  // String? _namaWisata, _kategori, _lokasi, _hargaTiket, _deskrpsi;
 
   getData() async {
     _wisatas = await GetWisata.getWisatas();
@@ -29,24 +30,37 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> sessionData() async {
+    String namaWisata, kategori, lokasi, hargaTiket, deskripsi;
+
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString("nama_wisata", _wisatas[0].nama.toString());
-    pref.setString("lokasi", _wisatas[1].lokasi.toString());
-    pref.setString("harga_tiket", _wisatas[2].hargaTiket.toString());
 
-    _nama = pref.getString("nama_wisata").toString();
-    _lokasi = pref.getString("lokasi").toString();
-    _harga = pref.getString("harga_tiket").toString();
+    pref.setString("nama_wisata", _wisatas[_index].namaWisata.toString());
+    pref.setString("kategori", _wisatas[_index].kategori.toString());
+    pref.setString("lokasi", _wisatas[_index].lokasi.toString());
+    pref.setString("harga_tiket", _wisatas[_index].hargaTiket.toString());
+    pref.setString("deskripsi", _wisatas[_index].deskripsi.toString());
 
-    if (_nama == null && _lokasi == null && _harga == null) {
+    namaWisata = pref.getString("nama_wisata").toString();
+    kategori = pref.getString("kategori").toString();
+    lokasi = pref.getString("lokasi").toString();
+    hargaTiket = pref.getString("harga_tiket").toString();
+    deskripsi = pref.getString("deskripsi").toString();
+
+    if (namaWisata == "" &&
+        kategori == "" &&
+        lokasi == "" &&
+        hargaTiket == "" &&
+        deskripsi == "") {
       throw Exception('Failed to load data');
     } else {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => DetailWisata(
-            nama: _nama,
-            lokasi: _lokasi,
-            harga: _harga,
+            namaWisata: namaWisata,
+            kategori: kategori,
+            lokasi: lokasi,
+            hargaTiket: hargaTiket,
+            deskripsi: deskripsi,
           ),
         ),
       );
@@ -108,12 +122,6 @@ class _HomePageState extends State<HomePage> {
                     // initialPage: 2,
                   ),
                 ),
-                // RaisedButton(
-                //   onPressed: () => nextPage(
-                //       duration: Duration(milliseconds: 300),
-                //       curve: Curves.linear),
-                //   child: Text('→'),
-                // ),
               ],
             ),
           ),
@@ -138,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Text(
-                          _wisatas[index].nama.toString(),
+                          _wisatas[index].namaWisata.toString(),
                           style: const TextStyle(fontSize: 20),
                         ),
                         Text(
@@ -154,6 +162,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onTap: () {
                     sessionData();
+                    _index = index;
                   },
                 );
               },

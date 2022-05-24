@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:project/pages/form_transaction.dart';
 
 class DetailWisata extends StatefulWidget {
-  final String? nama, lokasi, harga;
+  final String? namaWisata, kategori, lokasi, hargaTiket, deskripsi;
 
-  const DetailWisata({Key? key, this.nama, this.lokasi, this.harga})
+  const DetailWisata(
+      {Key? key,
+      this.namaWisata,
+      this.kategori,
+      this.lokasi,
+      this.hargaTiket,
+      this.deskripsi})
       : super(key: key);
 
   @override
@@ -25,9 +31,11 @@ class _DetailWisataState extends State<DetailWisata> {
               size: 100,
             ),
           ),
-          Text(widget.nama.toString()),
+          Text(widget.namaWisata.toString()),
+          Text(widget.kategori.toString()),
           Text(widget.lokasi.toString()),
-          Text(widget.harga.toString()),
+          Text(widget.hargaTiket.toString()),
+          Text(widget.deskripsi.toString()),
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).push(

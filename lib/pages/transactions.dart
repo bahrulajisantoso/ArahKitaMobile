@@ -14,7 +14,7 @@ class _TransactionPageState extends State<TransactionPage> {
       appBar: AppBar(
         title: const Text("Transaction Page"),
       ),
-      body: Text('Transaction Page'),
+      body: const Text('Transaction Page'),
     );
   }
 }
