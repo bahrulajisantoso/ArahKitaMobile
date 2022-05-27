@@ -12,7 +12,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-  final toast = ShowToast();
+  final _toast = ShowToast();
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class _LoginState extends State<Login> {
                         builder: (context) => const Main(),
                       ),
                     );
-                    toast.showToast('Login berhasil');
+                    _toast.showToast('Login berhasil');
                   }
                 },
               ),

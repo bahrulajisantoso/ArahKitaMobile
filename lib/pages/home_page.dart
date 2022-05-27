@@ -16,11 +16,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
-  // String? _namaWisata, _kategori, _lokasi, _hargaTiket, _deskrpsi;
 
   getData() async {
     _wisatas = await GetWisata.getWisatas();
-    setState(() {});
+    setState(() {
+      _wisatas;
+    });
   }
 
   @override
@@ -96,20 +97,21 @@ class _HomePageState extends State<HomePage> {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(
-                            width: MediaQuery.of(context).size.width,
-                            // margin:
-                            //     const EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: const BoxDecoration(
-                              color: Colors.amber,
-                              // borderRadius:
-                              //     BorderRadius.all(Radius.circular(10.0)),
+                          width: MediaQuery.of(context).size.width,
+                          // margin:
+                          //     const EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: const BoxDecoration(
+                            color: Colors.amber,
+                            // borderRadius:
+                            //     BorderRadius.all(Radius.circular(10.0)),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'text $i',
+                              style: const TextStyle(fontSize: 16.0),
                             ),
-                            child: Center(
-                              child: Text(
-                                'text $i',
-                                style: const TextStyle(fontSize: 16.0),
-                              ),
-                            ));
+                          ),
+                        );
                       },
                     );
                   }).toList(),
