@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
               Image.asset("images/akbaru.png"),
               Row(
                 children: const <Widget>[
-                  Text('Silahkan Masuk Untuk Melanjutkan'),
+                  Text("Silahkan Masuk Untuk Melanjutkan"),
                 ],
               ),
               Padding(
@@ -36,8 +36,6 @@ class _LoginState extends State<Login> {
                     hintText: "Masukan email anda",
                     prefixIcon: const Icon(Icons.email_outlined),
                     labelText: "Email",
-
-                    // icon: Icon(Icons.email),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
                   ),
@@ -56,7 +54,6 @@ class _LoginState extends State<Login> {
                     hintText: "Masukan password anda",
                     prefixIcon: const Icon(Icons.lock),
                     labelText: "Password",
-                    // icon: Icon(Icons.lock),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
                   ),
@@ -86,14 +83,14 @@ class _LoginState extends State<Login> {
                         builder: (context) => const Main(),
                       ),
                     );
-                    _toast.showToast('Login berhasil');
+                    _toast.showToast("Login berhasil");
                   }
                 },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text('Belum punya akun?'),
+                  const Text("Belum punya akun?"),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).push(
@@ -103,7 +100,7 @@ class _LoginState extends State<Login> {
                       );
                     },
                     child: const Text(
-                      'Register',
+                      "Register",
                       style: TextStyle(color: Color.fromARGB(255, 0, 10, 255)),
                     ),
                   ),

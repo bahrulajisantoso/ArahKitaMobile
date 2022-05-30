@@ -14,28 +14,29 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
 
-  String? _nama, _username, _email, _password;
-
   final _namaController = TextEditingController();
   final _usernameController = TextEditingController();
+  final _jenisKelController = TextEditingController();
   final _emailController = TextEditingController();
   final _noHpController = TextEditingController();
   final _tglLahirController = TextEditingController();
   final _passwordController = TextEditingController();
   final _konfirmPasswordController = TextEditingController();
 
-  void addUser() {
+  void addUser() async {
     AddUser.createUser(
-      _namaController.text,
-      _usernameController.text,
-      _emailController.text,
-      _noHpController.text,
-      _tglLahirController.text,
-      _passwordController.text,
+      _namaController.text.trim().toLowerCase(),
+      _usernameController.text.trim().toLowerCase(),
+      _jenisKelController.text.trim().toLowerCase(),
+      _emailController.text.trim().toLowerCase(),
+      _noHpController.text.trim().toLowerCase(),
+      _tglLahirController.text.trim().toLowerCase(),
+      _passwordController.text.trim(),
     ).then((value) {
+      // print(value);
       setState(() {
-        if (value) {
-          _toast.showToast("berhasil");
+        if (value.kode == 1) {
+          _toast.showToast('${value.pesan}');
           Navigator.pop(context);
         } else {
           _toast.showToast("gagal");
@@ -59,6 +60,7 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.text,
                       controller: _namaController,
                       decoration: InputDecoration(
                         hintText: "Masukan Nama Anda",
@@ -78,6 +80,7 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.text,
                       controller: _usernameController,
                       decoration: InputDecoration(
                         hintText: "Masukan Usernmae Anda",
@@ -86,7 +89,6 @@ class _RegisterState extends State<Register> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
                       ),
-                      autofocus: true,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
@@ -97,6 +99,25 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
+                      controller: _jenisKelController,
+                      decoration: InputDecoration(
+                        hintText: "Masukan jenis kelamin Anda",
+                        prefixIcon: const Icon(Icons.person),
+                        labelText: "Jenis kelamin",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Data tidak boleh kosong";
+                        }
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
                       decoration: InputDecoration(
                         hintText: "Email",
@@ -105,7 +126,6 @@ class _RegisterState extends State<Register> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
                       ),
-                      autofocus: true,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
@@ -116,6 +136,7 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.phone,
                       controller: _noHpController,
                       decoration: InputDecoration(
                         hintText: "Masukkan Nomor HP Anda",
@@ -124,7 +145,6 @@ class _RegisterState extends State<Register> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
                       ),
-                      autofocus: true,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
@@ -143,7 +163,6 @@ class _RegisterState extends State<Register> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
                       ),
-                      obscureText: true,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
@@ -154,6 +173,7 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.text,
                       controller: _passwordController,
                       decoration: InputDecoration(
                         hintText: "Minimal 8 karakter",
@@ -162,7 +182,6 @@ class _RegisterState extends State<Register> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
                       ),
-                      obscureText: true,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
@@ -173,6 +192,7 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.text,
                       controller: _konfirmPasswordController,
                       decoration: InputDecoration(
                         hintText: "Masukan Password Anda",
@@ -181,10 +201,14 @@ class _RegisterState extends State<Register> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
                       ),
-                      obscureText: true,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else if (_passwordController.text !=
+                            _konfirmPasswordController.text) {
+                          return "Password tidak sama";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -214,7 +238,7 @@ class _RegisterState extends State<Register> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text('Sudah punya akun?'),
+                      const Text("Sudah punya akun?"),
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(
@@ -224,7 +248,7 @@ class _RegisterState extends State<Register> {
                           );
                         },
                         child: const Text(
-                          'Login',
+                          "Login",
                           style:
                               TextStyle(color: Color.fromARGB(255, 0, 10, 255)),
                         ),

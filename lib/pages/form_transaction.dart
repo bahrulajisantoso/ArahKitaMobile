@@ -12,10 +12,10 @@ class _FormTransactionState extends State<FormTransaction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form Transaction'),
+        title: const Text("Form Transaction"),
       ),
       body: const Center(
-        child: Text('Form Transaction'),
+        child: Text("Form Transaction"),
       ),
     );
   }

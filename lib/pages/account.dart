@@ -14,7 +14,7 @@ class _AccountPageState extends State<AccountPage> {
       appBar: AppBar(
         title: const Text("Account Page"),
       ),
-      body: const Text('Account Page'),
+      body: const Text("Account Page"),
     );
   }
 }

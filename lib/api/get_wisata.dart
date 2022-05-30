@@ -4,7 +4,7 @@ import 'package:project/model/wisata.dart';
 
 class GetWisata {
   static Future<List<Wisata>> getWisatas() async {
-    Uri apiURL = Uri.parse('http://10.0.2.2/flutter/wisata.php');
+    Uri apiURL = Uri.parse("http://10.0.2.2/flutter/wisata.php");
 
     var response = await http.get(apiURL);
     var responseData = jsonDecode(response.body);
@@ -18,7 +18,7 @@ class GetWisata {
       }
       return wisatas;
     } else {
-      throw Exception('Failed to load album');
+      throw Exception("Failed to load wisata");
     }
   }
 }

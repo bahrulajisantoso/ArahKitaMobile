@@ -26,8 +26,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
     getData();
+    super.initState();
   }
 
   Future<void> sessionData() async {
