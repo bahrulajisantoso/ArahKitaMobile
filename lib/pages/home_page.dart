@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
         lokasi == "" &&
         hargaTiket == "" &&
         deskripsi == "") {
-      throw Exception('Failed to load data');
+      throw Exception("Failed to load data");
     } else {
       Navigator.of(context).push(
         MaterialPageRoute(
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Center(
                             child: Text(
-                              'text $i',
+                              "text $i",
                               style: const TextStyle(fontSize: 16.0),
                             ),
                           ),

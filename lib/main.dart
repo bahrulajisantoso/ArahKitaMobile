@@ -44,15 +44,15 @@ class _MainState extends State<Main> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.compare_arrows),
-            label: 'Transactions',
+            label: "Transactions",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: 'Account',
+            icon: Icon(Icons.account_circle),
+            label: "Account",
           ),
         ],
         currentIndex: _selectedIndex,

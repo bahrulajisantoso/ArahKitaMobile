@@ -58,7 +58,7 @@ class _RegisterState extends State<Register> {
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _namaController,
@@ -78,13 +78,13 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _usernameController,
                       decoration: InputDecoration(
-                        hintText: "Masukan Usernmae Anda",
-                        prefixIcon: const Icon(Icons.person),
+                        hintText: "Masukan Username Anda",
+                        prefixIcon: const Icon(Icons.account_circle),
                         labelText: "Username",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
@@ -97,12 +97,13 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: _jenisKelController,
                       decoration: InputDecoration(
                         hintText: "Masukan jenis kelamin Anda",
-                        prefixIcon: const Icon(Icons.person),
+                        prefixIcon:
+                            const Icon(Icons.supervisor_account_rounded),
                         labelText: "Jenis kelamin",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
@@ -115,7 +116,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
@@ -134,7 +135,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
                       controller: _noHpController,
@@ -153,12 +154,12 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: _tglLahirController,
                       decoration: InputDecoration(
                         hintText: "Masukan Tanggal lahir anda",
-                        prefixIcon: const Icon(Icons.home_filled),
+                        prefixIcon: const Icon(Icons.date_range),
                         labelText: "Tanggal lahir",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
@@ -171,7 +172,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _passwordController,
@@ -190,7 +191,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _konfirmPasswordController,
