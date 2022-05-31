@@ -16,8 +16,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
+  final imgBaseUrl = "http://10.0.2.2/flutter/img";
 
-  getData() async {
+  _getData() async {
     _wisatas = await GetWisata.getWisatas();
     setState(() {
       _wisatas;
@@ -26,13 +27,34 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    getData();
     super.initState();
+    _cekLogin();
+    _getData();
   }
 
-  Future<void> sessionData() async {
-    String namaWisata, kategori, lokasi, hargaTiket, deskripsi;
+  _cekLogin() async {
+    bool isLogin;
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    isLogin = pref.getBool("is_login") ?? false;
+    setState(() {
+      if (isLogin == false) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) {
+            return const Login();
+          }),
+        );
+      } else {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) {
+            return const HomePage();
+          }),
+        );
+      }
+    });
+  }
 
+  Future<void> sessionDetailWisata() async {
+    String namaWisata, kategori, lokasi, hargaTiket, deskripsi;
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     pref.setString("nama_wisata", _wisatas[_index].namaWisata.toString());
@@ -52,7 +74,7 @@ class _HomePageState extends State<HomePage> {
         lokasi == "" &&
         hargaTiket == "" &&
         deskripsi == "") {
-      throw Exception("Failed to load data");
+      throw Exception("Failed to save data");
     } else {
       Navigator.of(context).push(
         MaterialPageRoute(
@@ -73,17 +95,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home Page"),
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Login(),
-              ),
-            );
-          },
-          child: const Icon(Icons.arrow_back),
-        ),
+        // leading: GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //         builder: (context) => const Login(),
+        //       ),
+        //     );
+        //   },
+        //   child: const Icon(Icons.arrow_back),
+        // ),
       ),
       body: Column(
         children: <Widget>[
@@ -142,10 +164,11 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        const Center(
-                          child: FlutterLogo(
-                            size: 100,
-                          ),
+                        Image.network(
+                          "$imgBaseUrl/${_wisatas[index].gambar1}",
+                          // fit: BoxFit.cover,
+                          height: 100,
+                          width: 100,
                         ),
                         Text(
                           _wisatas[index].namaWisata.toString(),
@@ -159,11 +182,15 @@ class _HomePageState extends State<HomePage> {
                           _wisatas[index].hargaTiket.toString(),
                           style: const TextStyle(fontSize: 20),
                         ),
+                        // Text(
+                        //   ${},
+                        //   style: const TextStyle(fontSize: 20),
+                        // ),
                       ],
                     ),
                   ),
                   onTap: () {
-                    sessionData();
+                    sessionDetailWisata();
                     _index = index;
                   },
                 );

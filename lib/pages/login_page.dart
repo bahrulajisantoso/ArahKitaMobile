@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:project/main.dart';
+import 'package:project/api/login.dart';
+import 'package:project/pages/home_page.dart';
 import 'package:project/pages/register_page.dart';
 import 'package:project/Notification/toast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,6 +15,35 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _login() async {
+    LoginUser.loginUser(_emailController.text, _passwordController.text)
+        .then((value) {
+      if (value.kode == 200) {
+        sessionLogin();
+        // pref.setBool("is_login", true);
+        _toast.showToast(value.pesan);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
+      } else {
+        _toast.showToast(value.pesan);
+      }
+    });
+  }
+
+  Future sessionLogin() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setBool("is_login", true);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +63,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: "Masukan email anda",
                     prefixIcon: const Icon(Icons.email_outlined),
@@ -43,6 +75,8 @@ class _LoginState extends State<Login> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Email tidak boleh kosong";
+                    } else {
+                      return null;
                     }
                   },
                 ),
@@ -50,6 +84,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
+                  controller: _passwordController,
                   decoration: InputDecoration(
                     hintText: "Masukan password anda",
                     prefixIcon: const Icon(Icons.lock),
@@ -61,6 +96,8 @@ class _LoginState extends State<Login> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Password tidak boleh kosong";
+                    } else {
+                      return null;
                     }
                   },
                 ),
@@ -77,13 +114,7 @@ class _LoginState extends State<Login> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Main(),
-                      ),
-                    );
-                    _toast.showToast("Login berhasil");
+                    _login();
                   }
                 },
               ),

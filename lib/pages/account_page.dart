@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project/pages/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -8,6 +10,21 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  logOut() async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.remove("is_login");
+    });
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => const Login(),
+      ),
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +59,12 @@ class _AccountPageState extends State<AccountPage> {
                 Text("tgl lahir"),
               ],
             ),
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                logOut();
+              },
+              child: const Text("Keluar"))
         ],
       ),
     );

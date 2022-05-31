@@ -23,7 +23,7 @@ class _RegisterState extends State<Register> {
   final _passwordController = TextEditingController();
   final _konfirmPasswordController = TextEditingController();
 
-  void addUser() async {
+  void _addUser() async {
     AddUser.createUser(
       _namaController.text.trim().toLowerCase(),
       _usernameController.text.trim().toLowerCase(),
@@ -36,10 +36,10 @@ class _RegisterState extends State<Register> {
       // print(value);
       setState(() {
         if (value.kode == 1) {
-          _toast.showToast("${value.pesan}");
+          _toast.showToast(value.pesan);
           Navigator.pop(context);
         } else {
-          _toast.showToast("gagal");
+          _toast.showToast(value.pesan);
         }
       });
     });
@@ -73,6 +73,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -92,6 +94,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -111,6 +115,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -130,6 +136,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -149,6 +157,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -167,6 +177,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -186,6 +198,10 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else if (value.length < 8) {
+                          return "Password minimal 8 karakter";
+                        } else {
+                          return null;
                         }
                       },
                     ),
@@ -226,13 +242,13 @@ class _RegisterState extends State<Register> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        addUser();
-                        Navigator.pop(
-                          context,
-                          Builder(
-                            builder: (context) => const Login(),
-                          ),
-                        );
+                        _addUser();
+                        // Navigator.pop(
+                        //   context,
+                        //   Builder(
+                        //     builder: (context) => const Login(),
+                        //   ),
+                        // );
                       }
                     },
                   ),

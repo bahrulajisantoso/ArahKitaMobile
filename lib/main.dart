@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/account_page.dart';
 import 'package:project/pages/home_page.dart';
+import 'package:project/pages/tickets_page.dart';
 import 'package:project/pages/transactions_page.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class _MainState extends State<Main> {
   final screens = [
     const HomePage(),
     const TransactionPage(),
+    const TicketPage(),
     const AccountPage(),
   ];
 
@@ -49,6 +51,10 @@ class _MainState extends State<Main> {
           BottomNavigationBarItem(
             icon: Icon(Icons.compare_arrows),
             label: "Transactions",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.airplane_ticket),
+            label: "Ticket",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
