@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/pages/form_transaction.dart';
+import 'package:project/pages/form_transaction_page.dart';
 
 class DetailWisata extends StatefulWidget {
   final String? namaWisata, kategori, lokasi, hargaTiket, deskripsi;

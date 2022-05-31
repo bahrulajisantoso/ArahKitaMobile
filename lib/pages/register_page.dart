@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
       // print(value);
       setState(() {
         if (value.kode == 1) {
-          _toast.showToast('${value.pesan}');
+          _toast.showToast("${value.pesan}");
           Navigator.pop(context);
         } else {
           _toast.showToast("gagal");

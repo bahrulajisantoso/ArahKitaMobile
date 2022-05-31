@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project/api/get_wisata.dart';
 import 'package:project/model/wisata.dart';
-import 'package:project/pages/detail_wisata.dart';
+import 'package:project/pages/detail_wisata_page.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
