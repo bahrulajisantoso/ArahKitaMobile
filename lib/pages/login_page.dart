@@ -15,6 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
+  int? _idUser;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -23,6 +24,7 @@ class _LoginState extends State<Login> {
     LoginUser.loginUser(_emailController.text, _passwordController.text)
         .then((value) {
       if (value.kode == 200) {
+        _idUser = value.id;
         sessionLogin();
         _toast.showToast(value.pesan);
         Navigator.pushReplacement(
@@ -40,6 +42,7 @@ class _LoginState extends State<Login> {
   Future sessionLogin() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
+      // pref.setInt("id_user", _idUser);
       pref.setBool("is_login", true);
     });
   }

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:project/model/user.dart';
+import 'package:project/model/register_response.dart';
 
 class AddUser {
   static Future<User> createUser(

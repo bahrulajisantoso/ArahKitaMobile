@@ -11,9 +11,10 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
   logOut() async {
-    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      preferences.remove("is_login");
+      pref.remove("is_login");
+      pref.clear();
     });
 
     Navigator.pushAndRemoveUntil(
