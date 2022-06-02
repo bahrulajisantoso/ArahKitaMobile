@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
     ).then((value) {
       // print(value);
       setState(() {
-        if (value.kode == 1) {
+        if (value.kode == 201) {
           _toast.showToast(value.pesan);
           Navigator.pop(context);
         } else {
@@ -44,6 +44,23 @@ class _RegisterState extends State<Register> {
       });
     });
   }
+
+  // _validatePassword(String value) {
+  //   RegExp regex = RegExp(
+  //       r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,16}$");
+
+  //   RegExp regexx = RegExp(r"^(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{8,16}$");
+
+  //   if (value.isEmpty) {
+  //     return "Please enter password";
+  //   } else {
+  //     if (!regex.hasMatch(value)) {
+  //       return "Enter valid password";
+  //     } else {
+  //       return null;
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -198,8 +215,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
-                        } else if (value.length < 8) {
-                          return "Password minimal 8 karakter";
+                          // } else if (value != _validatePassword(value)) {
+                          //   return "Password harus memiliki kombinasi huruf, angka dan karakter spesial";
                         } else {
                           return null;
                         }

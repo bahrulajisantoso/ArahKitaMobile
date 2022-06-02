@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/api/login.dart';
-import 'package:project/pages/home_page.dart';
+import 'package:project/main.dart';
 import 'package:project/pages/register_page.dart';
 import 'package:project/Notification/toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,12 +24,11 @@ class _LoginState extends State<Login> {
         .then((value) {
       if (value.kode == 200) {
         sessionLogin();
-        // pref.setBool("is_login", true);
         _toast.showToast(value.pesan);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const HomePage(),
+            builder: (context) => const Main(),
           ),
         );
       } else {

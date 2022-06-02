@@ -44,11 +44,7 @@ class _HomePageState extends State<HomePage> {
           }),
         );
       } else {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) {
-            return const HomePage();
-          }),
-        );
+        Navigator.of(context);
       }
     });
   }
@@ -95,17 +91,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home Page"),
-        // leading: GestureDetector(
-        //   onTap: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) => const Login(),
-        //       ),
-        //     );
-        //   },
-        //   child: const Icon(Icons.arrow_back),
-        // ),
       ),
       body: Column(
         children: <Widget>[
@@ -182,10 +167,6 @@ class _HomePageState extends State<HomePage> {
                           _wisatas[index].hargaTiket.toString(),
                           style: const TextStyle(fontSize: 20),
                         ),
-                        // Text(
-                        //   ${},
-                        //   style: const TextStyle(fontSize: 20),
-                        // ),
                       ],
                     ),
                   ),
