@@ -17,7 +17,14 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
-  int? _idUser;
+  String _idUser = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _cekLogin();
+    _getData();
+  }
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
@@ -27,11 +34,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   _cekLogin() async {
-    // int idUser;
     bool isLogin;
     SharedPreferences pref = await SharedPreferences.getInstance();
     isLogin = pref.getBool("is_login") ?? false;
-    _idUser = pref.getInt("id_user") ?? 0;
+    _idUser = pref.getString("id_user") ?? "";
     setState(() {
       if (isLogin == false) {
         Navigator.of(context).pushReplacement(
@@ -84,13 +90,6 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _cekLogin();
-    _getData();
   }
 
   @override

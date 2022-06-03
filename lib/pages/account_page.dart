@@ -18,6 +18,12 @@ class _AccountPageState extends State<AccountPage> {
       _noHp = "",
       _email = "";
 
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
   void getUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String idUser = pref.getString("id_user") ?? "";
@@ -31,12 +37,6 @@ class _AccountPageState extends State<AccountPage> {
         _email = value.email;
       });
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getUser();
   }
 
   logOut() async {
@@ -90,11 +90,14 @@ class _AccountPageState extends State<AccountPage> {
               ],
             ),
           ),
-          ElevatedButton(
+          Center(
+            child: ElevatedButton(
               onPressed: () {
                 logOut();
               },
-              child: const Text("Keluar"))
+              child: const Text("Keluar"),
+            ),
+          )
         ],
       ),
     );
