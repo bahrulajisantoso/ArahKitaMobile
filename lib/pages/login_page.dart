@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
-  int? _idUser;
+  String _idUser = "";
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
   Future sessionLogin() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      // pref.setInt("id_user", _idUser);
+      pref.setString("id_user", _idUser);
       pref.setBool("is_login", true);
     });
   }

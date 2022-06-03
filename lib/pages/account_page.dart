@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/api/get_user.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,6 +11,34 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  String _namaUser = "",
+      _username = "",
+      _jenisKelamin = "",
+      _tglLahir = "",
+      _noHp = "",
+      _email = "";
+
+  void getUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String idUser = pref.getString("id_user") ?? "";
+    GetUser.getUser(idUser).then((value) {
+      setState(() {
+        _namaUser = value.namaUser;
+        _username = value.username;
+        _jenisKelamin = value.jenisKelamin;
+        _tglLahir = value.tglLahir;
+        _noHp = value.noHp;
+        _email = value.email;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
   logOut() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
@@ -51,13 +80,13 @@ class _AccountPageState extends State<AccountPage> {
             padding: const EdgeInsets.only(left: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
-                Text("nama"),
-                Text("username"),
-                Text("jenis kelamin"),
-                Text("email"),
-                Text("no hp"),
-                Text("tgl lahir"),
+              children: <Widget>[
+                Text("nama: $_namaUser"),
+                Text("username: $_username"),
+                Text("jenis kelamin: $_jenisKelamin"),
+                Text("email: $_email"),
+                Text("no hp: $_noHp"),
+                Text("tanggal lahir: $_tglLahir"),
               ],
             ),
           ),

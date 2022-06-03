@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:project/model/register_response.dart';
 
 class AddUser {
-  static Future<User> createUser(
+  static Future<ResponseRegister> createUser(
     String nama,
     username,
     jeniKelamin,
@@ -28,7 +28,7 @@ class AddUser {
     );
 
     if (response.statusCode == 200) {
-      return User.fromJson(json.decode(response.body));
+      return ResponseRegister.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to create User");
     }

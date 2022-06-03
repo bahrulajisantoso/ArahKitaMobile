@@ -1,11 +1,11 @@
 class LoginResponse {
-  int? kode, id;
-  String? pesan;
+  final int kode;
+  final String pesan, id;
 
   LoginResponse({
-    this.kode,
-    this.pesan,
-    this.id,
+    required this.kode,
+    required this.pesan,
+    required this.id,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {

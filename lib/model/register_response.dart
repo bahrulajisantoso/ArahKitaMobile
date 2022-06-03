@@ -1,14 +1,14 @@
-class User {
+class ResponseRegister {
   int? kode;
   String? pesan;
 
-  User({
+  ResponseRegister({
     this.kode,
     this.pesan,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
+  factory ResponseRegister.fromJson(Map<String, dynamic> json) {
+    return ResponseRegister(
       kode: json["kode"],
       pesan: json["pesan"],
     );
