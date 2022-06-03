@@ -79,7 +79,7 @@ class _FormTransactionState extends State<FormTransaction> {
               decoration: BoxDecoration(),
               child: Padding(
                 // padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   color: Colors.white,
@@ -93,7 +93,7 @@ class _FormTransactionState extends State<FormTransaction> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
                         child: Container(
-                          width: 100,
+                          width: 150,
                           height: 100,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -101,6 +101,7 @@ class _FormTransactionState extends State<FormTransaction> {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
+                            child: FlutterLogo(),
                             // child: Image.asset(
                             //   'assets/images/blawan.jpg',
                             //   width: 100,
@@ -187,7 +188,7 @@ class _FormTransactionState extends State<FormTransaction> {
             ),
             Container(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   color: Colors.white,
@@ -346,7 +347,7 @@ class _FormTransactionState extends State<FormTransaction> {
             Container(
               height: 60,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   color: Colors.white,
@@ -503,7 +504,7 @@ class _FormTransactionState extends State<FormTransaction> {
             Container(
               width: 400,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   color: Colors.white,
