@@ -19,7 +19,8 @@ class DetailWisata extends StatefulWidget {
 }
 
 class _DetailWisataState extends State<DetailWisata> {
-  final imgBaseUrl = "http://10.0.2.2/flutter/img/";
+  final imgBaseUrl =
+      "http://10.0.2.2/arahkita/Arah_kita_web/storage/app/public/";
 
   // Future<void> sessionFormTransaction() async {
   //   final SharedPreferences pref = await SharedPreferences.getInstance();
@@ -39,9 +40,9 @@ class _DetailWisataState extends State<DetailWisata> {
       ),
       body: Column(
         children: <Widget>[
-          Image.network("$imgBaseUrl${widget.gambar1}",
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 2),
+          // Image.network("$imgBaseUrl${widget.gambar1}",
+          //     width: MediaQuery.of(context).size.width,
+          //     height: MediaQuery.of(context).size.height / 2),
           Text(widget.namaWisata.toString()),
           Text(widget.kategori.toString()),
           Text(widget.lokasi.toString()),

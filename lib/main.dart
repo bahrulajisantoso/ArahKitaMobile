@@ -3,6 +3,7 @@ import 'package:project/pages/account_page.dart';
 import 'package:project/pages/home_page.dart';
 import 'package:project/pages/tickets_page.dart';
 import 'package:project/pages/transactions_page.dart';
+import 'package:project/theme/color.dart';
 
 void main() {
   runApp(
@@ -46,21 +47,24 @@ class _MainState extends State<Main> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: "Home",
-            backgroundColor: Colors.red,
+            label: "",
+            backgroundColor: Color(0xFF01797D),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.compare_arrows),
-              label: "Transactions",
-              backgroundColor: Colors.red),
+            icon: Icon(Icons.compare_arrows),
+            label: "",
+            backgroundColor: Color(0xFF01797D),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.airplane_ticket),
-              label: "Ticket",
-              backgroundColor: Colors.red),
+            icon: Icon(Icons.airplane_ticket),
+            label: "",
+            backgroundColor: Color(0xFF01797D),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              label: "Account",
-              backgroundColor: Colors.red),
+            icon: Icon(Icons.account_circle),
+            label: "",
+            backgroundColor: Color(0xFF01797D),
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,

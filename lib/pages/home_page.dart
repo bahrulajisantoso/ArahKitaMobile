@@ -153,31 +153,38 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return InkWell(
                   child: Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Image.network(
-                          "$imgBaseUrl/${_wisatas[index].gambar1}",
-                          // fit: BoxFit.cover,
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          _wisatas[index].namaWisata.toString(),
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        Text(
-                          _wisatas[index].lokasi.toString(),
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        Text(
-                          _wisatas[index].hargaTiket.toString(),
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        Text(
-                          _idUser.toString(),
-                        ),
-                      ],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    elevation: 10,
+                    child: Padding(
+                      padding: EdgeInsets.all(30.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          // Image.network(
+                          //   "$imgBaseUrl/${_wisatas[index].gambar1}",
+                          //   // fit: BoxFit.cover,
+                          //   height: 100,
+                          //   width: 100,
+                          // ),
+                          Text(
+                            _wisatas[index].namaWisata.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            _wisatas[index].lokasi.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            _wisatas[index].hargaTiket.toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            _idUser.toString(),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   onTap: () {
