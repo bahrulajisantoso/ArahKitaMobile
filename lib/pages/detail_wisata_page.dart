@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/form_transaction_page.dart';
 import 'package:project/theme/color.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailWisata extends StatefulWidget {
-  final String? namaWisata, kategori, lokasi, hargaTiket, deskripsi, gambar1;
-
-  const DetailWisata(
-      {Key? key,
-      this.namaWisata,
-      this.kategori,
-      this.lokasi,
-      this.hargaTiket,
-      this.deskripsi,
-      this.gambar1})
-      : super(key: key);
+  const DetailWisata({Key? key}) : super(key: key);
 
   @override
   State<DetailWisata> createState() => _DetailWisataState();
 }
 
 class _DetailWisataState extends State<DetailWisata> {
+  String? _namaWisata, _kategori, _lokasi, _hargaTiket, _deskripsi, _gambar1;
   final imgBaseUrl =
       "http://10.0.2.2/arahkita/Arah_kita_web/storage/app/public/";
 
-  // Future<void> sessionFormTransaction() async {
-  //   final SharedPreferences pref = await SharedPreferences.getInstance();
-  //   pref.setString("nama_wisata", widget.namaWisata.toString());
-  //   pref.setString("kategori", widget.kategori.toString());
-  //   pref.setString("lokasi", widget.lokasi.toString());
-  //   pref.setString("harga_tiket", widget.hargaTiket.toString());
-  //   pref.setString("deskripsi", widget.deskripsi.toString());
-  //   pref.setString("gambar_1", widget.gambar1.toString());
-  // }
+  getSession() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      _namaWisata = pref.getString("nama_wisata").toString();
+      _kategori = pref.getString("kategori").toString();
+      _lokasi = pref.getString("lokasi").toString();
+      _hargaTiket = pref.getString("harga_tiket").toString();
+      _deskripsi = pref.getString("dekripsi").toString();
+      _gambar1 = pref.getString("gambar_1").toString();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getSession();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class _DetailWisataState extends State<DetailWisata> {
                       children: [
                         Container(
                           child: Text(
-                            widget.namaWisata.toString(),
+                            _namaWisata.toString(),
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: 'Poppins',
@@ -96,7 +96,7 @@ class _DetailWisataState extends State<DetailWisata> {
                       children: [
                         Container(
                           child: Text(
-                            widget.kategori.toString(),
+                            _kategori.toString(),
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: 'Poppins',
@@ -108,7 +108,7 @@ class _DetailWisataState extends State<DetailWisata> {
                         ),
                         Container(
                           child: Text(
-                            widget.lokasi.toString(),
+                            _lokasi.toString(),
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: 'Poppins',
@@ -122,7 +122,7 @@ class _DetailWisataState extends State<DetailWisata> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                           child: Container(
                             child: Text(
-                              'Rp.' + widget.hargaTiket.toString() + ',-',
+                              'Rp.' + _hargaTiket.toString() + ',-',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontFamily: 'Poppins',
@@ -179,7 +179,7 @@ class _DetailWisataState extends State<DetailWisata> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 5, 0),
                           child: Container(
                             child: Text(
-                              'Tentang' ' ' + widget.namaWisata.toString(),
+                              'Tentang' ' ' + _namaWisata.toString(),
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontFamily: 'Poppins',
@@ -191,7 +191,7 @@ class _DetailWisataState extends State<DetailWisata> {
                         ),
                         Container(
                           child: Text(
-                            widget.deskripsi.toString(),
+                            _deskripsi.toString(),
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: 'Poppins',

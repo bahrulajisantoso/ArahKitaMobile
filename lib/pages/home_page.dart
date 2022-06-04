@@ -52,7 +52,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> sessionDetailWisata() async {
-    String namaWisata, kategori, lokasi, hargaTiket, deskripsi, gambar1;
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     pref.setString("nama_wisata", _wisatas[_index].namaWisata.toString());
@@ -61,35 +60,6 @@ class _HomePageState extends State<HomePage> {
     pref.setString("harga_tiket", _wisatas[_index].hargaTiket.toString());
     pref.setString("deskripsi", _wisatas[_index].deskripsi.toString());
     pref.setString("gambar_1", _wisatas[_index].gambar1.toString());
-
-    namaWisata = pref.getString("nama_wisata").toString();
-    kategori = pref.getString("kategori").toString();
-    lokasi = pref.getString("lokasi").toString();
-    hargaTiket = pref.getString("harga_tiket").toString();
-    deskripsi = pref.getString("deskripsi").toString();
-    gambar1 = pref.getString("gambar_1").toString();
-
-    if (namaWisata == "" &&
-        kategori == "" &&
-        lokasi == "" &&
-        hargaTiket == "" &&
-        deskripsi == "" &&
-        gambar1 == "") {
-      throw Exception("Failed to save data");
-    } else {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => DetailWisata(
-            namaWisata: namaWisata,
-            kategori: kategori,
-            lokasi: lokasi,
-            hargaTiket: hargaTiket,
-            deskripsi: deskripsi,
-            gambar1: gambar1,
-          ),
-        ),
-      );
-    }
   }
 
   @override
@@ -191,6 +161,13 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       sessionDetailWisata();
                       _index = index;
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DetailWisata();
+                          },
+                        ),
+                      );
                     },
                   );
                 },
