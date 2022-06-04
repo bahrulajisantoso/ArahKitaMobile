@@ -14,7 +14,14 @@ class _TicketPageState extends State<TicketPage> {
       appBar: AppBar(
         title: const Text("Ticket Page"),
       ),
-      body: const Text('Ticket Page'),
+      body: ListView.builder(itemBuilder: (context, index) {
+        return ListTile(
+          title: Text("Ticket ${index + 1}"),
+          onTap: () {
+            Null;
+          },
+        );
+      }),
     );
   }
 }

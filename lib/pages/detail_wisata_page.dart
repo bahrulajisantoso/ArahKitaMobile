@@ -22,7 +22,7 @@ class _DetailWisataState extends State<DetailWisata> {
       _kategori = pref.getString("kategori").toString();
       _lokasi = pref.getString("lokasi").toString();
       _hargaTiket = pref.getString("harga_tiket").toString();
-      _deskripsi = pref.getString("dekripsi").toString();
+      _deskripsi = pref.getString("deskripsi").toString();
       _gambar1 = pref.getString("gambar_1").toString();
     });
   }
@@ -163,8 +163,6 @@ class _DetailWisataState extends State<DetailWisata> {
                         //button pesan
                         ElevatedButton(
                           onPressed: () {
-                            // sessionFormTransaction();
-
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => const FormTransaction(),

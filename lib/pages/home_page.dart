@@ -52,14 +52,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> sessionDetailWisata() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    pref.setString("nama_wisata", _wisatas[_index].namaWisata.toString());
-    pref.setString("kategori", _wisatas[_index].kategori.toString());
-    pref.setString("lokasi", _wisatas[_index].lokasi.toString());
-    pref.setString("harga_tiket", _wisatas[_index].hargaTiket.toString());
-    pref.setString("deskripsi", _wisatas[_index].deskripsi.toString());
-    pref.setString("gambar_1", _wisatas[_index].gambar1.toString());
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("nama_wisata", _wisatas[_index].namaWisata.toString());
+      pref.setString("kategori", _wisatas[_index].kategori.toString());
+      pref.setString("lokasi", _wisatas[_index].lokasi.toString());
+      pref.setString("harga_tiket", _wisatas[_index].hargaTiket.toString());
+      pref.setString("deskripsi", _wisatas[_index].deskripsi.toString());
+      pref.setString("gambar_1", _wisatas[_index].gambar1.toString());
+    });
   }
 
   @override
@@ -106,7 +107,6 @@ class _HomePageState extends State<HomePage> {
                       enlargeCenterPage: true,
                       viewportFraction: 1.0,
                       aspectRatio: 2.0,
-                      // initialPage: 2,
                     ),
                   ),
                 ],
@@ -150,9 +150,6 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               _wisatas[index].hargaTiket.toString(),
                               style: const TextStyle(fontSize: 20),
-                            ),
-                            Text(
-                              _idUser.toString(),
                             ),
                           ],
                         ),

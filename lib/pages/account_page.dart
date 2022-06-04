@@ -11,12 +11,7 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  String _namaUser = "",
-      _username = "",
-      _jenisKelamin = "",
-      _tglLahir = "",
-      _noHp = "",
-      _email = "";
+  String? _namaUser, _username, _jenisKelamin, _tglLahir, _noHp, _email;
 
   @override
   void initState() {
