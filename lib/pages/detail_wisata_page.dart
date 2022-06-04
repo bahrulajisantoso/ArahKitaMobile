@@ -15,7 +15,7 @@ class _DetailWisataState extends State<DetailWisata> {
   final imgBaseUrl =
       "http://10.0.2.2/arahkita/Arah_kita_web/storage/app/public/";
 
-  getSession() async {
+  _getSessionWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
       _namaWisata = pref.getString("nama_wisata").toString();
@@ -30,7 +30,7 @@ class _DetailWisataState extends State<DetailWisata> {
   @override
   void initState() {
     super.initState();
-    getSession();
+    _getSessionWisata();
   }
 
   @override

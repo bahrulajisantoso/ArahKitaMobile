@@ -21,10 +21,10 @@ class _AccountPageState extends State<AccountPage> {
   @override
   void initState() {
     super.initState();
-    getUser();
+    _getUser();
   }
 
-  void getUser() async {
+  _getUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String idUser = pref.getString("id_user") ?? "";
     GetUser.getUser(idUser).then((value) {
@@ -39,7 +39,7 @@ class _AccountPageState extends State<AccountPage> {
     });
   }
 
-  logOut() async {
+  _logOut() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
       pref.remove("is_login");
@@ -93,7 +93,7 @@ class _AccountPageState extends State<AccountPage> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                logOut();
+                _logOut();
               },
               child: const Text("Keluar"),
             ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:project/api/get_user.dart';
 import 'package:project/pages/pembayaran_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,11 +14,13 @@ class FormTransaction extends StatefulWidget {
 
 class _FormTransactionState extends State<FormTransaction> {
   String? _namaWisata, _kategori, _lokasi, _hargaTiket, _gambar1;
+  String? _namaUser, _noHp, _email;
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
   int _jumlahTiket = 0;
   int _totalHarga = 0;
+  String _tglDipilih = DateFormat('dd/MM/yyy').format(DateTime.now());
 
-  getSession() async {
+  _getSessionWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
       _namaWisata = pref.getString("nama_wisata").toString();
@@ -24,6 +28,18 @@ class _FormTransactionState extends State<FormTransaction> {
       _lokasi = pref.getString("lokasi").toString();
       _hargaTiket = pref.getString("harga_tiket").toString();
       _gambar1 = pref.getString("gambar_1").toString();
+    });
+  }
+
+  _getUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String idUser = pref.getString("id_user") ?? "";
+    GetUser.getUser(idUser).then((value) {
+      setState(() {
+        _namaUser = value.namaUser;
+        _noHp = value.noHp;
+        _email = value.email;
+      });
     });
   }
 
@@ -41,10 +57,26 @@ class _FormTransactionState extends State<FormTransaction> {
     });
   }
 
+  _tanggal() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime.now().add(const Duration(days: 30)))
+        .then((date) {
+      setState(() {
+        if (date != null) {
+          _tglDipilih = DateFormat('dd/MM/yyy').format(date);
+        }
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    getSession();
+    _getSessionWisata();
+    _getUser();
   }
 
   @override
@@ -235,7 +267,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                     color: Colors.white,
                                   ),
                                   child: Text(
-                                    'Sugeng Widodo',
+                                    '$_namaUser',
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
@@ -273,7 +305,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                     color: Colors.white,
                                   ),
                                   child: Text(
-                                    'sugengwidodo23@gmail.com',
+                                    '$_email',
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
@@ -311,7 +343,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                     color: Colors.white,
                                   ),
                                   child: Text(
-                                    '+6283834860600',
+                                    '$_noHp',
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
@@ -362,10 +394,14 @@ class _FormTransactionState extends State<FormTransaction> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                          child: Icon(
-                            Icons.calendar_today,
-                            color: Colors.black,
-                            size: 30,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.date_range,
+                              color: Color(0xFF01797D),
+                            ),
+                            onPressed: () {
+                              _tanggal();
+                            },
                           ),
                         ),
                         Container(
@@ -377,7 +413,7 @@ class _FormTransactionState extends State<FormTransaction> {
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                             child: Text(
-                              '1 Juli 2022',
+                              _tglDipilih,
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 color: Colors.black,
