@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/get_user.dart';
@@ -13,10 +14,14 @@ class FormTransaction extends StatefulWidget {
 }
 
 class _FormTransactionState extends State<FormTransaction> {
-  String? _namaWisata, _kategori, _lokasi, _hargaTiket, _gambar1;
-  String? _namaUser, _noHp, _email;
+  String _namaWisata = "",
+      _kategori = "",
+      _lokasi = "",
+      _hargaTiket = "",
+      _gambar1 = "";
+  String _namaUser = "", _noHp = "", _email = "";
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
-  int _jumlahTiket = 0;
+  int _jumlahTiket = 1;
   int _totalHarga = 0;
   String _tglDipilih = DateFormat('dd/MM/yyy').format(DateTime.now());
 
@@ -28,6 +33,8 @@ class _FormTransactionState extends State<FormTransaction> {
       _lokasi = pref.getString("lokasi").toString();
       _hargaTiket = pref.getString("harga_tiket").toString();
       _gambar1 = pref.getString("gambar_1").toString();
+
+      _totalHarga = int.parse(_hargaTiket);
     });
   }
 
@@ -70,6 +77,14 @@ class _FormTransactionState extends State<FormTransaction> {
         }
       });
     });
+  }
+
+  _kodeTiket() {
+    String kodeTiket = "";
+    for (int i = 0; i < 8; i++) {
+      kodeTiket += Random().nextInt(10).toString();
+    }
+    return kodeTiket;
   }
 
   @override
@@ -423,23 +438,6 @@ class _FormTransactionState extends State<FormTransaction> {
                             ),
                           ),
                         ),
-                        // Padding(
-                        //   padding: EdgeInsetsDirectional.fromSTEB(80, 0, 0, 0),
-                        //   child: FlutterFlowIconButton(
-                        //     borderColor: Colors.transparent,
-                        //     borderRadius: 30,
-                        //     borderWidth: 1,
-                        //     buttonSize: 60,
-                        //     icon: Icon(
-                        //       Icons.edit,
-                        //       color: FlutterFlowTheme.of(context).primaryColor,
-                        //       size: 20,
-                        //     ),
-                        //     onPressed: () {
-                        //       print('IconButton pressed ...');
-                        //     },
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -488,7 +486,7 @@ class _FormTransactionState extends State<FormTransaction> {
                             children: <Widget>[
                               IconButton(
                                 onPressed: () {
-                                  if (_jumlahTiket == 0) {
+                                  if (_jumlahTiket == 1) {
                                     setState(() {
                                       null;
                                     });
@@ -665,6 +663,7 @@ class _FormTransactionState extends State<FormTransaction> {
                       ),
                     ),
                     onPressed: () {
+                      // print(_kodeTiket());
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const PembayaranPage(),
@@ -675,13 +674,6 @@ class _FormTransactionState extends State<FormTransaction> {
                   ),
                 ),
               ),
-
-              // Image.network(
-              //   "$imgBaseUrl$_gambar1",
-              //   width: MediaQuery.of(context).size.width,
-              //   height: MediaQuery.of(context).size.height / 2,
-              // ),
-              // Text(_gambar1.toString()),
             ],
           ),
         ),

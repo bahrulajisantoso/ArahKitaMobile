@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:project/pages/form_transaction_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 class DetailWisata extends StatefulWidget {
   const DetailWisata({Key? key}) : super(key: key);
@@ -11,9 +13,13 @@ class DetailWisata extends StatefulWidget {
 }
 
 class _DetailWisataState extends State<DetailWisata> {
-  String? _namaWisata, _kategori, _lokasi, _hargaTiket, _deskripsi, _gambar1;
-  final imgBaseUrl =
-      "http://10.0.2.2/arahkita/Arah_kita_web/storage/app/public/";
+  String _namaWisata = "",
+      _kategori = "",
+      _lokasi = "",
+      _hargaTiket = "",
+      _deskripsi = "",
+      _gambar1 = "";
+  final imgBaseUrl = "http://10.0.2.2/flutter/img";
 
   _getSessionWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
@@ -63,12 +69,30 @@ class _DetailWisataState extends State<DetailWisata> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: FlutterLogo(),
-                          // child: Image.asset(
-                          //   'assets/images/blawan.jpg',
+                          // child: FlutterLogo(),
+
+                          // child: Image.network(
+                          //   imgBaseUrl + _gambar1,
                           //   width: 100,
                           //   height: 100,
                           //   fit: BoxFit.cover,
+                          // ),
+                          // child: CachedNetworkImage(
+                          //   imageUrl: imgBaseUrl + _gambar1,
+                          //   width: 50,
+                          //   height: 50,
+                          //   fit: BoxFit.cover,
+                          // ),
+                          // child: CachedNetworkImage(
+                          //   imageUrl: imgBaseUrl + "/" + _gambar1,
+                          //   fit: BoxFit.fill,
+                          //   placeholder: (context, url) => Padding(
+                          //     padding: EdgeInsets.all(18.0),
+                          //     child: CircularProgressIndicator(
+                          //         strokeWidth: 2, color: Colors.white),
+                          //   ),
+                          //   errorWidget: (context, url, error) =>
+                          //       Icon(Icons.person, color: Colors.amber),
                           // ),
                         ),
                       ),
@@ -135,29 +159,7 @@ class _DetailWisataState extends State<DetailWisata> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                          child: Container(
-
-                              // child: FFButtonWidget(
-                              //   onPressed: () {
-                              //     print('Btn-PesanTiket pressed ...');
-                              //   },
-                              //   text: 'Pesan Tiket',
-                              //   options: FFButtonOptions(
-                              //     width: 130,
-                              //     height: 40,
-                              //     color: Color(0xFF01797D),
-                              //     style: te(
-                              //           fontFamily: 'Poppins',
-                              //           color: Colors.white,
-                              //         ),
-                              //     borderSide: BorderSide(
-                              //       color: Colors.transparent,
-                              //       width: 1,
-                              //     ),
-                              //     borderRadius: 20,
-                              //   ),
-                              // ),
-                              ),
+                          child: Container(),
                         ),
 
                         //button pesan
@@ -205,14 +207,6 @@ class _DetailWisataState extends State<DetailWisata> {
                 ),
               ),
             ),
-            // Image.network("$imgBaseUrl${widget.gambar1}",
-            //     width: MediaQuery.of(context).size.width,
-            //     height: MediaQuery.of(context).size.height / 2),
-            // Text(widget.namaWisata.toString()),
-            // Text(widget.kategori.toString()),
-            // Text(widget.lokasi.toString()),
-            // Text(widget.hargaTiket.toString()),
-            // Text(widget.deskripsi.toString()),
           ],
         ),
       ),

@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
-  String _idUser = "";
 
   @override
   void initState() {
@@ -34,10 +33,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   _cekLogin() async {
+    String idUser;
     bool isLogin;
     SharedPreferences pref = await SharedPreferences.getInstance();
     isLogin = pref.getBool("is_login") ?? false;
-    _idUser = pref.getString("id_user") ?? "";
+    idUser = pref.getString("id_user") ?? "";
     setState(() {
       if (isLogin == false) {
         Navigator.of(context).pushReplacement(
@@ -133,12 +133,12 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            // Image.network(
-                            //   "$imgBaseUrl/${_wisatas[index].gambar1}",
-                            //   // fit: BoxFit.cover,
-                            //   height: 100,
-                            //   width: 100,
-                            // ),
+                            Image.network(
+                              "$imgBaseUrl/${_wisatas[index].gambar1}",
+                              // fit: BoxFit.cover,
+                              height: 100,
+                              width: 100,
+                            ),
                             Text(
                               _wisatas[index].namaWisata.toString(),
                               style: const TextStyle(fontSize: 20),
