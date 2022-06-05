@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> sessionDetailWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
+      pref.setString("id_wisata", _wisatas[_index].id.toString());
       pref.setString("nama_wisata", _wisatas[_index].namaWisata.toString());
       pref.setString("kategori", _wisatas[_index].kategori.toString());
       pref.setString("lokasi", _wisatas[_index].lokasi.toString());
