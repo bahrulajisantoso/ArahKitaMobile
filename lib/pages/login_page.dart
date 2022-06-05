@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
     LoginUser.loginUser(_emailController.text, _passwordController.text)
         .then((value) {
       if (value.kode == 200) {
-        _idUser = value.id;
+        _idUser = value.id.toString();
         sessionLogin();
         _toast.showToast(value.pesan);
         Navigator.pushReplacement(

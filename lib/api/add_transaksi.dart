@@ -5,9 +5,9 @@ import 'package:project/model/transaksi_response.dart';
 class AddTransaksi {
   static Future<TransaksiResponse> createTransaksi(
     String idUser,
-    namaUser,
+    // namaUser,
     idWisata,
-    namaWisata,
+    // namaWisata,
     tglTiket,
     jumlahTiket,
     totalHarga,
@@ -18,9 +18,9 @@ class AddTransaksi {
       _apiURL,
       body: {
         "user_mobile_id": idUser,
-        "nama_user": namaUser,
+        // "nama_user": namaUser,
         "wisata_id": idWisata,
-        "nama_wisata": namaWisata,
+        // "nama_wisata": namaWisata,
         "tgl_tiket": tglTiket,
         "jumlah_tiket": jumlahTiket,
         "total_harga": totalHarga,

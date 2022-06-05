@@ -87,16 +87,8 @@ class _FormTransactionState extends State<FormTransaction> {
   }
 
   _transaksi() {
-    _idUser.toString();
-    _namaUser.toString();
-    _idWisata;
-    _namaWisata;
-    _tglTiket;
-    _jumlahTiket;
-    _totalHarga;
-
-    AddTransaksi.createTransaksi(_idUser, _namaUser, _idWisata, _namaWisata,
-            _tglTiket, "$_jumlahTiket", "$_totalHarga")
+    AddTransaksi.createTransaksi(
+            _idUser, _idWisata, _tglTiket, "$_jumlahTiket", "$_totalHarga")
         .then((value) {
       setState(() {
         if (value.kode == 201) {
