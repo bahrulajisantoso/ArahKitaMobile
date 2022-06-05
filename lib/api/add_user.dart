@@ -5,7 +5,7 @@ import 'package:project/model/register_response.dart';
 class AddUser {
   static Future<ResponseRegister> createUser(
     String nama,
-    username,
+    // username,
     jeniKelamin,
     email,
     noHp,
@@ -18,7 +18,7 @@ class AddUser {
       _apiURL,
       body: {
         "nama": nama,
-        "username": username,
+        // "username": username,
         "jenis_kelamin": jeniKelamin,
         "email": email,
         "no_hp": noHp,

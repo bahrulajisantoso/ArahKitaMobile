@@ -15,7 +15,7 @@ class _RegisterState extends State<Register> {
   final _toast = ShowToast();
 
   final _namaController = TextEditingController();
-  final _usernameController = TextEditingController();
+  // final _usernameController = TextEditingController();
   final _jenisKelController = TextEditingController();
   final _emailController = TextEditingController();
   final _noHpController = TextEditingController();
@@ -26,7 +26,7 @@ class _RegisterState extends State<Register> {
   void _addUser() async {
     AddUser.createUser(
       _namaController.text.trim().toLowerCase(),
-      _usernameController.text.trim().toLowerCase(),
+      // _usernameController.text.trim().toLowerCase(),
       _jenisKelController.text.trim().toLowerCase(),
       _emailController.text.trim().toLowerCase(),
       _noHpController.text.trim().toLowerCase(),
@@ -96,27 +96,27 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(
-                      keyboardType: TextInputType.text,
-                      controller: _usernameController,
-                      decoration: InputDecoration(
-                        hintText: "Masukan Username Anda",
-                        prefixIcon: const Icon(Icons.account_circle),
-                        labelText: "Username",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Data tidak boleh kosong";
-                        } else {
-                          return null;
-                        }
-                      },
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(10.0),
+                  //   child: TextFormField(
+                  //     keyboardType: TextInputType.text,
+                  //     controller: _usernameController,
+                  //     decoration: InputDecoration(
+                  //       hintText: "Masukan Username Anda",
+                  //       prefixIcon: const Icon(Icons.account_circle),
+                  //       labelText: "Username",
+                  //       border: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(5.0)),
+                  //     ),
+                  //     validator: (value) {
+                  //       if (value!.isEmpty) {
+                  //         return "Data tidak boleh kosong";
+                  //       } else {
+                  //         return null;
+                  //       }
+                  //     },
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(

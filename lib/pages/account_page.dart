@@ -25,7 +25,7 @@ class _AccountPageState extends State<AccountPage> {
     GetUser.getUser(idUser).then((value) {
       setState(() {
         _namaUser = value.namaUser;
-        _username = value.username;
+        // _username = value.username;
         _jenisKelamin = value.jenisKelamin;
         _tglLahir = value.tglLahir;
         _noHp = value.noHp;
@@ -77,7 +77,7 @@ class _AccountPageState extends State<AccountPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text("nama: $_namaUser"),
-                Text("username: $_username"),
+                // Text("username: $_username"),
                 Text("jenis kelamin: $_jenisKelamin"),
                 Text("email: $_email"),
                 Text("no hp: $_noHp"),
