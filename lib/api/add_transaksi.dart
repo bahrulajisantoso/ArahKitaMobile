@@ -11,6 +11,7 @@ class AddTransaksi {
     tglTiket,
     jumlahTiket,
     totalHarga,
+    createdAt,
   ) async {
     Uri _apiURL = Uri.parse("http://10.0.2.2/flutter/add_transaksi.php");
 
@@ -24,6 +25,7 @@ class AddTransaksi {
         "tgl_tiket": tglTiket,
         "jumlah_tiket": jumlahTiket,
         "total_harga": totalHarga,
+        "created_at": createdAt,
       },
     );
 

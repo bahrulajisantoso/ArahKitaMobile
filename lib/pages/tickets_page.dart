@@ -15,18 +15,20 @@ class _TicketPageState extends State<TicketPage> {
       appBar: AppBar(
         title: const Text("Ticket Page"),
       ),
-      body: ListView.builder(itemBuilder: (context, index) {
-        return ListTile(
-          leading: QrImage(
-            data: "s322322",
-            size: 100,
-          ),
-          title: Text("Ticket ${index + 1}"),
-          onTap: () {
-            Null;
-          },
-        );
-      }),
+      body: ListView.builder(
+          itemCount: null,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: QrImage(
+                data: "s322322",
+                size: 100,
+              ),
+              title: Text("Ticket ${index + 1}"),
+              onTap: () {
+                Null;
+              },
+            );
+          }),
     );
   }
 }

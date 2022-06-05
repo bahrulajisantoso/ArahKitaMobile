@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/add_transaksi.dart';
@@ -22,6 +21,7 @@ class _FormTransactionState extends State<FormTransaction> {
       _lokasi = "",
       _hargaTiket = "",
       _gambar1 = "";
+
   String _idUser = "", _namaUser = "", _noHp = "", _email = "";
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
   int _jumlahTiket = 1;
@@ -87,8 +87,9 @@ class _FormTransactionState extends State<FormTransaction> {
   }
 
   _transaksi() {
-    AddTransaksi.createTransaksi(
-            _idUser, _idWisata, _tglTiket, "$_jumlahTiket", "$_totalHarga")
+    final String _createdAt = (DateTime.now().toString());
+    AddTransaksi.createTransaksi(_idUser, _idWisata, _tglTiket, "$_jumlahTiket",
+            "$_totalHarga", _createdAt)
         .then((value) {
       setState(() {
         if (value.kode == 201) {
