@@ -4,6 +4,7 @@ import 'package:project/api/get_wisata.dart';
 import 'package:project/model/wisata.dart';
 import 'package:project/pages/detail_wisata_page.dart';
 import 'package:project/pages/login_page.dart';
+import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -70,108 +71,155 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Home Page"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-              decoration: null,
-              child: Column(
-                children: <Widget>[
-                  CarouselSlider(
-                    items: [1, 2, 3, 4, 5].map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            // margin:
-                            //     const EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: const BoxDecoration(
-                              color: Colors.amber,
-                              // borderRadius:
-                              //     BorderRadius.all(Radius.circular(10.0)),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "text $i",
-                                style: const TextStyle(fontSize: 16.0),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Color(int.parse(Warna.colorGrey)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                decoration: null,
+                child: Column(
+                  children: <Widget>[
+                    CarouselSlider(
+                      items: [1, 2, 3, 4, 5].map((i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width,
+                              // margin:
+                              //     const EdgeInsets.symmetric(horizontal: 5.0),
+                              decoration: const BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
                               ),
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                    // carouselController: buttonCarouselController,
-                    options: CarouselOptions(
-                      autoPlay: true,
-                      enlargeCenterPage: true,
-                      viewportFraction: 1.0,
-                      aspectRatio: 2.0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                // scrollDirection: Axis.vertical,
-                padding: const EdgeInsets.all(10.0),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                ),
-                itemCount: _wisatas.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                              child: Center(
+                                child: Text(
+                                  "text $i",
+                                  style: const TextStyle(fontSize: 16.0),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                      // carouselController: buttonCarouselController,
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        enlargeCenterPage: true,
+                        viewportFraction: 1.0,
+                        aspectRatio: 2.0,
                       ),
-                      elevation: 10,
-                      child: Padding(
-                        padding: EdgeInsets.all(30.0),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  // scrollDirection: Axis.vertical,
+                  padding: const EdgeInsets.all(30.0),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                  ),
+                  itemCount: _wisatas.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        elevation: 10,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Image.network(
-                              "$imgBaseUrl/${_wisatas[index].gambar1}",
-                              // fit: BoxFit.cover,
-                              height: 100,
-                              width: 100,
+                            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Container(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    "$imgBaseUrl/${_wisatas[index].gambar1}",
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
                             ),
-                            Text(
-                              _wisatas[index].namaWisata.toString(),
-                              style: const TextStyle(fontSize: 20),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    _wisatas[index].namaWisata.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Poppins'),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              _wisatas[index].lokasi.toString(),
-                              style: const TextStyle(fontSize: 20),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    _wisatas[index].kategori.toString(),
+                                    style: const TextStyle(
+                                        color: Color(0xFF525252),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              _wisatas[index].hargaTiket.toString(),
-                              style: const TextStyle(fontSize: 20),
+                            // Text(
+                            //   _wisatas[index].lokasi.toString(),
+                            //   style: const TextStyle(fontSize: 20),
+                            // ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Rp.' +
+                                        _wisatas[index].hargaTiket.toString() +
+                                        ',-',
+                                    style: const TextStyle(
+                                        fontSize: 25,
+                                        color: Color(0xFF525252),
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    onTap: () {
-                      sessionDetailWisata();
-                      _index = index;
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return DetailWisata();
-                          },
-                        ),
-                      );
-                    },
-                  );
-                },
+                      onTap: () {
+                        sessionDetailWisata();
+                        _index = index;
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return DetailWisata();
+                            },
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
