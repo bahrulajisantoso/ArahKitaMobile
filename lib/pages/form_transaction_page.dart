@@ -674,16 +674,27 @@ class _FormTransactionState extends State<FormTransaction> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 30.0),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromARGB(255, 1, 121, 125),
+                child: SizedBox(
+                  height: 50.0,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color.fromARGB(255, 1, 121, 125),
+                      ),
+                    ),
+                    onPressed: () {
+                      _transaksi();
+                    },
+                    child: const Text(
+                      "Lanjut ke pembayaran",
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  onPressed: () {
-                    _transaksi();
-                  },
-                  child: const Text("Lanjut ke pembayaran"),
                 ),
               ),
             ),

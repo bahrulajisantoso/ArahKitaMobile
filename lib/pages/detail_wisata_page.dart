@@ -163,20 +163,41 @@ class _DetailWisataState extends State<DetailWisata> {
                         ),
 
                         //button pesan
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const FormTransaction(),
+                        Center(
+                          child: SizedBox(
+                            width: 150.0,
+                            height: 50.0,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  const Color.fromARGB(255, 1, 121, 125),
+                                ),
                               ),
-                            );
-                          },
-                          child: const Text("Pesan Tiket"),
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const FormTransaction(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                "Pesan Tiket",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
 
                         //tentang wisata
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 5, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 5, 0),
                           child: Container(
                             child: Text(
                               'Tentang' ' ' + _namaWisata.toString(),
