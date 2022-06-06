@@ -1,5 +1,5 @@
 class Tiket {
-  String? idTiket,
+  String idTiket,
       idUser,
       idWisata,
       idtransaksi,
@@ -12,31 +12,31 @@ class Tiket {
       status;
 
   Tiket(
-      {this.idTiket,
-      this.idUser,
-      this.idWisata,
-      this.idtransaksi,
-      this.kodeTiket,
-      this.tglTiket,
-      this.namaPembeli,
-      this.namaWisata,
-      this.jumlahTiket,
-      this.totalHarga,
-      this.status});
+      {required this.idTiket,
+      required this.idUser,
+      required this.idWisata,
+      required this.idtransaksi,
+      required this.kodeTiket,
+      required this.tglTiket,
+      required this.namaPembeli,
+      required this.namaWisata,
+      required this.jumlahTiket,
+      required this.totalHarga,
+      required this.status});
 
   factory Tiket.fromJson(Map<String, dynamic> json) {
     return Tiket(
-      idTiket: json["id"].toString(),
-      idUser: json["user_mobile_id"].toString(),
-      idWisata: json["wisata_id"].toString(),
-      idtransaksi: json["transaksi_id"].toString(),
-      kodeTiket: json["transaksi_id"],
-      tglTiket: json["transaksi_id"],
-      namaPembeli: json["lokasi"],
-      namaWisata: json["harga_tiket"],
-      jumlahTiket: json["gambar_1"],
-      totalHarga: json["gambar_1"],
-      status: json["gambar_1"],
+      idTiket: json["id"],
+      idUser: json["user_mobile_id"],
+      idWisata: json["wisata_id"],
+      idtransaksi: json["transaksi_id"],
+      kodeTiket: json["kode_tiket"],
+      tglTiket: json["tgl_tiket"],
+      namaPembeli: json["nama_pembeli"],
+      namaWisata: json["nama_wisata"],
+      jumlahTiket: json["jumlah_tiket"],
+      totalHarga: json["total_harga"],
+      status: json["status"],
     );
   }
 }
