@@ -52,17 +52,17 @@ class _DetailWisataState extends State<DetailWisata> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(40.0),
+              padding: const EdgeInsets.all(20.0),
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                       child: Container(
                         width: 500,
-                        height: 300,
+                        height: 200,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -97,132 +97,143 @@ class _DetailWisataState extends State<DetailWisata> {
                         ),
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          child: Text(
-                            _namaWisata.toString(),
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          child: Text(
-                            _kategori.toString(),
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF525252),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            _lokasi.toString(),
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF525252),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                          child: Container(
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
                             child: Text(
-                              'Rp.' + _hargaTiket.toString() + ',-',
+                              _namaWisata.toString(),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            child: Text(
+                              _kategori.toString(),
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 color: Color(0xFF525252),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                          child: Container(),
-                        ),
-
-                        //button pesan
-                        Center(
-                          child: SizedBox(
-                            width: 150.0,
-                            height: 50.0,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                  const Color.fromARGB(255, 1, 121, 125),
-                                ),
+                          Container(
+                            child: Text(
+                              _lokasi.toString(),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF525252),
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
                               ),
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const FormTransaction(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                "Pesan Tiket",
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                            child: Container(
+                              child: Text(
+                                'Rp.' + _hargaTiket.toString() + ',-',
+                                textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  color: Colors.white,
+                                  color: Color(0xFF525252),
                                   fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            child: Container(),
+                          ),
+
+                          //button pesan
+                          Center(
+                            child: SizedBox(
+                              width: 120.0,
+                              height: 35.0,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                    const Color.fromARGB(255, 1, 121, 125),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const FormTransaction(),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  "Pesan Tiket",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          //tentang wisata
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                            child: Container(
+                              child: Text(
+                                'Tentang' ' ' + _namaWisata.toString(),
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                            child: Container(
+                              child: Text(
+                                _deskripsi.toString(),
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFF525252),
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
                           ),
-                        ),
-
-                        //tentang wisata
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 5, 0),
-                          child: Container(
-                            child: Text(
-                              'Tentang' ' ' + _namaWisata.toString(),
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            _deskripsi.toString(),
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF525252),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
