@@ -121,7 +121,6 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: GridView.builder(
                   // scrollDirection: Axis.vertical,
-                  padding: const EdgeInsets.all(30.0),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
@@ -131,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                     return InkWell(
                       child: Card(
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
                         elevation: 10,
                         child: Column(
@@ -151,13 +150,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                                  EdgeInsetsDirectional.fromSTEB(20, 5, 20, 0),
                               child: Column(
                                 children: [
                                   Text(
                                     _wisatas[index].namaWisata.toString(),
                                     style: const TextStyle(
-                                        fontSize: 25,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Poppins'),
                                   ),
@@ -166,26 +165,22 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
+                                  EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                               child: Column(
                                 children: [
                                   Text(
                                     _wisatas[index].kategori.toString(),
                                     style: const TextStyle(
                                         color: Color(0xFF525252),
-                                        fontSize: 20,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ],
                               ),
                             ),
-                            // Text(
-                            //   _wisatas[index].lokasi.toString(),
-                            //   style: const TextStyle(fontSize: 20),
-                            // ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                                  EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                               child: Column(
                                 children: [
                                   Text(
@@ -193,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                                         _wisatas[index].hargaTiket.toString() +
                                         ',-',
                                     style: const TextStyle(
-                                        fontSize: 25,
+                                        fontSize: 13,
                                         color: Color(0xFF525252),
                                         fontWeight: FontWeight.w600),
                                   ),

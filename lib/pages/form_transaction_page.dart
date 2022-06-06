@@ -120,585 +120,578 @@ class _FormTransactionState extends State<FormTransaction> {
       appBar: AppBar(
         title: const Text("Form Transaction"),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Color(int.parse(Warna.colorGrey)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            //data wisata
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
-              child: Container(
-                child: Text(
-                  'Detail Wisata',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF01797D),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(),
-              child: Padding(
-                // padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
-                padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
-                child: Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  color: Colors.white,
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-                        child: Container(
-                          width: 150,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: FlutterLogo(),
-                            // child: Image.asset(
-                            //   'assets/images/blawan.jpg',
-                            //   width: 100,
-                            //   height: 100,
-                            //   fit: BoxFit.cover,
-                            // ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
-                        child: Container(
-                          width: 200,
-                          height: 100,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: 200,
-                                height: 20,
-                                decoration: BoxDecoration(),
-                                child: Text(
-                                  "$_namaWisata",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 200,
-                                height: 20,
-                                decoration: BoxDecoration(),
-                                child: Text(
-                                  "$_kategori",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF525252),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 200,
-                                height: 20,
-                                decoration: BoxDecoration(),
-                                child: Text(
-                                  "$_lokasi",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF525252),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-
-            //detail pemesan tiket
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
-              child: Container(
-                child: Text(
-                  'Detail Pemesan Tiket',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF01797D),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
-                child: Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  color: Colors.white,
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                                child: Container(
-                                  width: 300,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                  ),
-                                  child: Text(
-                                    'Nama',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF525252),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 300,
-                                height: 25,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  '$_namaUser',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                                child: Container(
-                                  width: 300,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                  ),
-                                  child: Text(
-                                    'Email',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF525252),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 300,
-                                height: 25,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  '$_email',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                                child: Container(
-                                  width: 300,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                  ),
-                                  child: Text(
-                                    'Nomor Handphone',
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF525252),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 300,
-                                height: 25,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  '$_noHp',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-
-            //tanggal tiket
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 10),
-              child: Container(
-                child: Text(
-                  'Tanggal Tiket',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF01797D),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              height: 60,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
-                child: Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  color: Colors.white,
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.date_range,
-                            color: Color(0xFF01797D),
-                          ),
-                          onPressed: () {
-                            _tanggal();
-                          },
-                        ),
-                      ),
-                      Container(
-                        width: 150,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                          child: Text(
-                            _tglTiket,
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-
-            //detail tiket
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
-              child: Container(
-                child: Text(
-                  'Detail Tiket',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF01797D),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-              child: Container(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 5, 0, 0),
-                      child: Container(
-                        child: Text(
-                          'Jumlah Tiket',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(120, 0, 0, 0),
-                      child: Container(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            IconButton(
-                              onPressed: () {
-                                if (_jumlahTiket == 1) {
-                                  setState(() {
-                                    null;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _kurangTotalHarga();
-                                  });
-                                }
-                              },
-                              icon: const Icon(Icons.remove),
-                            ),
-                            Text("$_jumlahTiket"),
-                            IconButton(
-                              onPressed: () {
-                                if (_jumlahTiket >= 6) {
-                                  setState(() {
-                                    null;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _tambahTotalHarga();
-                                  });
-                                }
-                              },
-                              icon: const Icon(Icons.add),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            //detail harga
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(30, 10, 20, 0),
-              child: Container(
-                child: Text(
-                  'Detail Harga',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF01797D),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: 400,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
-                child: Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
-                        child: Container(
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: 150,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  '$_namaWisata'
-                                  ' '
-                                  'x'
-                                  ' '
-                                  '$_jumlahTiket',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 150,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  'Rp.' '$_hargaTiket' ',-',
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        height: 2,
-                        thickness: 2,
-                        color: Color(0xFFDADADA),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
-                        child: Container(
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  'Total Harga',
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              Container(
-                                width: 200,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Text(
-                                  'Rp.' '$_totalHarga' ',-',
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15,
-                                    color: Color(0xFF01797D),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 30.0),
-                child: SizedBox(
-                  height: 50.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        const Color.fromARGB(255, 1, 121, 125),
-                      ),
-                    ),
-                    onPressed: () {
-                      _transaksi();
-                    },
-                    child: const Text(
-                      "Lanjut ke pembayaran",
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(int.parse(Warna.colorGrey)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                //data wisata
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                  child: Container(
+                    child: Text(
+                      'Detail Wisata',
                       style: TextStyle(
                         fontFamily: 'Poppins',
-                        color: Colors.white,
+                        color: Color(0xFF01797D),
                         fontSize: 17,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
-              ),
+                Container(
+                  decoration: BoxDecoration(),
+                  child: Padding(
+                    // padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
+                    padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: Colors.white,
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: 150,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: FlutterLogo(),
+                                // child: Image.asset(
+                                //   'assets/images/blawan.jpg',
+                                //   width: 100,
+                                //   height: 100,
+                                //   fit: BoxFit.cover,
+                                // ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
+                            child: Container(
+                              decoration: BoxDecoration(),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    "$_namaWisata",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    "$_kategori",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFF525252),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "$_lokasi",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFF525252),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                //detail pemesan tiket
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                  child: Container(
+                    child: Text(
+                      'Detail Pemesan Tiket',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF01797D),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: Colors.white,
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Container(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 2, 0, 0),
+                                    child: Container(
+                                      width: 300,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      child: Text(
+                                        'Nama',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF525252),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 300,
+                                    height: 25,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Text(
+                                      '$_namaUser',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 2, 0, 0),
+                                    child: Container(
+                                      width: 300,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      child: Text(
+                                        'Email',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF525252),
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 300,
+                                    height: 25,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Text(
+                                      '$_email',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 2, 0, 0),
+                                    child: Container(
+                                      width: 300,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      child: Text(
+                                        'Nomor Handphone',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF525252),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 300,
+                                    height: 25,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Text(
+                                      '$_noHp',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                //tanggal tiket
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 10),
+                  child: Container(
+                    child: Text(
+                      'Tanggal Tiket',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF01797D),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 60,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: Colors.white,
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.date_range,
+                                color: Color(0xFF01797D),
+                              ),
+                              onPressed: () {
+                                _tanggal();
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: 150,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              child: Text(
+                                _tglTiket,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                //detail tiket
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
+                  child: Container(
+                    child: Text(
+                      'Detail Tiket',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF01797D),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  child: Container(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(20, 5, 0, 0),
+                          child: Container(
+                            child: Text(
+                              'Jumlah Tiket',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(120, 0, 0, 0),
+                          child: Container(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                IconButton(
+                                  onPressed: () {
+                                    if (_jumlahTiket == 1) {
+                                      setState(() {
+                                        null;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        _kurangTotalHarga();
+                                      });
+                                    }
+                                  },
+                                  icon: const Icon(Icons.remove),
+                                ),
+                                Text("$_jumlahTiket"),
+                                IconButton(
+                                  onPressed: () {
+                                    if (_jumlahTiket >= 6) {
+                                      setState(() {
+                                        null;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        _tambahTotalHarga();
+                                      });
+                                    }
+                                  },
+                                  icon: const Icon(Icons.add),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                //detail harga
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 10, 20, 0),
+                  child: Container(
+                    child: Text(
+                      'Detail Harga',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF01797D),
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 400,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                            child: Container(
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 150,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Text(
+                                      '$_namaWisata'
+                                      ' '
+                                      'x'
+                                      ' '
+                                      '$_jumlahTiket',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 150,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Text(
+                                      'Rp.' '$_hargaTiket' ',-',
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            height: 2,
+                            thickness: 2,
+                            color: Color(0xFFDADADA),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                            child: Container(
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Text(
+                                      'Total Harga',
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 200,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Text(
+                                      'Rp.' '$_totalHarga' ',-',
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 15,
+                                        color: Color(0xFF01797D),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: SizedBox(
+                      height: 50.0,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromARGB(255, 1, 121, 125),
+                          ),
+                        ),
+                        onPressed: () {
+                          _transaksi();
+                        },
+                        child: const Text(
+                          "Lanjut ke pembayaran",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
