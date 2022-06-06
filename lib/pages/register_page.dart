@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project/api/add_user.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/login_page.dart';
+import 'package:project/theme/color.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -22,6 +24,7 @@ class _RegisterState extends State<Register> {
   final _tglLahirController = TextEditingController();
   final _passwordController = TextEditingController();
   final _konfirmPasswordController = TextEditingController();
+  String? _tglLahir;
 
   void _addUser() async {
     AddUser.createUser(
@@ -30,7 +33,8 @@ class _RegisterState extends State<Register> {
       _jenisKelController.text.trim().toLowerCase(),
       _emailController.text.trim().toLowerCase(),
       _noHpController.text.trim().toLowerCase(),
-      _tglLahirController.text.trim().toLowerCase(),
+      // _tglLahirController.text.trim().toLowerCase(),
+      _tglLahir,
       _passwordController.text.trim(),
     ).then((value) {
       // print(value);
@@ -40,6 +44,23 @@ class _RegisterState extends State<Register> {
           Navigator.pop(context);
         } else {
           _toast.showToast(value.pesan);
+        }
+      });
+    });
+  }
+
+  _tanggal() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+      helpText: "Pilih Tanggal Lahir",
+      initialEntryMode: DatePickerEntryMode.calendarOnly,
+    ).then((date) {
+      setState(() {
+        if (date != null) {
+          _tglLahir = DateFormat('dd/MM/yyy').format(date);
         }
       });
     });
@@ -96,27 +117,6 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(10.0),
-                  //   child: TextFormField(
-                  //     keyboardType: TextInputType.text,
-                  //     controller: _usernameController,
-                  //     decoration: InputDecoration(
-                  //       hintText: "Masukan Username Anda",
-                  //       prefixIcon: const Icon(Icons.account_circle),
-                  //       labelText: "Username",
-                  //       border: OutlineInputBorder(
-                  //           borderRadius: BorderRadius.circular(5.0)),
-                  //     ),
-                  //     validator: (value) {
-                  //       if (value!.isEmpty) {
-                  //         return "Data tidak boleh kosong";
-                  //       } else {
-                  //         return null;
-                  //       }
-                  //     },
-                  //   ),
-                  // ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
@@ -183,10 +183,21 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
-                      controller: _tglLahirController,
+                      controller: _tglLahir == null
+                          ? _tglLahirController
+                          : TextEditingController(text: _tglLahir),
                       decoration: InputDecoration(
                         hintText: "Masukan Tanggal lahir anda",
-                        prefixIcon: const Icon(Icons.date_range),
+                        // prefixIcon: const Icon(Icons.date_range),
+                        prefixIcon: IconButton(
+                          icon: const Icon(
+                            Icons.date_range,
+                            color: Colors.blue,
+                          ),
+                          onPressed: () {
+                            _tanggal();
+                          },
+                        ),
                         labelText: "Tanggal lahir",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0)),
@@ -215,8 +226,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
-                          // } else if (value != _validatePassword(value)) {
-                          //   return "Password harus memiliki kombinasi huruf, angka dan karakter spesial";
+                        } else if (value.length < 8) {
+                          return "Password minimal 8 karakter";
                         } else {
                           return null;
                         }
