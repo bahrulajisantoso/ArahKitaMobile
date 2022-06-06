@@ -143,6 +143,8 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
                                     "$imgBaseUrl/${_wisatas[index].gambar1}",
+                                    width: 200,
+                                    height: 100,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -188,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                                         _wisatas[index].hargaTiket.toString() +
                                         ',-',
                                     style: const TextStyle(
-                                        fontSize: 13,
+                                        fontSize: 15,
                                         color: Color(0xFF525252),
                                         fontWeight: FontWeight.w600),
                                   ),
