@@ -22,7 +22,6 @@ class _EditUserPageState extends State<EditUserPage> {
   var _jenisKelController = TextEditingController();
   var _emailController = TextEditingController();
   var _noHpController = TextEditingController();
-  var _tglLahirController = TextEditingController();
 
   getUserSession() async {
     final prefs = await SharedPreferences.getInstance();
@@ -30,14 +29,13 @@ class _EditUserPageState extends State<EditUserPage> {
       _idUser = prefs.getString('id_user').toString();
       String namaUser = prefs.getString('nama_user').toString();
       String jenisKelamin = prefs.getString('jenis_kelamin').toString();
-      String tglLahir = prefs.getString('tgl_lahir').toString();
+      _tglLahir = prefs.getString('tgl_lahir').toString();
       String noHp = prefs.getString('no_hp').toString();
       String email = prefs.getString('email').toString();
 
       _namaController = TextEditingController(text: namaUser);
       _emailController = TextEditingController(text: email);
       _noHpController = TextEditingController(text: noHp);
-      _tglLahirController = TextEditingController(text: tglLahir);
       _jenisKelController = TextEditingController(text: jenisKelamin);
     });
   }
@@ -200,9 +198,10 @@ class _EditUserPageState extends State<EditUserPage> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextFormField(
-                  controller: _tglLahir == null
-                      ? _tglLahirController
-                      : TextEditingController(text: _tglLahir),
+                  // controller: _tglLahir == null
+                  //     ? _tglLahirController
+                  //     : TextEditingController(text: _tglLahir),
+                  controller: TextEditingController(text: _tglLahir),
                   decoration: InputDecoration(
                     hintText: "Masukan Tanggal lahir anda",
                     // prefixIcon: const Icon(Icons.date_range),
