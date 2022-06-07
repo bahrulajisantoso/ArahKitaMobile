@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/api/login.dart';
 import 'package:project/main.dart';
 import 'package:project/pages/register_page.dart';
+import 'dart:async';
 import 'package:project/Notification/toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,95 +50,201 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: Container(
-          padding: const EdgeInsets.all(20.0),
+    return SingleChildScrollView(
+      child: Scaffold(
+        backgroundColor: Color(0xFFDADADA),
+        body: SafeArea(
+          key: _formKey,
           child: Column(
-            children: <Widget>[
-              Image.asset("images/akbaru.png"),
-              Row(
-                children: const <Widget>[
-                  Text("Silahkan Masuk Untuk Melanjutkan"),
-                ],
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: 400,
+                height: 450,
+                decoration: BoxDecoration(
+                    color: Colors.white, shape: BoxShape.rectangle),
+                child: Image.asset(
+                  'images/1.jpg',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                width: 40000,
+                height: 7,
+                decoration: BoxDecoration(
+                  color: Color(0xFFDADADA),
+                ),
+              ),
+              Divider(
+                height: 2,
+                thickness: 3,
+                indent: 30,
+                endIndent: 30,
+                color: Color(0xFF00797C),
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextFormField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    hintText: "Masukan email anda",
-                    prefixIcon: const Icon(Icons.email_outlined),
-                    labelText: "Email",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                child: Container(
+                  width: 330,
+                  height: 250,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFDADADA),
                   ),
-                  autofocus: true,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Email tidak boleh kosong";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextFormField(
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                    hintText: "Masukan password anda",
-                    prefixIcon: const Icon(Icons.lock),
-                    labelText: "Password",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
-                  ),
-                  obscureText: true,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Password tidak boleh kosong";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-              ),
-              ElevatedButton(
-                child: const Text(
-                  "MASUK",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromARGB(255, 1, 121, 125),
-                  ),
-                ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _login();
-                  }
-                },
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text("Belum punya akun?"),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const Register(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Silahkan masuk untuk melanjutkan',
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: TextFormField(
+                                controller: _emailController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  hintText: 'example@gmail.com',
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.white,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.white,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          16, 5, 0, 5),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      );
-                    },
-                    child: const Text(
-                      "Register",
-                      style: TextStyle(color: Color.fromARGB(255, 0, 10, 255)),
-                    ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: TextFormField(
+                                controller: _passwordController,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Password',
+                                  hintText: 'minimal 8 karakter',
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.white,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.white,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          16, 5, 0, 5),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: 130,
+                              height: 23,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFDADADA),
+                              ),
+                              child: Text(
+                                'Lupa Password ?',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(65, 0, 0, 0),
+                            ),
+                            ElevatedButton(
+                              child: const Text(
+                                "MASUK",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  const Color.fromARGB(255, 1, 121, 125),
+                                ),
+                              ),
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  _login();
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            const Text("Belum punya akun?"),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const Register(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                "Register",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 0, 10, 255)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ],
           ),
