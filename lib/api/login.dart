@@ -17,7 +17,7 @@ class LoginUser {
     if (response.statusCode == 200) {
       return LoginResponse.fromJson(json.decode(response.body));
     } else {
-      throw Exception("Failed to create User");
+      throw Exception("Failed to login User");
     }
   }
 }

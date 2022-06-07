@@ -12,7 +12,7 @@ class LoginResponse {
     return LoginResponse(
       kode: json["kode"],
       pesan: json["pesan"],
-      id: json["id"],
+      id: json["id"].toString(),
     );
   }
 }
