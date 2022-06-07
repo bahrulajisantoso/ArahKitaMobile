@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project/pages/account_page.dart';
 import 'package:project/pages/home_page.dart';
 import 'package:project/pages/tickets_page.dart';
-import 'package:project/pages/transactions_page.dart';
+// import 'package:project/pages/transactions_page.dart';
 import 'package:project/theme/color.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() {
   runApp(
@@ -26,7 +27,7 @@ class _MainState extends State<Main> {
 
   final screens = [
     const HomePage(),
-    const TransactionPage(),
+    // const TransactionPage(),
     const TicketPage(),
     const AccountPage(),
   ];
@@ -43,33 +44,53 @@ class _MainState extends State<Main> {
       body: Center(
         child: screens[_selectedIndex],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "",
-            backgroundColor: Color(0xFF01797D),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.compare_arrows),
-            label: "",
-            backgroundColor: Color(0xFF01797D),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.airplane_ticket),
-            label: "",
-            backgroundColor: Color(0xFF01797D),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: "",
-            backgroundColor: Color(0xFF01797D),
-          ),
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 55.0,
+
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
+        items: <Widget>[
+          Icon(Icons.home,
+              size: 30, color: Color(int.parse(Warna.colorPrimary))),
+          Icon(Icons.airplane_ticket,
+              size: 30, color: Color(int.parse(Warna.colorPrimary))),
+          Icon(Icons.account_circle,
+              size: 30, color: Color(int.parse(Warna.colorPrimary))),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
+
+        // color: Color(int.parse(Warna.colorPrimary)),
+        // buttonBackgroundColor: Color(int.parse(Warna.colorPrimary)),
+        onTap: (index) {
+          _onItemTapped(index);
+          //Handle button tap
+        },
       ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: "",
+      //       backgroundColor: Color(0xFF01797D),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.compare_arrows),
+      //       label: "",
+      //       backgroundColor: Color(0xFF01797D),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.airplane_ticket),
+      //       label: "",
+      //       backgroundColor: Color(0xFF01797D),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.account_circle),
+      //       label: "",
+      //       backgroundColor: Color(0xFF01797D),
+      //     ),
+      //   ],
+      //   currentIndex: _selectedIndex,
+      //   selectedItemColor: Colors.blue,
+      //   onTap: _onItemTapped,
+      // ),
     );
   }
 }
