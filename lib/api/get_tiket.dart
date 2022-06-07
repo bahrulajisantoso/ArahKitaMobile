@@ -14,14 +14,21 @@ class GetTiket {
     );
 
     if (response.statusCode == 200) {
-      List<dynamic> listTiket =
-          (json.decode(response.body) as Map<String, dynamic>)['data'];
+      List<dynamic> listTiket;
 
-      List<Tiket> tikets = [];
-      for (int i = 0; i < listTiket.length; i++) {
-        tikets.add(Tiket.fromJson(listTiket[i]));
+      if (json.decode(response.body)["data"] == null) {
+        return [];
+      } else {
+        listTiket = json.decode(response.body)["data"];
+
+        (json.decode(response.body) as Map<String, dynamic>)['data'];
+
+        List<Tiket> tikets = [];
+        for (int i = 0; i < listTiket.length; i++) {
+          tikets.add(Tiket.fromJson(listTiket[i]));
+        }
+        return tikets;
       }
-      return tikets;
     } else {
       throw Exception("Failed to load tiket");
     }
