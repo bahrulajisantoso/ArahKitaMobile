@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/api/get_user.dart';
+import 'package:project/pages/edit_user.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -33,6 +34,15 @@ class _AccountPageState extends State<AccountPage> {
         _email = value.email;
       });
     });
+  }
+
+  _userSession() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("nama_user", _namaUser.toString());
+    pref.setString("jenis_kelamin", _jenisKelamin.toString());
+    pref.setString("tgl_lahir", _tglLahir.toString());
+    pref.setString("no_hp", _noHp.toString());
+    pref.setString("email", _email.toString());
   }
 
   _logOut() async {
@@ -69,6 +79,16 @@ class _AccountPageState extends State<AccountPage> {
                 children: <Widget>[
                   Icon(Icons.account_circle,
                       size: 50, color: Theme.of(context).primaryColor),
+                  TextButton(
+                      onPressed: () {
+                        _userSession();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const EditUserPage(),
+                          ),
+                        );
+                      },
+                      child: Text("edit"))
                 ],
               ),
               Column(

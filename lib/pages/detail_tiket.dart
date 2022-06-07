@@ -4,10 +4,10 @@ class DetailTiket extends StatefulWidget {
   const DetailTiket({Key? key}) : super(key: key);
 
   @override
-  State<DetailTiket> createState() => _DetailTiket();
+  State<DetailTiket> createState() => _DetailTiketState();
 }
 
-class _DetailTiket extends State<DetailTiket> {
+class _DetailTiketState extends State<DetailTiket> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
