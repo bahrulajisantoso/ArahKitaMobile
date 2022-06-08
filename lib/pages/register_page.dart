@@ -67,7 +67,28 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: (IconThemeData(
+          color: Color(int.parse(Warna.colorPrimary)),
+          size: 30,
+        )),
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
+        title: const Text("Register"),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Color(int.parse(Warna.colorPrimary)),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+        bottom: PreferredSize(
+            child: Container(
+              color: Color(int.parse(Warna.colorPrimary)),
+              height: 2.0,
+            ),
+            preferredSize: Size.fromHeight(2.0)),
+      ),
       backgroundColor: Color(0xFFDADADA),
       body: ListView(
         children: <Widget>[
