@@ -50,10 +50,10 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Scaffold(
-        backgroundColor: Color(0xFFDADADA),
-        body: SafeArea(
+    return Scaffold(
+      backgroundColor: Color(0xFFDADADA),
+      body: Container(
+        child: Form(
           key: _formKey,
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -85,10 +85,8 @@ class _LoginState extends State<Login> {
                 color: Color(0xFF00797C),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(30, 15, 30, 0),
                 child: Container(
-                  width: 330,
-                  height: 250,
                   decoration: BoxDecoration(
                     color: Color(0xFFDADADA),
                   ),
@@ -136,6 +134,13 @@ class _LoginState extends State<Login> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           16, 5, 0, 5),
                                 ),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Data tidak boleh kosong";
+                                  } else {
+                                    return null;
+                                  }
+                                },
                               ),
                             ),
                           ],
@@ -153,7 +158,7 @@ class _LoginState extends State<Login> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Password',
-                                  hintText: 'minimal 8 karakter',
+                                  hintText: 'Masukan password',
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Colors.white,
@@ -174,6 +179,13 @@ class _LoginState extends State<Login> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           16, 5, 0, 5),
                                 ),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Data tidak boleh kosong";
+                                  } else {
+                                    return null;
+                                  }
+                                },
                               ),
                             ),
                           ],
