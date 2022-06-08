@@ -37,10 +37,9 @@ dependencies:
   shared_preferences: ^2.0.15
   intl: ^0.17.0
   qr_flutter: ^4.0.0
-  cached_network_image: ^3.2.0
-  network_image_mock: ^2.1.0
   curved_navigation_bar: ^1.0.3
-
+  url_launcher: ^6.0.9
+  whatsapp_unilink: ^2.0.1+1
  
 dev_dependencies:
 
