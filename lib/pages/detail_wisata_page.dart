@@ -43,7 +43,26 @@ class _DetailWisataState extends State<DetailWisata> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: (IconThemeData(
+          color: Color(int.parse(Warna.colorPrimary)),
+          size: 30,
+        )),
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
         title: const Text("Detail Wisata"),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Color(int.parse(Warna.colorPrimary)),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+        bottom: PreferredSize(
+            child: Container(
+              color: Color(int.parse(Warna.colorPrimary)),
+              height: 2.0,
+            ),
+            preferredSize: Size.fromHeight(2.0)),
       ),
       body: Container(
         decoration: BoxDecoration(

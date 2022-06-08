@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:project/api/update_user.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/login_page.dart';
+import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditUserPage extends StatefulWidget {
@@ -131,7 +132,26 @@ class _EditUserPageState extends State<EditUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit User'),
+        iconTheme: (IconThemeData(
+          color: Color(int.parse(Warna.colorPrimary)),
+          size: 30,
+        )),
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
+        title: const Text("Edit Profil"),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Color(int.parse(Warna.colorPrimary)),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+        bottom: PreferredSize(
+            child: Container(
+              color: Color(int.parse(Warna.colorPrimary)),
+              height: 2.0,
+            ),
+            preferredSize: Size.fromHeight(2.0)),
       ),
       body: Form(
         key: _formKey,

@@ -48,7 +48,22 @@ class _TicketPageState extends State<TicketPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ticket Page"),
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
+        title: const Text("Tiket"),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Color(int.parse(Warna.colorPrimary)),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+        bottom: PreferredSize(
+            child: Container(
+              color: Color(int.parse(Warna.colorPrimary)),
+              height: 2.0,
+            ),
+            preferredSize: Size.fromHeight(2.0)),
       ),
       body: _tikets.isEmpty
           ? Container(

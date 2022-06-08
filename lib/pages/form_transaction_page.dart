@@ -118,7 +118,26 @@ class _FormTransactionState extends State<FormTransaction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Form Transaction"),
+        iconTheme: (IconThemeData(
+          color: Color(int.parse(Warna.colorPrimary)),
+          size: 30,
+        )),
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
+        title: const Text("Transaksi"),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Color(int.parse(Warna.colorPrimary)),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+        bottom: PreferredSize(
+            child: Container(
+              color: Color(int.parse(Warna.colorPrimary)),
+              height: 2.0,
+            ),
+            preferredSize: Size.fromHeight(2.0)),
       ),
       body: SingleChildScrollView(
         child: Container(
