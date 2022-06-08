@@ -1,12 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:project/api/get_gambar.dart';
 import 'package:project/pages/form_transaction_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
 class DetailWisata extends StatefulWidget {
-  const DetailWisata({Key? key}) : super(key: key);
+  final String? gambar1, gambar2, gambar3;
+  const DetailWisata({
+    Key? key,
+    this.gambar1,
+    this.gambar2,
+    this.gambar3,
+  }) : super(key: key);
 
   @override
   State<DetailWisata> createState() => _DetailWisataState();
@@ -18,8 +27,10 @@ class _DetailWisataState extends State<DetailWisata> {
       _lokasi = "",
       _hargaTiket = "",
       _deskripsi = "",
-      _gambar1 = "";
-  final imgBaseUrl = "http://10.0.2.2/flutter/img";
+      _gambar1 = "",
+      _gambar2 = "",
+      _gambar3 = "";
+  final imgBaseUrl = "http://10.0.2.2/flutter/img/";
 
   _getSessionWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
@@ -29,7 +40,6 @@ class _DetailWisataState extends State<DetailWisata> {
       _lokasi = pref.getString("lokasi").toString();
       _hargaTiket = pref.getString("harga_tiket").toString();
       _deskripsi = pref.getString("deskripsi").toString();
-      _gambar1 = pref.getString("gambar_1").toString();
     });
   }
 
@@ -54,7 +64,6 @@ class _DetailWisataState extends State<DetailWisata> {
           fontSize: 20,
           color: Color(int.parse(Warna.colorPrimary)),
         ),
-        actions: [],
         centerTitle: false,
         elevation: 2,
         bottom: PreferredSize(
@@ -77,43 +86,43 @@ class _DetailWisataState extends State<DetailWisata> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                      child: Container(
-                        width: 500,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                    // Padding(
+                    //   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    //   child: Container(
+                    //     width: 500,
+                    //     height: 200,
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.white,
+                    //       borderRadius: BorderRadius.circular(10),
+                    //     ),
+                    //     child: ClipRRect(
+                    //       borderRadius: BorderRadius.circular(10),
+                    //       child: Image.network(
+                    //         "$imgBaseUrl${widget.gambar1}",
+                    //         width: 100,
+                    //         height: 100,
+                    //         fit: BoxFit.cover,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    CarouselSlider(
+                      items: [
+                        Container(
+                          child: Image.network("$imgBaseUrl${widget.gambar1}"),
                         ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          // child: FlutterLogo(),
-
-                          // child: Image.network(
-                          //   imgBaseUrl + _gambar1,
-                          //   width: 100,
-                          //   height: 100,
-                          //   fit: BoxFit.cover,
-                          // ),
-                          // child: CachedNetworkImage(
-                          //   imageUrl: imgBaseUrl + _gambar1,
-                          //   width: 50,
-                          //   height: 50,
-                          //   fit: BoxFit.cover,
-                          // ),
-                          // child: CachedNetworkImage(
-                          //   imageUrl: imgBaseUrl + "/" + _gambar1,
-                          //   fit: BoxFit.fill,
-                          //   placeholder: (context, url) => Padding(
-                          //     padding: EdgeInsets.all(18.0),
-                          //     child: CircularProgressIndicator(
-                          //         strokeWidth: 2, color: Colors.white),
-                          //   ),
-                          //   errorWidget: (context, url, error) =>
-                          //       Icon(Icons.person, color: Colors.amber),
-                          // ),
+                        Container(
+                          child: Image.network("$imgBaseUrl${widget.gambar2}"),
                         ),
+                        Container(
+                          child: Image.network("$imgBaseUrl${widget.gambar3}"),
+                        ),
+                      ],
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        enlargeCenterPage: true,
+                        viewportFraction: 1.0,
+                        aspectRatio: 2.0,
                       ),
                     ),
                     Padding(
@@ -202,8 +211,8 @@ class _DetailWisataState extends State<DetailWisata> {
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const FormTransaction(),
+                                      builder: (context) => FormTransaction(
+                                          gambar1: widget.gambar1),
                                     ),
                                   );
                                 },

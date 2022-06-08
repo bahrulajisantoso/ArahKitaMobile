@@ -8,7 +8,8 @@ import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FormTransaction extends StatefulWidget {
-  const FormTransaction({Key? key}) : super(key: key);
+  final String? gambar1;
+  const FormTransaction({Key? key, this.gambar1}) : super(key: key);
 
   @override
   State<FormTransaction> createState() => _FormTransactionState();
@@ -190,13 +191,15 @@ class _FormTransactionState extends State<FormTransaction> {
                               padding: const EdgeInsets.all(10.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: FlutterLogo(),
+                                // child: FlutterLogo(),
                                 // child: Image.asset(
                                 //   'assets/images/blawan.jpg',
                                 //   width: 100,
                                 //   height: 100,
                                 //   fit: BoxFit.cover,
                                 // ),
+                                child: Image.network(
+                                    "$imgBaseUrl${widget.gambar1}"),
                               ),
                             ),
                           ),

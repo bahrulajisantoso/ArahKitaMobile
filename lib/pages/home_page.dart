@@ -62,6 +62,8 @@ class _HomePageState extends State<HomePage> {
       pref.setString("harga_tiket", _wisatas[_index].hargaTiket.toString());
       pref.setString("deskripsi", _wisatas[_index].deskripsi.toString());
       pref.setString("gambar_1", _wisatas[_index].gambar1.toString());
+      pref.setString("gambar_1", _wisatas[_index].gambar2.toString());
+      pref.setString("gambar_1", _wisatas[_index].gambar3.toString());
     });
   }
 
@@ -209,7 +211,11 @@ class _HomePageState extends State<HomePage> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return DetailWisata();
+                              return DetailWisata(
+                                gambar1: _wisatas[index].gambar1,
+                                gambar2: _wisatas[index].gambar2,
+                                gambar3: _wisatas[index].gambar3,
+                              );
                             },
                           ),
                         );

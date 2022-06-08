@@ -158,7 +158,6 @@ class _LoginState extends State<Login> {
                               Expanded(
                                 child: TextFormField(
                                   controller: _passwordController,
-                                  autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Password',
