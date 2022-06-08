@@ -85,29 +85,17 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: <Widget>[
                     CarouselSlider(
-                      items: [1, 2, 3, 4, 5].map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Container(
-                              width: MediaQuery.of(context).size.width,
-                              // margin:
-                              //     const EdgeInsets.symmetric(horizontal: 5.0),
-                              decoration: const BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "text $i",
-                                  style: const TextStyle(fontSize: 16.0),
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
-                      // carouselController: buttonCarouselController,
+                      items: [
+                        Container(
+                          child: Image.asset("images/selamatdatang.jpg"),
+                        ),
+                        Container(
+                          child: Image.asset("images/slide2.png"),
+                        ),
+                        Container(
+                          child: Image.asset("images/slide3.png"),
+                        ),
+                      ],
                       options: CarouselOptions(
                         autoPlay: true,
                         enlargeCenterPage: true,
