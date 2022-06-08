@@ -16,6 +16,18 @@ class _TicketPageState extends State<TicketPage> {
   int _index = 0;
   List<Tiket> _tikets = [];
 
+  Future<void> _sessionDetailTiket() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("nama_wisata", _tikets[_index].namaWisata.toString());
+      pref.setString("nama_pembeli", _tikets[_index].namaPembeli.toString());
+      pref.setString("jumlah_tiket", _tikets[_index].jumlahTiket.toString());
+      pref.setString("total_harga", _tikets[_index].totalHarga.toString());
+      pref.setString("kode_tiket", _tikets[_index].kodeTiket.toString());
+      pref.setString("tgl_tiket", _tikets[_index].tglTiket.toString());
+    });
+  }
+
   _getDataTiket() async {
     String idUser;
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -71,12 +83,6 @@ class _TicketPageState extends State<TicketPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                // QrImage(
-                                //   data: _tikets[index].kodeTiket,
-                                //   version: QrVersions.auto,
-                                //   size: 100.0,
-                                // ),
-
                                 Container(
                                   margin: const EdgeInsets.only(left: 10.0),
                                   child: Column(
@@ -224,6 +230,7 @@ class _TicketPageState extends State<TicketPage> {
                         ),
                         onTap: () {
                           _index = index;
+                          _sessionDetailTiket();
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
