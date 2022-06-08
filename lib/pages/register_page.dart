@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/add_user.dart';
 import 'package:project/notification/toast.dart';
@@ -17,7 +18,6 @@ class _RegisterState extends State<Register> {
   final _toast = ShowToast();
 
   final _namaController = TextEditingController();
-  // final _usernameController = TextEditingController();
   final _jenisKelController = TextEditingController();
   final _emailController = TextEditingController();
   final _noHpController = TextEditingController();
@@ -29,11 +29,9 @@ class _RegisterState extends State<Register> {
   void _addUser() async {
     AddUser.createUser(
       _namaController.text.trim().toLowerCase(),
-      // _usernameController.text.trim().toLowerCase(),
       _jenisKelController.text.trim().toLowerCase(),
       _emailController.text.trim().toLowerCase(),
       _noHpController.text.trim().toLowerCase(),
-      // _tglLahirController.text.trim().toLowerCase(),
       _tglLahir,
       _passwordController.text.trim(),
     ).then((value) {
@@ -66,23 +64,6 @@ class _RegisterState extends State<Register> {
     });
   }
 
-  // _validatePassword(String value) {
-  //   RegExp regex = RegExp(
-  //       r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,16}$");
-
-  //   RegExp regexx = RegExp(r"^(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{8,16}$");
-
-  //   if (value.isEmpty) {
-  //     return "Please enter password";
-  //   } else {
-  //     if (!regex.hasMatch(value)) {
-  //       return "Enter valid password";
-  //     } else {
-  //       return null;
-  //     }
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,7 +83,7 @@ class _RegisterState extends State<Register> {
                       keyboardType: TextInputType.text,
                       controller: _namaController,
                       decoration: InputDecoration(
-                        hintText: "Masukan Nama Anda",
+                        hintText: "Masukan nama anda",
                         prefixIcon: const Icon(
                           Icons.person,
                           color: Color(0xFF00797C),
@@ -128,7 +109,6 @@ class _RegisterState extends State<Register> {
                         contentPadding:
                             EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
-                      autofocus: true,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
@@ -182,10 +162,10 @@ class _RegisterState extends State<Register> {
                       keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
                       decoration: InputDecoration(
-                        hintText: "Email",
+                        hintText: "Masukan email anda",
                         prefixIcon: const Icon(Icons.email_outlined,
                             color: Color(0xFF00797C)),
-                        labelText: "Masukkan Email Anda",
+                        labelText: "Email",
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
@@ -209,6 +189,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else if (!GetUtils.isEmail(value)) {
+                          return "Email tidak valid";
                         } else {
                           return null;
                         }
@@ -221,10 +203,14 @@ class _RegisterState extends State<Register> {
                       keyboardType: TextInputType.phone,
                       controller: _noHpController,
                       decoration: InputDecoration(
-                        hintText: "Masukkan Nomor HP Anda",
+                        hintText: "Masukkan nomor hp anda",
+                        prefix: const Padding(
+                          padding: EdgeInsets.only(right: 8.0),
+                          child: Text("+62"),
+                        ),
                         prefixIcon:
                             const Icon(Icons.phone, color: Color(0xFF00797C)),
-                        labelText: "Nomor HP",
+                        labelText: "Nomor hp",
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
@@ -248,6 +234,8 @@ class _RegisterState extends State<Register> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Data tidak boleh kosong";
+                        } else if (!GetUtils.isPhoneNumber(value)) {
+                          return "Nomor hp tidak valid";
                         } else {
                           return null;
                         }
@@ -261,7 +249,7 @@ class _RegisterState extends State<Register> {
                           ? _tglLahirController
                           : TextEditingController(text: _tglLahir),
                       decoration: InputDecoration(
-                        hintText: "Masukan Tanggal lahir anda",
+                        hintText: "Pilih tanggal lahir anda",
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
@@ -304,6 +292,7 @@ class _RegisterState extends State<Register> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
+                      obscureText: true,
                       controller: _passwordController,
                       decoration: InputDecoration(
                         hintText: "Minimal 8 karakter",
@@ -345,15 +334,16 @@ class _RegisterState extends State<Register> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
+                      obscureText: true,
                       controller: _konfirmPasswordController,
                       decoration: InputDecoration(
-                        hintText: "Masukan Password Anda",
+                        hintText: "Konfirmasi password",
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
                         prefixIcon:
                             const Icon(Icons.lock, color: Color(0xFF00797C)),
-                        labelText: "Konfirmasi Password",
+                        labelText: "Konfirmasi password",
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
@@ -401,12 +391,6 @@ class _RegisterState extends State<Register> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               _addUser();
-                              // Navigator.pop(
-                              //   context,
-                              //   Builder(
-                              //     builder: (context) => const Login(),
-                              //   ),
-                              // );
                             }
                           },
                         ),
@@ -414,7 +398,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
