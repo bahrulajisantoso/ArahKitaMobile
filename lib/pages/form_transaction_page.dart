@@ -152,7 +152,7 @@ class _FormTransactionState extends State<FormTransaction> {
               children: <Widget>[
                 //data wisata
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
                   child: Container(
                     child: Text(
                       'Detail Wisata',
@@ -204,7 +204,7 @@ class _FormTransactionState extends State<FormTransaction> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
+                            // padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
                             child: Container(
                               decoration: BoxDecoration(),
                               child: Column(

@@ -106,23 +106,50 @@ class _DetailWisataState extends State<DetailWisata> {
                     //     ),
                     //   ),
                     // ),
-                    CarouselSlider(
-                      items: [
-                        Container(
-                          child: Image.network("$imgBaseUrl${widget.gambar1}"),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: CarouselSlider(
+                        items: [
+                          Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                "$imgBaseUrl${widget.gambar1}",
+                                width: 500,
+                                height: 300,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                "$imgBaseUrl${widget.gambar2}",
+                                width: 400,
+                                height: 300,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                "$imgBaseUrl${widget.gambar3}",
+                                width: 400,
+                                height: 300,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ],
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          enlargeCenterPage: true,
+                          viewportFraction: 1.0,
+                          aspectRatio: 2.0,
                         ),
-                        Container(
-                          child: Image.network("$imgBaseUrl${widget.gambar2}"),
-                        ),
-                        Container(
-                          child: Image.network("$imgBaseUrl${widget.gambar3}"),
-                        ),
-                      ],
-                      options: CarouselOptions(
-                        autoPlay: true,
-                        enlargeCenterPage: true,
-                        viewportFraction: 1.0,
-                        aspectRatio: 2.0,
                       ),
                     ),
                     Padding(
