@@ -18,7 +18,7 @@ class _RegisterState extends State<Register> {
   final _toast = ShowToast();
 
   final _namaController = TextEditingController();
-  final _jenisKelController = TextEditingController();
+  // final _jenisKelController = TextEditingController();
   final _emailController = TextEditingController();
   final _noHpController = TextEditingController();
   final _tglLahirController = TextEditingController();
@@ -29,7 +29,7 @@ class _RegisterState extends State<Register> {
   void _addUser() async {
     AddUser.createUser(
       _namaController.text.trim().toLowerCase(),
-      _jenisKelController.text.trim().toLowerCase(),
+      // _jenisKelController.text.trim().toLowerCase(),
       _emailController.text.trim().toLowerCase(),
       _noHpController.text.trim().toLowerCase(),
       _tglLahir,
@@ -118,44 +118,44 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                    child: TextFormField(
-                      controller: _jenisKelController,
-                      decoration: InputDecoration(
-                        hintText: "Masukan jenis kelamin Anda",
-                        prefixIcon: const Icon(Icons.supervisor_account_rounded,
-                            color: Color(0xFF00797C)),
-                        labelText: "Jenis kelamin",
-                        labelStyle: TextStyle(
-                          color: Color(int.parse(Warna.colorPrimary)),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFF00797C),
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFF00797C),
-                            width: 2,
-                          ),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Data tidak boleh kosong";
-                        } else {
-                          return null;
-                        }
-                      },
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                  //   child: TextFormField(
+                  //     controller: _jenisKelController,
+                  //     decoration: InputDecoration(
+                  //       hintText: "Masukan jenis kelamin Anda",
+                  //       prefixIcon: const Icon(Icons.supervisor_account_rounded,
+                  //           color: Color(0xFF00797C)),
+                  //       labelText: "Jenis kelamin",
+                  //       labelStyle: TextStyle(
+                  //         color: Color(int.parse(Warna.colorPrimary)),
+                  //       ),
+                  //       enabledBorder: UnderlineInputBorder(
+                  //         borderSide: BorderSide(
+                  //           color: Color(0xFF00797C),
+                  //           width: 2,
+                  //         ),
+                  //       ),
+                  //       focusedBorder: UnderlineInputBorder(
+                  //         borderSide: BorderSide(
+                  //           color: Color(0xFF00797C),
+                  //           width: 2,
+                  //         ),
+                  //       ),
+                  //       filled: true,
+                  //       fillColor: Colors.white,
+                  //       contentPadding:
+                  //           EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                  //     ),
+                  //     validator: (value) {
+                  //       if (value!.isEmpty) {
+                  //         return "Data tidak boleh kosong";
+                  //       } else {
+                  //         return null;
+                  //       }
+                  //     },
+                  //   ),
+                  // ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(

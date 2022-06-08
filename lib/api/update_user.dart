@@ -7,7 +7,7 @@ class UpdateUser {
   static Future<ResponseUpdateUser> updateUser(
     String idUser,
     nama,
-    jeniKelamin,
+    // jeniKelamin,
     email,
     noHp,
     tglLahir,
@@ -19,7 +19,7 @@ class UpdateUser {
       body: {
         "id": idUser,
         "nama": nama,
-        "jenis_kelamin": jeniKelamin,
+        // "jenis_kelamin": jeniKelamin,
         "email": email,
         "no_hp": noHp,
         "tgl_lahir": tglLahir,

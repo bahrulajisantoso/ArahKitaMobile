@@ -28,7 +28,7 @@ class _AccountPageState extends State<AccountPage> {
       setState(() {
         _namaUser = value.namaUser;
         // _username = value.username;
-        _jenisKelamin = value.jenisKelamin;
+        // _jenisKelamin = value.jenisKelamin;
         _tglLahir = value.tglLahir;
         _noHp = value.noHp;
         _email = value.email;
@@ -39,7 +39,7 @@ class _AccountPageState extends State<AccountPage> {
   _userSession() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString("nama_user", _namaUser.toString());
-    pref.setString("jenis_kelamin", _jenisKelamin.toString());
+    // pref.setString("jenis_kelamin", _jenisKelamin.toString());
     pref.setString("tgl_lahir", _tglLahir.toString());
     pref.setString("no_hp", _noHp.toString());
     pref.setString("email", _email.toString());
@@ -203,40 +203,40 @@ class _AccountPageState extends State<AccountPage> {
                     thickness: 2,
                     color: Color(0xFF01797D),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFDADADA),
-                      ),
-                      child: Text(
-                        'Jenis Kelamin',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF525252),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFDADADA),
-                    ),
-                    child: Text(
-                      '$_jenisKelamin',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    height: 2,
-                    thickness: 2,
-                    color: Color(0xFF01797D),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       color: Color(0xFFDADADA),
+                  //     ),
+                  //     child: Text(
+                  //       'Jenis Kelamin',
+                  //       style: TextStyle(
+                  //         fontWeight: FontWeight.bold,
+                  //         color: Color(0xFF525252),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                  //   decoration: BoxDecoration(
+                  //     color: Color(0xFFDADADA),
+                  //   ),
+                  //   child: Text(
+                  //     '$_jenisKelamin',
+                  //     style: TextStyle(
+                  //       fontFamily: 'Poppins',
+                  //       fontSize: 16,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
+                  // Divider(
+                  //   height: 2,
+                  //   thickness: 2,
+                  //   color: Color(0xFF01797D),
+                  // ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                     child: Container(

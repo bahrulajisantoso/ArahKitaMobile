@@ -21,7 +21,7 @@ class _EditUserPageState extends State<EditUserPage> {
   final _toast = ShowToast();
 
   var _namaController = TextEditingController();
-  var _jenisKelController = TextEditingController();
+  // var _jenisKelController = TextEditingController();
   var _emailController = TextEditingController();
   var _noHpController = TextEditingController();
 
@@ -30,7 +30,7 @@ class _EditUserPageState extends State<EditUserPage> {
     setState(() {
       _idUser = prefs.getString('id_user').toString();
       String namaUser = prefs.getString('nama_user').toString();
-      String jenisKelamin = prefs.getString('jenis_kelamin').toString();
+      // String jenisKelamin = prefs.getString('jenis_kelamin').toString();
       _tglLahir = prefs.getString('tgl_lahir').toString();
       String noHp = prefs.getString('no_hp').toString();
       String email = prefs.getString('email').toString();
@@ -38,7 +38,7 @@ class _EditUserPageState extends State<EditUserPage> {
       _namaController = TextEditingController(text: namaUser);
       _emailController = TextEditingController(text: email);
       _noHpController = TextEditingController(text: noHp);
-      _jenisKelController = TextEditingController(text: jenisKelamin);
+      // _jenisKelController = TextEditingController(text: jenisKelamin);
     });
   }
 
@@ -46,7 +46,7 @@ class _EditUserPageState extends State<EditUserPage> {
     UpdateUser.updateUser(
             _idUser.toString(),
             _namaController.text,
-            _jenisKelController.text,
+            // _jenisKelController.text,
             _emailController.text,
             _noHpController.text,
             _tglLahir.toString())
@@ -180,26 +180,26 @@ class _EditUserPageState extends State<EditUserPage> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextFormField(
-                  controller: _jenisKelController,
-                  decoration: InputDecoration(
-                    hintText: "Masukan jenis kelamin Anda",
-                    prefixIcon: const Icon(Icons.supervisor_account_rounded),
-                    labelText: "Jenis kelamin",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Data tidak boleh kosong";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(10.0),
+              //   child: TextFormField(
+              //     controller: _jenisKelController,
+              //     decoration: InputDecoration(
+              //       hintText: "Masukan jenis kelamin Anda",
+              //       prefixIcon: const Icon(Icons.supervisor_account_rounded),
+              //       labelText: "Jenis kelamin",
+              //       border: OutlineInputBorder(
+              //           borderRadius: BorderRadius.circular(5.0)),
+              //     ),
+              //     validator: (value) {
+              //       if (value!.isEmpty) {
+              //         return "Data tidak boleh kosong";
+              //       } else {
+              //         return null;
+              //       }
+              //     },
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextFormField(

@@ -6,7 +6,7 @@ class AddUser {
   static Future<ResponseRegister> createUser(
     String nama,
     // username,
-    jeniKelamin,
+    // jeniKelamin,
     email,
     noHp,
     tglLahir,
@@ -19,7 +19,7 @@ class AddUser {
       body: {
         "nama": nama,
         // "username": username,
-        "jenis_kelamin": jeniKelamin,
+        // "jenis_kelamin": jeniKelamin,
         "email": email,
         "no_hp": noHp,
         "tgl_lahir": tglLahir,
