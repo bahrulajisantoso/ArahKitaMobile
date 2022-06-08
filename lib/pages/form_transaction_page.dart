@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/add_transaksi.dart';
@@ -21,7 +22,7 @@ class _FormTransactionState extends State<FormTransaction> {
       _kategori = "",
       _lokasi = "",
       _hargaTiket = "",
-      _gambar1 = "";
+      _kodeTransaksi = "";
 
   String _idUser = "", _namaUser = "", _noHp = "", _email = "";
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
@@ -30,6 +31,13 @@ class _FormTransactionState extends State<FormTransaction> {
   String _tglTiket = DateFormat('dd/MM/yyy').format(DateTime.now());
   final _toast = ShowToast();
 
+  Future _sessionKodeTransaksi() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("kode_transaksi", _kodeTransaksi);
+    });
+  }
+
   _getSessionWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
@@ -37,7 +45,6 @@ class _FormTransactionState extends State<FormTransaction> {
       _kategori = pref.getString("kategori").toString();
       _lokasi = pref.getString("lokasi").toString();
       _hargaTiket = pref.getString("harga_tiket").toString();
-      _gambar1 = pref.getString("gambar_1").toString();
 
       _totalHarga = int.parse(_hargaTiket.toString());
     });
@@ -89,13 +96,13 @@ class _FormTransactionState extends State<FormTransaction> {
 
   _transaksi() {
     final String _createdAt = (DateTime.now().toString());
-    AddTransaksi.createTransaksi(_idUser, _idWisata, _tglTiket, "$_jumlahTiket",
-            "$_totalHarga", _createdAt)
+    AddTransaksi.createTransaksi(_idUser, _idWisata, _kodeTiket(), _tglTiket,
+            "$_jumlahTiket", "$_totalHarga", _createdAt)
         .then((value) {
       setState(() {
         if (value.kode == 201) {
-          _toast.showToast(value.pesan);
-
+          _kodeTransaksi = value.kodeTransaksi;
+          _sessionKodeTransaksi();
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => const PembayaranPage(),
@@ -106,6 +113,14 @@ class _FormTransactionState extends State<FormTransaction> {
         }
       });
     });
+  }
+
+  _kodeTiket() {
+    String kode = "";
+    for (int i = 0; i < 8; i++) {
+      kode += Random().nextInt(9).toString();
+    }
+    return kode;
   }
 
   @override
@@ -191,13 +206,6 @@ class _FormTransactionState extends State<FormTransaction> {
                               padding: const EdgeInsets.all(10.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                // child: FlutterLogo(),
-                                // child: Image.asset(
-                                //   'assets/images/blawan.jpg',
-                                //   width: 100,
-                                //   height: 100,
-                                //   fit: BoxFit.cover,
-                                // ),
                                 child: Image.network(
                                     "$imgBaseUrl${widget.gambar1}"),
                               ),

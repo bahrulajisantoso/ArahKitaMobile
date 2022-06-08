@@ -1,12 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:project/api/get_gambar.dart';
 import 'package:project/pages/form_transaction_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:network_image_mock/network_image_mock.dart';
 
 class DetailWisata extends StatefulWidget {
   final String? gambar1, gambar2, gambar3;
@@ -26,10 +22,8 @@ class _DetailWisataState extends State<DetailWisata> {
       _kategori = "",
       _lokasi = "",
       _hargaTiket = "",
-      _deskripsi = "",
-      _gambar1 = "",
-      _gambar2 = "",
-      _gambar3 = "";
+      _deskripsi = "";
+
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
 
   _getSessionWisata() async {
@@ -86,26 +80,6 @@ class _DetailWisataState extends State<DetailWisata> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    // Padding(
-                    //   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                    //   child: Container(
-                    //     width: 500,
-                    //     height: 200,
-                    //     decoration: BoxDecoration(
-                    //       color: Colors.white,
-                    //       borderRadius: BorderRadius.circular(10),
-                    //     ),
-                    //     child: ClipRRect(
-                    //       borderRadius: BorderRadius.circular(10),
-                    //       child: Image.network(
-                    //         "$imgBaseUrl${widget.gambar1}",
-                    //         width: 100,
-                    //         height: 100,
-                    //         fit: BoxFit.cover,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                     CarouselSlider(
                       items: [
                         Container(
