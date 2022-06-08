@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:project/api/login.dart';
 import 'package:project/main.dart';
 import 'package:project/pages/register_page.dart';
 import 'dart:async';
 import 'package:project/Notification/toast.dart';
+import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -59,8 +61,8 @@ class _LoginState extends State<Login> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                width: 400,
-                height: 450,
+                width: 440,
+                height: 400,
                 decoration: BoxDecoration(
                     color: Colors.white, shape: BoxShape.rectangle),
                 child: Image.asset(
@@ -113,20 +115,21 @@ class _LoginState extends State<Login> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Email',
+                                  labelStyle: TextStyle(
+                                    color: Color(int.parse(Warna.colorPrimary)),
+                                  ),
                                   hintText: 'example@gmail.com',
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.white,
-                                      width: 1,
+                                      color: Color(0xFF00797C),
+                                      width: 2,
                                     ),
-                                    borderRadius: BorderRadius.circular(30),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.white,
-                                      width: 1,
+                                      color: Color(0xFF00797C),
+                                      width: 2,
                                     ),
-                                    borderRadius: BorderRadius.circular(30),
                                   ),
                                   filled: true,
                                   fillColor: Colors.white,
@@ -147,7 +150,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 7, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -158,20 +161,21 @@ class _LoginState extends State<Login> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Password',
+                                  labelStyle: TextStyle(
+                                    color: Color(int.parse(Warna.colorPrimary)),
+                                  ),
                                   hintText: 'Masukan password',
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.white,
-                                      width: 1,
+                                      color: Color(0xFF00797C),
+                                      width: 2,
                                     ),
-                                    borderRadius: BorderRadius.circular(30),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.white,
-                                      width: 1,
+                                      color: Color(0xFF00797C),
+                                      width: 2,
                                     ),
-                                    borderRadius: BorderRadius.circular(30),
                                   ),
                                   filled: true,
                                   fillColor: Colors.white,
@@ -196,21 +200,21 @@ class _LoginState extends State<Login> {
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Container(
-                              width: 130,
-                              height: 23,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFDADADA),
-                              ),
-                              child: Text(
-                                'Lupa Password ?',
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(65, 0, 0, 0),
-                            ),
+                            // Container(
+                            //   width: 130,
+                            //   height: 23,
+                            //   decoration: BoxDecoration(
+                            //     color: Color(0xFFDADADA),
+                            //   ),
+                            //   child: Text(
+                            //     'Lupa Password ?',
+                            //     textAlign: TextAlign.center,
+                            //   ),
+                            // ),
+                            // Padding(
+                            //   padding:
+                            //       EdgeInsetsDirectional.fromSTEB(65, 0, 0, 0),
+                            // ),
                             ElevatedButton(
                               child: const Text(
                                 "MASUK",
