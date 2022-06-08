@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/update_user.dart';
 import 'package:project/notification/toast.dart';
@@ -93,6 +94,33 @@ class _EditUserPageState extends State<EditUserPage> {
     );
   }
 
+  _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Konfirmasi"),
+          content: const Text("Apakah anda yakin ingin mengubah profil?"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Tidak"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text("Ya"),
+              onPressed: () {
+                _updateUser();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -123,7 +151,6 @@ class _EditUserPageState extends State<EditUserPage> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
                   ),
-                  autofocus: true,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Data tidak boleh kosong";
@@ -168,6 +195,8 @@ class _EditUserPageState extends State<EditUserPage> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Data tidak boleh kosong";
+                    } else if (!GetUtils.isEmail(value)) {
+                      return "Email tidak valid";
                     } else {
                       return null;
                     }
@@ -189,6 +218,8 @@ class _EditUserPageState extends State<EditUserPage> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Data tidak boleh kosong";
+                    } else if (!GetUtils.isPhoneNumber(value)) {
+                      return "Nomor HP tidak valid";
                     } else {
                       return null;
                     }
@@ -198,9 +229,6 @@ class _EditUserPageState extends State<EditUserPage> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextFormField(
-                  // controller: _tglLahir == null
-                  //     ? _tglLahirController
-                  //     : TextEditingController(text: _tglLahir),
                   controller: TextEditingController(text: _tglLahir),
                   decoration: InputDecoration(
                     hintText: "Masukan Tanggal lahir anda",
@@ -239,7 +267,7 @@ class _EditUserPageState extends State<EditUserPage> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    _updateUser();
+                    _showDialog();
                   }
                 },
               ),

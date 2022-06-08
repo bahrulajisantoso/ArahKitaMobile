@@ -61,6 +61,33 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
+  _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Konfirmasi"),
+          content: const Text("Apakah anda yakin ingin keluar?"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Tidak"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text("Ya"),
+              onPressed: () {
+                _logOut();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -265,24 +292,10 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                 ],
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 20.0),
-              //   child: Column(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: <Widget>[
-              //       Text("nama: $_namaUser"),
-              //       // Text("username: $_username"),
-              //       Text("jenis kelamin: $_jenisKelamin"),
-              //       Text("email: $_email"),
-              //       Text("no hp: $_noHp"),
-              //       Text("tanggal lahir: $_tglLahir"),
-              //     ],
-              //   ),
-              // ),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    _logOut();
+                    _showDialog();
                   },
                   child: const Text("Keluar"),
                 ),
