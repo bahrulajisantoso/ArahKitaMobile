@@ -87,6 +87,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      backgroundColor: Color(0xFFDADADA),
       body: ListView(
         children: <Widget>[
           Form(
@@ -96,16 +97,36 @@ class _RegisterState extends State<Register> {
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _namaController,
                       decoration: InputDecoration(
                         hintText: "Masukan Nama Anda",
-                        prefixIcon: const Icon(Icons.person),
+                        prefixIcon: const Icon(
+                          Icons.person,
+                          color: Color(0xFF00797C),
+                        ),
                         labelText: "Nama",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                        labelStyle: TextStyle(
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       autofocus: true,
                       validator: (value) {
@@ -118,16 +139,33 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       controller: _jenisKelController,
                       decoration: InputDecoration(
                         hintText: "Masukan jenis kelamin Anda",
-                        prefixIcon:
-                            const Icon(Icons.supervisor_account_rounded),
+                        prefixIcon: const Icon(Icons.supervisor_account_rounded,
+                            color: Color(0xFF00797C)),
                         labelText: "Jenis kelamin",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                        labelStyle: TextStyle(
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -139,16 +177,34 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
                       decoration: InputDecoration(
                         hintText: "Email",
-                        prefixIcon: const Icon(Icons.email_outlined),
+                        prefixIcon: const Icon(Icons.email_outlined,
+                            color: Color(0xFF00797C)),
                         labelText: "Masukkan Email Anda",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                        labelStyle: TextStyle(
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -160,16 +216,34 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
                       controller: _noHpController,
                       decoration: InputDecoration(
                         hintText: "Masukkan Nomor HP Anda",
-                        prefixIcon: const Icon(Icons.phone),
+                        prefixIcon:
+                            const Icon(Icons.phone, color: Color(0xFF00797C)),
                         labelText: "Nomor HP",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                        labelStyle: TextStyle(
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -181,26 +255,41 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       controller: _tglLahir == null
                           ? _tglLahirController
                           : TextEditingController(text: _tglLahir),
                       decoration: InputDecoration(
                         hintText: "Masukan Tanggal lahir anda",
+                        labelStyle: TextStyle(
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
                         // prefixIcon: const Icon(Icons.date_range),
                         prefixIcon: IconButton(
-                          icon: const Icon(
-                            Icons.date_range,
-                            color: Colors.blue,
-                          ),
+                          icon: const Icon(Icons.date_range,
+                              color: Color(0xFF00797C)),
                           onPressed: () {
                             _tanggal();
                           },
                         ),
                         labelText: "Tanggal lahir",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -212,16 +301,34 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _passwordController,
                       decoration: InputDecoration(
                         hintText: "Minimal 8 karakter",
-                        prefixIcon: const Icon(Icons.lock),
+                        prefixIcon:
+                            const Icon(Icons.lock, color: Color(0xFF00797C)),
                         labelText: "Password",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                        labelStyle: TextStyle(
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -235,16 +342,34 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _konfirmPasswordController,
                       decoration: InputDecoration(
                         hintText: "Masukan Password Anda",
-                        prefixIcon: const Icon(Icons.lock),
+                        labelStyle: TextStyle(
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
+                        prefixIcon:
+                            const Icon(Icons.lock, color: Color(0xFF00797C)),
                         labelText: "Konfirmasi Password",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF00797C),
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -258,47 +383,58 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                   ),
-                  ElevatedButton(
-                    child: const Text(
-                      "Daftar",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        const Color.fromARGB(255, 1, 121, 125),
-                      ),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _addUser();
-                        // Navigator.pop(
-                        //   context,
-                        //   Builder(
-                        //     builder: (context) => const Login(),
-                        //   ),
-                        // );
-                      }
-                    },
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text("Sudah punya akun?"),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(
-                            Builder(
-                              builder: (context) => const Login(),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          child: const Text(
+                            "Daftar",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color(0xFF00797C),
                             ),
-                          );
-                        },
-                        child: const Text(
-                          "Login",
-                          style:
-                              TextStyle(color: Color.fromARGB(255, 0, 10, 255)),
+                          ),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              _addUser();
+                              // Navigator.pop(
+                              //   context,
+                              //   Builder(
+                              //     builder: (context) => const Login(),
+                              //   ),
+                              // );
+                            }
+                          },
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text("Sudah punya akun?"),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(
+                              Builder(
+                                builder: (context) => const Login(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 0, 10, 255)),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

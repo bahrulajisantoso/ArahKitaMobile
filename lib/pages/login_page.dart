@@ -198,6 +198,7 @@ class _LoginState extends State<Login> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             // Container(
@@ -236,9 +237,9 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         child: Row(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             const Text("Belum punya akun?"),
                             TextButton(
