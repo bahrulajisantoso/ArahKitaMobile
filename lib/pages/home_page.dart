@@ -19,18 +19,10 @@ class _HomePageState extends State<HomePage> {
   List<Wisata> _wisatas = [];
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
 
-  @override
-  void initState() {
-    super.initState();
-    _cekLogin();
-    _getData();
-  }
-
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
-    setState(() {
-      _wisatas;
-    });
+    _wisatas;
+    setState(() {});
   }
 
   _cekLogin() async {
@@ -68,6 +60,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _cekLogin();
+    _getData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -96,28 +95,36 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
-              Container(
-                margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                decoration: null,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
                 child: Column(
                   children: <Widget>[
                     CarouselSlider(
                       items: [
                         Container(
-                          child: Image.asset("images/selamatdatang.jpg"),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset("images/selamatdatang.jpg"),
+                          ),
                         ),
                         Container(
-                          child: Image.asset("images/slide2.png"),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset("images/slide2.png"),
+                          ),
                         ),
                         Container(
-                          child: Image.asset("images/slide3.png"),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset("images/slide3.png"),
+                          ),
                         ),
                       ],
                       options: CarouselOptions(
                         autoPlay: true,
                         enlargeCenterPage: true,
                         viewportFraction: 1.0,
-                        aspectRatio: 2.0,
+                        // aspectRatio: 2.0,
                       ),
                     ),
                   ],
@@ -128,7 +135,8 @@ class _HomePageState extends State<HomePage> {
                   // scrollDirection: Axis.vertical,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
                   ),
                   itemCount: _wisatas.length,
                   itemBuilder: (context, index) {
@@ -137,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        elevation: 10,
+                        elevation: 5,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
