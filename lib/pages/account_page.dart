@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/api/get_user.dart';
+import 'package:project/notification/alert.dart';
 import 'package:project/pages/edit_user.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/theme/color.dart';
@@ -14,6 +15,7 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
   String? _namaUser, _tglLahir, _noHp, _email;
+  final _alert = ShowAlert();
 
   @override
   void initState() {
@@ -48,7 +50,8 @@ class _AccountPageState extends State<AccountPage> {
       pref.remove("is_login");
       pref.clear();
     });
-
+    _alert.coolAlertSucces("Berhasil Logout", context, "OK");
+    await Future.delayed(const Duration(seconds: 2));
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
@@ -76,7 +79,6 @@ class _AccountPageState extends State<AccountPage> {
               child: const Text("Ya"),
               onPressed: () {
                 _logOut();
-                Navigator.of(context).pop();
               },
             ),
           ],

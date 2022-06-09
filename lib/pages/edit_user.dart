@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/update_user.dart';
+import 'package:project/notification/alert.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/theme/color.dart';
@@ -19,6 +20,7 @@ class _EditUserPageState extends State<EditUserPage> {
 
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
+  final _alert = ShowAlert();
 
   var _namaController = TextEditingController();
   // var _jenisKelController = TextEditingController();
@@ -53,10 +55,12 @@ class _EditUserPageState extends State<EditUserPage> {
         .then((value) {
       setState(() {
         if (value.kode == 1) {
-          _toast.showToast(value.pesan);
+          // _toast.showToast(value.pesan);
+          _alert.coolAlertSucces(value.pesan, context, "OK");
           _logOut();
         } else {
-          _toast.showToast(value.pesan);
+          // _toast.showToast(value.pesan);
+          _alert.coolAlertFail(value.pesan, context, "OK");
         }
       });
     });
@@ -85,7 +89,7 @@ class _EditUserPageState extends State<EditUserPage> {
       pref.remove("is_login");
       pref.clear();
     });
-
+    await Future.delayed(const Duration(seconds: 3));
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
