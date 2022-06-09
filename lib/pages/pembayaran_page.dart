@@ -95,7 +95,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
                       padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                       child: Center(
                         child: Text(
-                          _namaWisata,
+                          _namaWisata + ' x ' + _jumlahTiket,
                           style: TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.white,
@@ -105,13 +105,17 @@ class _PembayaranPageState extends State<PembayaranPage> {
                         ),
                       ),
                     ),
-                    Center(
-                      child: Text(
-                        _tglTiket,
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFFEEEEEE),
-                          fontSize: 12,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                      child: Center(
+                        child: Text(
+                          _tglTiket,
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
