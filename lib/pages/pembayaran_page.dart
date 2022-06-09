@@ -12,19 +12,31 @@ class PembayaranPage extends StatefulWidget {
 }
 
 class _PembayaranPageState extends State<PembayaranPage> {
-  String _kodeTransaksi = "";
+  String _kodeTransaksi = "",
+      _namaWisata = "",
+      _tglTiket = "",
+      _jumlahTiket = "",
+      _totalHarga = "";
 
-  getSessionKodeTransaksi() async {
+  getSessionTransaksi() async {
     final prefs = await SharedPreferences.getInstance();
     final kodeTransaksi = prefs.getString('kode_transaksi') ?? '';
+    final namaWisata = prefs.getString('nama_wisata') ?? '';
+    final tglTiket = prefs.getString('tgl_tiket') ?? '';
+    final jumlahTiket = prefs.getString('jumlah_tiket') ?? '';
+    final totalHarga = prefs.getString('total_harga') ?? '';
     setState(() {
       _kodeTransaksi = kodeTransaksi;
+      _namaWisata = namaWisata;
+      _tglTiket = tglTiket;
+      _jumlahTiket = jumlahTiket;
+      _totalHarga = totalHarga;
     });
   }
 
   _launchWhatsApp() async {
     final link = WhatsAppUnilink(
-      phoneNumber: '+6285851964930',
+      phoneNumber: '+6285755292978',
       text:
           "Saya ingin mengkonfirmasi pembayaran tiket dengan \nkode booking  = $_kodeTransaksi  \nBukti Pembayaran : ",
     );
@@ -34,7 +46,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
   @override
   void initState() {
     super.initState();
-    getSessionKodeTransaksi();
+    getSessionTransaksi();
   }
 
   @override
@@ -83,7 +95,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
                       padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                       child: Center(
                         child: Text(
-                          'Papuma',
+                          _namaWisata,
                           style: TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.white,
@@ -95,7 +107,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
                     ),
                     Center(
                       child: Text(
-                        '6/6/2022',
+                        _tglTiket,
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           color: Color(0xFFEEEEEE),
@@ -153,7 +165,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
                                         10, 0, 0, 0),
                                     child: ClipRect(
                                       child: Image.asset(
-                                        "images/bri.png",
+                                        "assets/images/bri.png",
                                         height: 20,
                                         width: 50,
                                       ),
@@ -197,15 +209,6 @@ class _PembayaranPageState extends State<PembayaranPage> {
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  // Padding(
-                                  //   padding: EdgeInsetsDirectional.fromSTEB(
-                                  //       20, 0, 0, 0),
-                                  //   child: FaIcon(
-                                  //     FontAwesomeIcons.moneyBillWaveAlt,
-                                  //     color: Colors.black,
-                                  //     size: 17,
-                                  //   ),
-                                  // ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15, 0, 0, 5),
@@ -237,7 +240,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           15, 0, 0, 0),
                                       child: Text(
-                                        'Rp.25.000,-',
+                                        'Rp. $_totalHarga,-',
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 16,
@@ -299,15 +302,15 @@ class _PembayaranPageState extends State<PembayaranPage> {
                                   children: [
                                     Row(
                                       children: [
-                                        Text("Sudah Menyelesaikan Transaksi ?",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 16,
-                                            )),
+                                        Text(
+                                          "Sudah Menyelesaikan Transaksi ?",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
                                       ],
                                     ),
-
-                                    // Text("id transaksi anda = $_kodeTransaksi"),
                                   ],
                                 ),
                               ),

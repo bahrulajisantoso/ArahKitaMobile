@@ -72,8 +72,16 @@ class _TicketPageState extends State<TicketPage> {
                   int.parse(Warna.colorGrey),
                 ),
               ),
-              child: Center(
-                child: Text("Tidak ada tiket"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "assets/images/ticket.png",
+                    height: 200,
+                    width: 200,
+                  ),
+                  Text("Tidak ada tiket"),
+                ],
               ),
             )
           : Container(

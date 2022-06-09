@@ -27,13 +27,11 @@ class _LoginState extends State<Login> {
 
   void _login() async {
     LoginUser.loginUser(_emailController.text, _passwordController.text)
-        .then((value) async {
+        .then((value) {
       if (value.kode == 200) {
         _idUser = value.id.toString();
         sessionLogin();
-        // _toast.showToast(value.pesan);
-        _alert.coolAlertSucces(value.pesan, context, "OK");
-        await Future.delayed(const Duration(seconds: 2));
+        _toast.showToast(value.pesan);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -71,7 +69,7 @@ class _LoginState extends State<Login> {
                   decoration: BoxDecoration(
                       color: Colors.white, shape: BoxShape.rectangle),
                   child: Image.asset(
-                    'images/1.jpg',
+                    'assets/images/1.jpg',
                     width: 100,
                     height: 100,
                     fit: BoxFit.cover,
@@ -116,7 +114,6 @@ class _LoginState extends State<Login> {
                               Expanded(
                                 child: TextFormField(
                                   controller: _emailController,
-                                  obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Email',
                                     labelStyle: TextStyle(

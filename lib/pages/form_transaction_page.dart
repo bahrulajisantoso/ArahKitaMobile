@@ -31,10 +31,14 @@ class _FormTransactionState extends State<FormTransaction> {
   String _tglTiket = DateFormat('dd/MM/yyy').format(DateTime.now());
   final _toast = ShowToast();
 
-  Future _sessionKodeTransaksi() async {
+  Future _sessionTransaksi() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
       pref.setString("kode_transaksi", _kodeTransaksi);
+      pref.setString("nama_wisata", _namaWisata);
+      pref.setString("tgl_tiket", _tglTiket);
+      pref.setString("jumlah_tiket", _jumlahTiket.toString());
+      pref.setString("total_harga", _totalHarga.toString());
     });
   }
 
@@ -102,7 +106,7 @@ class _FormTransactionState extends State<FormTransaction> {
       setState(() {
         if (value.kode == 201) {
           _kodeTransaksi = value.kodeTransaksi;
-          _sessionKodeTransaksi();
+          _sessionTransaksi();
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => const PembayaranPage(),

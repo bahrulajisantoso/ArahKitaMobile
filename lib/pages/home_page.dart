@@ -18,11 +18,13 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
+  bool kondisi = true;
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
-    _wisatas;
-    setState(() {});
+    if (kondisi) {
+      setState(() {});
+    }
   }
 
   _cekLogin() async {
@@ -67,6 +69,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    kondisi = false;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -104,19 +112,20 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
-                            child: Image.asset("images/selamatdatang.jpg"),
+                            child:
+                                Image.asset("assets/images/selamatdatang.jpg"),
                           ),
                         ),
                         Container(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
-                            child: Image.asset("images/slide2.png"),
+                            child: Image.asset("assets/images/slide2.png"),
                           ),
                         ),
                         Container(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
-                            child: Image.asset("images/slide3.png"),
+                            child: Image.asset("assets/images/slide3.png"),
                           ),
                         ),
                       ],
