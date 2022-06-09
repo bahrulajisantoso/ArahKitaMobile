@@ -204,7 +204,7 @@ class _LoginState extends State<Login> {
                             children: [
                               ElevatedButton(
                                 child: const Text(
-                                  "MASUK",
+                                  "LOGIN",
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 style: ButtonStyle(

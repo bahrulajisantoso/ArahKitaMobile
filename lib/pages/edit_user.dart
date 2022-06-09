@@ -156,6 +156,9 @@ class _EditUserPageState extends State<EditUserPage> {
       body: Form(
         key: _formKey,
         child: Container(
+          decoration: BoxDecoration(
+            color: Color(int.parse(Warna.colorGrey)),
+          ),
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
@@ -166,10 +169,21 @@ class _EditUserPageState extends State<EditUserPage> {
                   controller: _namaController,
                   decoration: InputDecoration(
                     hintText: "Masukan Nama Anda",
-                    prefixIcon: const Icon(Icons.person),
+                    prefixIcon:
+                        const Icon(Icons.person, color: Color(0xFF00797C)),
                     labelText: "Nama",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    labelStyle: TextStyle(
+                      color: Color(int.parse(Warna.colorPrimary)),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00797C),
+                        width: 2,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -207,10 +221,27 @@ class _EditUserPageState extends State<EditUserPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     hintText: "Email",
-                    prefixIcon: const Icon(Icons.email_outlined),
+                    prefixIcon: const Icon(Icons.email_outlined,
+                        color: Color(0xFF00797C)),
                     labelText: "Masukkan Email Anda",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    labelStyle: TextStyle(
+                      color: Color(int.parse(Warna.colorPrimary)),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00797C),
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00797C),
+                        width: 2,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -230,10 +261,27 @@ class _EditUserPageState extends State<EditUserPage> {
                   controller: _noHpController,
                   decoration: InputDecoration(
                     hintText: "Masukkan Nomor HP Anda",
-                    prefixIcon: const Icon(Icons.phone),
+                    prefixIcon:
+                        const Icon(Icons.phone, color: Color(0xFF00797C)),
                     labelText: "Nomor HP",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    labelStyle: TextStyle(
+                      color: Color(int.parse(Warna.colorPrimary)),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00797C),
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00797C),
+                        width: 2,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -254,17 +302,31 @@ class _EditUserPageState extends State<EditUserPage> {
                     hintText: "Masukan Tanggal lahir anda",
                     // prefixIcon: const Icon(Icons.date_range),
                     prefixIcon: IconButton(
-                      icon: const Icon(
-                        Icons.date_range,
-                        color: Colors.blue,
-                      ),
+                      icon: const Icon(Icons.date_range,
+                          color: Color(0xFF00797C)),
                       onPressed: () {
                         _tanggal();
                       },
                     ),
                     labelText: "Tanggal lahir",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    labelStyle: TextStyle(
+                      color: Color(int.parse(Warna.colorPrimary)),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00797C),
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF00797C),
+                        width: 2,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {

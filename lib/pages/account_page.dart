@@ -111,30 +111,34 @@ class _AccountPageState extends State<AccountPage> {
           color: Color(int.parse(Warna.colorGrey)),
         ),
         child: Container(
-          padding: const EdgeInsets.all(40.0),
+          padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 5),
           child: ListView(
             children: <Widget>[
               Column(
                 children: <Widget>[
                   Icon(Icons.account_circle,
-                      size: 50, color: Theme.of(context).primaryColor),
+                      size: 140, color: Color(0xFF00797C)),
                   TextButton(
-                      onPressed: () {
-                        _userSession();
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const EditUserPage(),
-                          ),
-                        );
-                      },
-                      child: Text("edit"))
+                    onPressed: () {
+                      _userSession();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const EditUserPage(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      "EDIT",
+                      style: TextStyle(color: Color(0xFF00797C)),
+                    ),
+                  ),
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Color(0xFFDADADA),
@@ -143,12 +147,12 @@ class _AccountPageState extends State<AccountPage> {
                         'Nama',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF525252)),
+                            color: Color(0xFF00797C)),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
                       color: Color(0xFFDADADA),
                     ),
@@ -167,7 +171,7 @@ class _AccountPageState extends State<AccountPage> {
                     color: Color(0xFF01797D),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Color(0xFFDADADA),
@@ -176,13 +180,13 @@ class _AccountPageState extends State<AccountPage> {
                         'Email',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF525252),
+                          color: Color(0xFF00797C),
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
                       color: Color(0xFFDADADA),
                     ),
@@ -201,7 +205,7 @@ class _AccountPageState extends State<AccountPage> {
                     color: Color(0xFF01797D),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Color(0xFFDADADA),
@@ -210,13 +214,13 @@ class _AccountPageState extends State<AccountPage> {
                         'Tanggal Lahir',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF525252),
+                          color: Color(0xFF00797C),
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
                       color: Color(0xFFDADADA),
                     ),
@@ -235,7 +239,7 @@ class _AccountPageState extends State<AccountPage> {
                     color: Color(0xFF01797D),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Color(0xFFDADADA),
@@ -244,13 +248,13 @@ class _AccountPageState extends State<AccountPage> {
                         'Nomor Handphone',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF525252),
+                          color: Color(0xFF00797C),
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
                       color: Color(0xFFDADADA),
                     ),
@@ -275,7 +279,15 @@ class _AccountPageState extends State<AccountPage> {
                   onPressed: () {
                     _showDialog();
                   },
-                  child: const Text("Keluar"),
+                  child: const Text(
+                    "Keluar",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      const Color.fromARGB(255, 1, 121, 125),
+                    ),
+                  ),
                 ),
               )
             ],

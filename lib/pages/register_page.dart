@@ -401,7 +401,7 @@ class _RegisterState extends State<Register> {
                       children: [
                         ElevatedButton(
                           child: const Text(
-                            "Daftar",
+                            "REGISTER",
                             style: TextStyle(color: Colors.white),
                           ),
                           style: ButtonStyle(
