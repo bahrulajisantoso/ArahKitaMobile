@@ -116,8 +116,8 @@ class _FormTransactionState extends State<FormTransaction> {
   }
 
   _kodeTiket() {
-    String kode = "";
-    for (int i = 0; i < 8; i++) {
+    String kode = _idWisata;
+    for (int i = 0; i < 6; i++) {
       kode += Random().nextInt(9).toString();
     }
     return kode;
@@ -167,7 +167,7 @@ class _FormTransactionState extends State<FormTransaction> {
               children: <Widget>[
                 //data wisata
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                   child: Container(
                     child: Text(
                       'Detail Wisata',
