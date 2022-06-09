@@ -19,20 +19,17 @@ class _EditUserPageState extends State<EditUserPage> {
   String? _idUser, _tglLahir;
 
   final _formKey = GlobalKey<FormState>();
-  final _toast = ShowToast();
   final _alert = ShowAlert();
 
   var _namaController = TextEditingController();
-  // var _jenisKelController = TextEditingController();
   var _emailController = TextEditingController();
   var _noHpController = TextEditingController();
 
-  getUserSession() async {
+  _getUserSession() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       _idUser = prefs.getString('id_user').toString();
       String namaUser = prefs.getString('nama_user').toString();
-      // String jenisKelamin = prefs.getString('jenis_kelamin').toString();
       _tglLahir = prefs.getString('tgl_lahir').toString();
       String noHp = prefs.getString('no_hp').toString();
       String email = prefs.getString('email').toString();
@@ -40,26 +37,18 @@ class _EditUserPageState extends State<EditUserPage> {
       _namaController = TextEditingController(text: namaUser);
       _emailController = TextEditingController(text: email);
       _noHpController = TextEditingController(text: noHp);
-      // _jenisKelController = TextEditingController(text: jenisKelamin);
     });
   }
 
   _updateUser() {
-    UpdateUser.updateUser(
-            _idUser.toString(),
-            _namaController.text,
-            // _jenisKelController.text,
-            _emailController.text,
-            _noHpController.text,
-            _tglLahir.toString())
+    UpdateUser.updateUser(_idUser.toString(), _namaController.text,
+            _emailController.text, _noHpController.text, _tglLahir.toString())
         .then((value) {
       setState(() {
         if (value.kode == 1) {
-          // _toast.showToast(value.pesan);
           _alert.coolAlertSucces(value.pesan, context, "OK");
           _logOut();
         } else {
-          // _toast.showToast(value.pesan);
           _alert.coolAlertFail(value.pesan, context, "OK");
         }
       });
@@ -129,7 +118,7 @@ class _EditUserPageState extends State<EditUserPage> {
   @override
   void initState() {
     super.initState();
-    getUserSession();
+    _getUserSession();
   }
 
   @override
@@ -198,26 +187,6 @@ class _EditUserPageState extends State<EditUserPage> {
                   },
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: TextFormField(
-              //     controller: _jenisKelController,
-              //     decoration: InputDecoration(
-              //       hintText: "Masukan jenis kelamin Anda",
-              //       prefixIcon: const Icon(Icons.supervisor_account_rounded),
-              //       labelText: "Jenis kelamin",
-              //       border: OutlineInputBorder(
-              //           borderRadius: BorderRadius.circular(5.0)),
-              //     ),
-              //     validator: (value) {
-              //       if (value!.isEmpty) {
-              //         return "Data tidak boleh kosong";
-              //       } else {
-              //         return null;
-              //       }
-              //     },
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextFormField(

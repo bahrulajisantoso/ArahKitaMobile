@@ -18,11 +18,11 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
-  bool kondisi = true;
+  bool _kondisi = true;
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
-    if (kondisi) {
+    if (_kondisi) {
       setState(() {});
     }
   }
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    kondisi = false;
+    _kondisi = false;
     super.dispose();
   }
 
