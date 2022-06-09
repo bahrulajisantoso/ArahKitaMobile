@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
@@ -39,17 +40,324 @@ class _PembayaranPageState extends State<PembayaranPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      appBar: AppBar(
+        iconTheme: (IconThemeData(
+          color: Color(int.parse(Warna.colorPrimary)),
+          size: 30,
+        )),
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
+        title: const Text("Pembayaran"),
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Color(int.parse(Warna.colorPrimary)),
+        ),
+        centerTitle: false,
+        elevation: 2,
+        bottom: PreferredSize(
+            child: Container(
+              color: Color(int.parse(Warna.colorPrimary)),
+              height: 2.0,
+            ),
+            preferredSize: Size.fromHeight(2.0)),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Color(int.parse(Warna.colorGrey)),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Mohon untuk melakuakan pembayaran"),
-            Text("id transaksi anda = $_kodeTransaksi"),
-            ElevatedButton(
-              onPressed: () {
-                _launchWhatsApp();
-              },
-              child: Text("Bayar Sekarang"),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(int.parse(Warna.colorPrimary)),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                      child: Center(
+                        child: Text(
+                          'Papuma',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        '6/6/2022',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFEEEEEE),
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                              child: Container(
+                                width: 350,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: Color(0x0FFFFFFF),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 0, 0, 0),
+                                      child: Text(
+                                        'Silahkan melakukan transfer ke :',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 0, 0, 0),
+                                    child: ClipRect(
+                                      child: Image.asset(
+                                        "images/bri.png",
+                                        height: 20,
+                                        width: 50,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(47, 5, 47, 0),
+                              child: Container(
+                                width: 350,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFEEEEEE),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      13, 0, 0, 0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        '2531-2345-9875-08',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  // Padding(
+                                  //   padding: EdgeInsetsDirectional.fromSTEB(
+                                  //       20, 0, 0, 0),
+                                  //   child: FaIcon(
+                                  //     FontAwesomeIcons.moneyBillWaveAlt,
+                                  //     color: Colors.black,
+                                  //     size: 17,
+                                  //   ),
+                                  // ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15, 0, 0, 5),
+                                    child: Text(
+                                      'Jumlah Bayar :',
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(47, 0, 47, 0),
+                              child: Container(
+                                width: 350,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFEEEEEE),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 0, 0, 0),
+                                      child: Text(
+                                        'Rp.25.000,-',
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10, 20, 10, 20),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 250, 221, 2),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Padding(
+                                  // padding: EdgeInsetsDirectional.fromSTEB(
+                                  //     0, 0, 0, 0),
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          // 'Jika sudah melakukan transfer sesuai total harga, silahkan\nmelakukan konfirmasi ke admin dengan klik tombol\n\"Hubungi Admin\" dan menunggu validasi dari admin paling lambat 1 jam setelah mengirim bukti transfer.',
+                                          'PENTING!',
+                                          style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          // 'Jika sudah melakukan transfer sesuai total harga, silahkan\nmelakukan konfirmasi ke admin dengan klik tombol\n\"Hubungi Admin\" dan menunggu validasi dari admin paling lambat 1 jam setelah mengirim bukti transfer.',
+                                          ' Mohon transfer sesuai dengan jumlah yang tertera',
+                                          style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            //button hubungi
+
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 5, 20, 0),
+                              child: Container(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text("Sudah Menyelesaikan Transaksi ?",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                            )),
+                                      ],
+                                    ),
+
+                                    // Text("id transaksi anda = $_kodeTransaksi"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 5, 10, 20),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(int.parse(Warna.colorGrey)),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Padding(
+                                  // padding: EdgeInsetsDirectional.fromSTEB(
+                                  //     0, 0, 0, 0),
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        "Klik Hubungi Admin untuk konfirmasi Pembayaran \n\Setelah Pembayaran Anda dikonfirmasi, Kami akan mencetak\n\e-tiket Anda ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          _launchWhatsApp();
+                                        },
+                                        child: Text("Hubungi Admin"),
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                            const Color.fromARGB(
+                                                255, 1, 121, 125),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
