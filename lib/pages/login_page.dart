@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project/api/login.dart';
 import 'package:project/main.dart';
+import 'package:project/notification/alert.dart';
 import 'package:project/pages/register_page.dart';
 import 'dart:async';
 import 'package:project/Notification/toast.dart';
@@ -18,6 +19,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
+  final _alert = ShowAlert();
   String _idUser = "";
 
   final TextEditingController _emailController = TextEditingController();
@@ -25,11 +27,13 @@ class _LoginState extends State<Login> {
 
   void _login() async {
     LoginUser.loginUser(_emailController.text, _passwordController.text)
-        .then((value) {
+        .then((value) async {
       if (value.kode == 200) {
         _idUser = value.id.toString();
         sessionLogin();
-        _toast.showToast(value.pesan);
+        // _toast.showToast(value.pesan);
+        _alert.coolAlertSucces(value.pesan, context, "OK");
+        await Future.delayed(const Duration(seconds: 2));
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
