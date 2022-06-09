@@ -1,5 +1,5 @@
 class Tiket {
-  String idTiket,
+  final String idTiket,
       idUser,
       idWisata,
       idtransaksi,

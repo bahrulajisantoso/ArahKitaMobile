@@ -1,5 +1,5 @@
 class Gambar {
-  String gambar1, gambar2, gambar3;
+  final String gambar1, gambar2, gambar3;
 
   Gambar({
     required this.gambar1,

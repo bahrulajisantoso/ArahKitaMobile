@@ -1,5 +1,5 @@
 class Wisata {
-  String? id,
+  final String? id,
       namaWisata,
       kategori,
       lokasi,

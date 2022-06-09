@@ -1,6 +1,6 @@
 class ResponseRegister {
-  int? kode;
-  String? pesan;
+  final int? kode;
+  final String? pesan;
 
   ResponseRegister({
     this.kode,
