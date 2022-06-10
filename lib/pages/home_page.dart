@@ -18,11 +18,10 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
   final imgBaseUrl = "http://10.0.2.2/flutter/img/";
-  bool _kondisi = true;
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
-    if (_kondisi) {
+    if (mounted) {
       setState(() {});
     }
   }
@@ -69,12 +68,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  void dispose() {
-    _kondisi = false;
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -95,53 +88,54 @@ class _HomePageState extends State<HomePage> {
             ),
             preferredSize: Size.fromHeight(2.0)),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Color(int.parse(Warna.colorGrey)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: Column(
-                  children: <Widget>[
-                    CarouselSlider(
-                      items: [
-                        Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child:
-                                Image.asset("assets/images/selamatdatang.jpg"),
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(int.parse(Warna.colorGrey)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: Column(
+                    children: <Widget>[
+                      CarouselSlider(
+                        items: [
+                          Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(
+                                  "assets/images/selamatdatang.jpg"),
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset("assets/images/slide2.png"),
+                          Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset("assets/images/slide2.png"),
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset("assets/images/slide3.png"),
+                          Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset("assets/images/slide3.png"),
+                            ),
                           ),
+                        ],
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          enlargeCenterPage: true,
+                          viewportFraction: 1.0,
+                          // aspectRatio: 2.0,
                         ),
-                      ],
-                      options: CarouselOptions(
-                        autoPlay: true,
-                        enlargeCenterPage: true,
-                        viewportFraction: 1.0,
-                        // aspectRatio: 2.0,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: GridView.builder(
-                  // scrollDirection: Axis.vertical,
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 15,
@@ -240,8 +234,8 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
