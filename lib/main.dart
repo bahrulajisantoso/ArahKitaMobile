@@ -44,14 +44,14 @@ class _MainState extends State<Main> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         height: 55.0,
-        backgroundColor: Color(int.parse(Warna.colorGrey)),
+        color: Color(int.parse(Warna.colorPrimary)),
+        backgroundColor: Color(int.parse(Warna.colorWhite)),
         items: <Widget>[
-          Icon(Icons.home,
-              size: 30, color: Color(int.parse(Warna.colorPrimary))),
+          Icon(Icons.home, size: 30, color: Color(int.parse(Warna.colorWhite))),
           Icon(Icons.airplane_ticket,
-              size: 30, color: Color(int.parse(Warna.colorPrimary))),
+              size: 30, color: Color(int.parse(Warna.colorWhite))),
           Icon(Icons.account_circle,
-              size: 30, color: Color(int.parse(Warna.colorPrimary))),
+              size: 30, color: Color(int.parse(Warna.colorWhite))),
         ],
         onTap: (index) {
           _onItemTapped(index);

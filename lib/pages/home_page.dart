@@ -92,8 +92,9 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
-            color: Color(int.parse(Warna.colorGrey)),
-          ),
+              // color: Color(int.parse(Warna.colorGrey)),
+
+              ),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(

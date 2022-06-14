@@ -112,7 +112,7 @@ class _AccountPageState extends State<AccountPage> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Color(int.parse(Warna.colorGrey)),
+          color: Color(int.parse(Warna.colorWhite)),
         ),
         child: Container(
           padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 5),
@@ -145,8 +145,8 @@ class _AccountPageState extends State<AccountPage> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFDADADA),
-                      ),
+                          // color: Color(0xFFDADADA),
+                          ),
                       child: Text(
                         'Nama',
                         style: TextStyle(
@@ -158,8 +158,8 @@ class _AccountPageState extends State<AccountPage> {
                   Container(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
-                      color: Color(0xFFDADADA),
-                    ),
+                        // color: Color(0xFFDADADA),
+                        ),
                     child: Text(
                       '$_namaUser',
                       style: TextStyle(
@@ -178,8 +178,8 @@ class _AccountPageState extends State<AccountPage> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFDADADA),
-                      ),
+                          // color: Color(0xFFDADADA),
+                          ),
                       child: Text(
                         'Email',
                         style: TextStyle(
@@ -192,8 +192,8 @@ class _AccountPageState extends State<AccountPage> {
                   Container(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
-                      color: Color(0xFFDADADA),
-                    ),
+                        // color: Color(0xFFDADADA),
+                        ),
                     child: Text(
                       '$_email',
                       style: TextStyle(
@@ -212,8 +212,8 @@ class _AccountPageState extends State<AccountPage> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFDADADA),
-                      ),
+                          // color: Color(0xFFDADADA),
+                          ),
                       child: Text(
                         'Tanggal Lahir',
                         style: TextStyle(
@@ -226,8 +226,8 @@ class _AccountPageState extends State<AccountPage> {
                   Container(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
-                      color: Color(0xFFDADADA),
-                    ),
+                        // color: Color(0xFFDADADA),
+                        ),
                     child: Text(
                       '$_tglLahir',
                       style: TextStyle(
@@ -246,8 +246,8 @@ class _AccountPageState extends State<AccountPage> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFDADADA),
-                      ),
+                          // color: Color(0xFFDADADA),
+                          ),
                       child: Text(
                         'Nomor Handphone',
                         style: TextStyle(
@@ -260,8 +260,8 @@ class _AccountPageState extends State<AccountPage> {
                   Container(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
                     decoration: BoxDecoration(
-                      color: Color(0xFFDADADA),
-                    ),
+                        // color: Color(0xFFDADADA),
+                        ),
                     child: Text(
                       '$_noHp',
                       style: TextStyle(

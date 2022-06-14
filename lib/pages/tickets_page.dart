@@ -68,10 +68,10 @@ class _TicketPageState extends State<TicketPage> {
       body: _tikets.isEmpty
           ? Container(
               decoration: BoxDecoration(
-                color: Color(
-                  int.parse(Warna.colorGrey),
-                ),
-              ),
+                  // color: Color(
+                  //   int.parse(Warna.colorGrey),
+                  // ),
+                  ),
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -97,10 +97,10 @@ class _TicketPageState extends State<TicketPage> {
             )
           : Container(
               decoration: BoxDecoration(
-                color: Color(
-                  int.parse(Warna.colorGrey),
-                ),
-              ),
+                  // color: Color(
+                  //   int.parse(Warna.colorGrey),
+                  // ),
+                  ),
               child: ListView.builder(
                   itemCount: _tikets.length,
                   itemBuilder: (context, index) {
