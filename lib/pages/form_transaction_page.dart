@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/add_transaksi.dart';
 import 'package:project/api/get_user.dart';
+import 'package:project/api/global.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/pembayaran_page.dart';
 import 'package:project/theme/color.dart';
@@ -25,7 +26,7 @@ class _FormTransactionState extends State<FormTransaction> {
       _kodeTransaksi = "";
 
   String _idUser = "", _namaUser = "", _noHp = "", _email = "";
-  final imgBaseUrl = "http://10.0.2.2/flutter/img/";
+  final _imgBaseUrl = Url.imageBaseUrl;
   int _jumlahTiket = 1;
   int _totalHarga = 0;
   String _tglTiket = DateFormat('dd/MM/yyy').format(DateTime.now());
@@ -211,7 +212,7 @@ class _FormTransactionState extends State<FormTransaction> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.network(
-                                    "$imgBaseUrl${widget.gambar1}"),
+                                    "$_imgBaseUrl${widget.gambar1}"),
                               ),
                             ),
                           ),

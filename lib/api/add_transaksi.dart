@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project/api/global.dart';
 import 'package:project/model/transaksi_response.dart';
 
 class AddTransaksi {
@@ -14,7 +15,7 @@ class AddTransaksi {
     totalHarga,
     createdAt,
   ) async {
-    Uri _apiURL = Uri.parse("http://10.0.2.2/flutter/add_transaksi.php");
+    Uri _apiURL = Uri.parse("${Url.baseURL}add_transaksi.php");
 
     var response = await http.post(
       _apiURL,

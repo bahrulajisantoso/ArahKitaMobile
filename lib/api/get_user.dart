@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project/api/global.dart';
 import 'package:project/model/user.dart';
 
 class GetUser {
   static Future<User> getUser(String idUser) async {
-    Uri _apiURL = Uri.parse("http://10.0.2.2/flutter/data_user.php");
+    Uri _apiURL = Uri.parse("${Url.baseURL}data_user.php");
 
     var response = await http.post(
       _apiURL,

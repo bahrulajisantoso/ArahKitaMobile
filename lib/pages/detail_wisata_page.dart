@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:project/api/global.dart';
 import 'package:project/pages/form_transaction_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +25,7 @@ class _DetailWisataState extends State<DetailWisata> {
       _hargaTiket = "",
       _deskripsi = "";
 
-  final imgBaseUrl = "http://10.0.2.2/flutter/img/";
+  final _imgBaseUrl = Url.imageBaseUrl;
 
   _getSessionWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
@@ -88,7 +89,7 @@ class _DetailWisataState extends State<DetailWisata> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
-                                "$imgBaseUrl${widget.gambar1}",
+                                "$_imgBaseUrl${widget.gambar1}",
                                 width: 500,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -99,7 +100,7 @@ class _DetailWisataState extends State<DetailWisata> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
-                                "$imgBaseUrl${widget.gambar2}",
+                                "$_imgBaseUrl${widget.gambar2}",
                                 width: 500,
                                 height: 200,
                                 fit: BoxFit.cover,
@@ -110,7 +111,7 @@ class _DetailWisataState extends State<DetailWisata> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
-                                "$imgBaseUrl${widget.gambar3}",
+                                "$_imgBaseUrl${widget.gambar3}",
                                 width: 500,
                                 height: 200,
                                 fit: BoxFit.cover,

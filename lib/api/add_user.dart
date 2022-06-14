@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project/api/global.dart';
 import 'package:project/model/register_response.dart';
 
 class AddUser {
@@ -12,7 +13,7 @@ class AddUser {
     tglLahir,
     password,
   ) async {
-    Uri _apiURL = Uri.parse("http://10.0.2.2/flutter/register.php");
+    Uri _apiURL = Uri.parse("${Url.baseURL}register.php");
 
     var response = await http.post(
       _apiURL,

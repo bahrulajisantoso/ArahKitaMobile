@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project/api/get_wisata.dart';
+import 'package:project/api/global.dart';
 import 'package:project/model/wisata.dart';
 import 'package:project/pages/detail_wisata_page.dart';
 import 'package:project/pages/login_page.dart';
@@ -17,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
-  final imgBaseUrl = "http://10.0.2.2/flutter/img/";
+  final _imgBaseUrl = Url.imageBaseUrl;
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
@@ -158,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
-                                    "$imgBaseUrl/${_wisatas[index].gambar1}",
+                                    "$_imgBaseUrl/${_wisatas[index].gambar1}",
                                     width: 200,
                                     height: 100,
                                     fit: BoxFit.cover,

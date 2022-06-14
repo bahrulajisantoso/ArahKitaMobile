@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project/api/global.dart';
 import 'package:project/model/register_response.dart';
 import 'package:project/model/update_user_respones.dart';
 
@@ -12,7 +13,7 @@ class UpdateUser {
     noHp,
     tglLahir,
   ) async {
-    Uri _apiURL = Uri.parse("http://10.0.2.2/flutter/update_user.php");
+    Uri _apiURL = Uri.parse("${Url.baseURL}update_user.php");
 
     var response = await http.post(
       _apiURL,

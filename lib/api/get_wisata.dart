@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project/api/global.dart';
 import 'package:project/model/wisata.dart';
 
 class GetWisata {
   static Future<List<Wisata>> getWisatas() async {
-    Uri apiURL = Uri.parse("http://10.0.2.2/flutter/wisata.php");
+    Uri apiURL = Uri.parse("${Url.baseURL}wisata.php");
 
     var response = await http.get(apiURL);
     var responseData = jsonDecode(response.body);

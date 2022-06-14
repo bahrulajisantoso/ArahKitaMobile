@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project/api/global.dart';
 import 'package:project/model/tiket.dart';
 
 class GetTiket {
   static Future<List<Tiket>> getTikets(String idUser) async {
-    Uri apiURL = Uri.parse("http://10.0.2.2/flutter/tiket.php");
+    Uri apiURL = Uri.parse("${Url.baseURL}tiket.php");
 
     var response = await http.post(
       apiURL,
