@@ -59,7 +59,7 @@ class _DetailTiketState extends State<DetailTiket> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -68,7 +68,7 @@ class _DetailTiketState extends State<DetailTiket> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(30.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -80,14 +80,15 @@ class _DetailTiketState extends State<DetailTiket> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Text(
                             _namaWisata.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -100,12 +101,12 @@ class _DetailTiketState extends State<DetailTiket> {
                         child: Container(
                           width: 290,
                           height: 20,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Text(
                             _tglTiket.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: 'Poppins',
                                 color: Color(0xFF919191),
                                 fontSize: 18,
@@ -132,20 +133,21 @@ class _DetailTiketState extends State<DetailTiket> {
                       //     ],
                       //   ),
                       // ),
-                      Divider(
+                      const Divider(
                         height: 3,
                         thickness: 3,
                         color: Color(0xFFDADADA),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Container(
                           width: 290,
                           height: 20,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
-                          child: Text(
+                          child: const Text(
                             'Nama',
                             style: TextStyle(
                               fontFamily: 'Poppins',
@@ -158,12 +160,12 @@ class _DetailTiketState extends State<DetailTiket> {
                       Container(
                         width: 290,
                         height: 30,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                         ),
                         child: Text(
                           _namaPembeli.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -171,18 +173,19 @@ class _DetailTiketState extends State<DetailTiket> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Container(
                           width: 290,
                           height: 20,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
-                          child: Text(
+                          child: const Text(
                             'Jumlah Tiket',
                             style: TextStyle(
                               fontFamily: 'Poppins',
-                              color: Color(0xFF919191),
+                              color: const Color(0xFF919191),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -191,12 +194,12 @@ class _DetailTiketState extends State<DetailTiket> {
                       Container(
                         width: 290,
                         height: 30,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                         ),
                         child: Text(
                           _jumlahTiket.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -204,18 +207,19 @@ class _DetailTiketState extends State<DetailTiket> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Container(
                           width: 290,
                           height: 20,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
-                          child: Text(
+                          child: const Text(
                             'Total Harga',
                             style: TextStyle(
                               fontFamily: 'Poppins',
-                              color: Color(0xFF919191),
+                              color: const Color(0xFF919191),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -224,12 +228,12 @@ class _DetailTiketState extends State<DetailTiket> {
                       Container(
                         width: 290,
                         height: 30,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                         ),
                         child: Text(
                           "Rp" + _totalHarga.toString() + ",-",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -237,7 +241,8 @@ class _DetailTiketState extends State<DetailTiket> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                         child: QrImage(
                           data: _kodeTiket.toString(),
                           version: QrVersions.auto,
@@ -245,19 +250,20 @@ class _DetailTiketState extends State<DetailTiket> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
                         child: Container(
                           width: 290,
                           height: 20,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
-                          child: Text(
+                          child: const Text(
                             'Dipesan dan dibayarkan oleh Arah Kita',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'Poppins',
-                              color: Color(0xFF8A8A8A),
+                              color: const Color(0xFF8A8A8A),
                               fontSize: 13,
                               fontStyle: FontStyle.italic,
                             ),

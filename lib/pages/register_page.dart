@@ -16,6 +16,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
+  final _kodeNegara = "+61";
 
   final _namaController = TextEditingController();
   // final _jenisKelController = TextEditingController();
@@ -31,7 +32,7 @@ class _RegisterState extends State<Register> {
       _namaController.text.trim().toLowerCase(),
       // _jenisKelController.text.trim().toLowerCase(),
       _emailController.text.trim().toLowerCase(),
-      _noHpController.text.trim().toLowerCase(),
+      {_kodeNegara + _noHpController.text.trim().toLowerCase()},
       _tglLahir,
       _passwordController.text.trim(),
     ).then((value) {
@@ -87,9 +88,9 @@ class _RegisterState extends State<Register> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
-      backgroundColor: Color(0xFFDADADA),
+      backgroundColor: const Color(0xFFDADADA),
       body: ListView(
         children: <Widget>[
           Form(
@@ -99,7 +100,7 @@ class _RegisterState extends State<Register> {
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       controller: _namaController,
@@ -113,13 +114,13 @@ class _RegisterState extends State<Register> {
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
@@ -128,7 +129,7 @@ class _RegisterState extends State<Register> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                            const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -140,7 +141,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
@@ -152,13 +153,13 @@ class _RegisterState extends State<Register> {
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
@@ -167,7 +168,7 @@ class _RegisterState extends State<Register> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                            const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -181,15 +182,15 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
                       controller: _noHpController,
                       decoration: InputDecoration(
                         hintText: "Masukkan nomor hp anda",
-                        prefix: const Padding(
+                        prefix: Padding(
                           padding: EdgeInsets.only(right: 8.0),
-                          child: Text("+62"),
+                          child: Text(_kodeNegara),
                         ),
                         prefixIcon:
                             const Icon(Icons.phone, color: Color(0xFF00797C)),
@@ -197,13 +198,13 @@ class _RegisterState extends State<Register> {
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
@@ -212,7 +213,7 @@ class _RegisterState extends State<Register> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                            const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -226,7 +227,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       controller: _tglLahir == null
                           ? _tglLahirController
@@ -245,13 +246,13 @@ class _RegisterState extends State<Register> {
                           },
                         ),
                         labelText: "Tanggal lahir",
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
@@ -260,7 +261,7 @@ class _RegisterState extends State<Register> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                            const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -272,7 +273,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       obscureText: true,
@@ -285,13 +286,13 @@ class _RegisterState extends State<Register> {
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
                         ),
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
@@ -300,7 +301,7 @@ class _RegisterState extends State<Register> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                            const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -314,7 +315,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
                       obscureText: true,
@@ -327,13 +328,13 @@ class _RegisterState extends State<Register> {
                         prefixIcon:
                             const Icon(Icons.lock, color: Color(0xFF00797C)),
                         labelText: "Konfirmasi password",
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF00797C),
                             width: 2,
@@ -342,7 +343,7 @@ class _RegisterState extends State<Register> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                            const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -357,7 +358,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

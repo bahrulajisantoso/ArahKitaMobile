@@ -71,7 +71,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -92,11 +92,12 @@ class _PembayaranPageState extends State<PembayaranPage> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                       child: Center(
                         child: Text(
                           _namaWisata + ' x ' + _jumlahTiket,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.white,
                             fontSize: 16,
@@ -106,11 +107,12 @@ class _PembayaranPageState extends State<PembayaranPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                       child: Center(
                         child: Text(
                           _tglTiket,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.white,
                             fontSize: 16,
@@ -120,7 +122,8 @@ class _PembayaranPageState extends State<PembayaranPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -130,18 +133,18 @@ class _PembayaranPageState extends State<PembayaranPage> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 10, 0, 0),
                               child: Container(
                                 width: 350,
                                 height: 30,
                                 decoration: BoxDecoration(
-                                  color: Color(0x0FFFFFFF),
+                                  color: const Color(0x0FFFFFFF),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  children: [
+                                  children: const [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           15, 0, 0, 0),
@@ -158,15 +161,16 @@ class _PembayaranPageState extends State<PembayaranPage> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  20, 0, 0, 0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 0, 0, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            10, 0, 0, 0),
                                     child: ClipRect(
                                       child: Image.asset(
                                         "assets/images/bri.png",
@@ -179,21 +183,21 @@ class _PembayaranPageState extends State<PembayaranPage> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(47, 5, 47, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  47, 5, 47, 0),
                               child: Container(
                                 width: 350,
                                 height: 30,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
+                                  color: const Color(0xFFEEEEEE),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       13, 0, 0, 0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    children: [
+                                    children: const [
                                       Text(
                                         '2531-2345-9875-08',
                                         style: TextStyle(
@@ -208,11 +212,11 @@ class _PembayaranPageState extends State<PembayaranPage> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  20, 10, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                children: [
+                                children: const [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15, 0, 0, 5),
@@ -228,24 +232,25 @@ class _PembayaranPageState extends State<PembayaranPage> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(47, 0, 47, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  47, 0, 47, 0),
                               child: Container(
                                 width: 350,
                                 height: 30,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
+                                  color: const Color(0xFFEEEEEE),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          15, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              15, 0, 0, 0),
                                       child: Text(
                                         'Rp. $_totalHarga,-',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
@@ -257,20 +262,20 @@ class _PembayaranPageState extends State<PembayaranPage> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   10, 20, 10, 20),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 250, 221, 2),
+                                  color: const Color.fromARGB(255, 250, 221, 2),
                                   borderRadius: BorderRadius.circular(5),
                                 ),
                                 child: Padding(
                                   // padding: EdgeInsetsDirectional.fromSTEB(
                                   //     0, 0, 0, 0),
-                                  padding: EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: Center(
                                     child: Row(
-                                      children: [
+                                      children: const [
                                         Text(
                                           // 'Jika sudah melakukan transfer sesuai total harga, silahkan\nmelakukan konfirmasi ke admin dengan klik tombol\n\"Hubungi Admin\" dan menunggu validasi dari admin paling lambat 1 jam setelah mengirim bukti transfer.',
                                           'PENTING!',
@@ -297,15 +302,15 @@ class _PembayaranPageState extends State<PembayaranPage> {
                             //button hubungi
 
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 5, 20, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  20, 5, 20, 0),
                               child: Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Row(
-                                      children: [
+                                      children: const [
                                         Text(
                                           "Sudah Menyelesaikan Transaksi ?",
                                           style: TextStyle(
@@ -320,8 +325,8 @@ class _PembayaranPageState extends State<PembayaranPage> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 10, 20),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10, 5, 10, 20),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Color(int.parse(Warna.colorGrey)),
@@ -330,10 +335,10 @@ class _PembayaranPageState extends State<PembayaranPage> {
                                 child: Padding(
                                   // padding: EdgeInsetsDirectional.fromSTEB(
                                   //     0, 0, 0, 0),
-                                  padding: EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: Column(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Klik Hubungi Admin untuk konfirmasi Pembayaran \n\Setelah Pembayaran Anda dikonfirmasi, Kami akan mencetak\n\e-tiket Anda ",
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
@@ -344,7 +349,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
                                         onPressed: () {
                                           _launchWhatsApp();
                                         },
-                                        child: Text("Hubungi Admin"),
+                                        child: const Text("Hubungi Admin"),
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(

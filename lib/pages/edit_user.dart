@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/update_user.dart';
 import 'package:project/notification/alert.dart';
-import 'package:project/notification/toast.dart';
+// import 'package:project/notification/toast.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -144,7 +144,7 @@ class _EditUserPageState extends State<EditUserPage> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
       body: Form(
         key: _formKey,
@@ -168,7 +168,7 @@ class _EditUserPageState extends State<EditUserPage> {
                     labelStyle: TextStyle(
                       color: Color(int.parse(Warna.colorPrimary)),
                     ),
-                    enabledBorder: UnderlineInputBorder(
+                    enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF00797C),
                         width: 2,
@@ -176,7 +176,8 @@ class _EditUserPageState extends State<EditUserPage> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                    contentPadding:
+                        const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -200,13 +201,13 @@ class _EditUserPageState extends State<EditUserPage> {
                     labelStyle: TextStyle(
                       color: Color(int.parse(Warna.colorPrimary)),
                     ),
-                    enabledBorder: UnderlineInputBorder(
+                    enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF00797C),
                         width: 2,
                       ),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF00797C),
                         width: 2,
@@ -214,7 +215,8 @@ class _EditUserPageState extends State<EditUserPage> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                    contentPadding:
+                        const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -240,13 +242,13 @@ class _EditUserPageState extends State<EditUserPage> {
                     labelStyle: TextStyle(
                       color: Color(int.parse(Warna.colorPrimary)),
                     ),
-                    enabledBorder: UnderlineInputBorder(
+                    enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF00797C),
                         width: 2,
                       ),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF00797C),
                         width: 2,
@@ -254,7 +256,8 @@ class _EditUserPageState extends State<EditUserPage> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                    contentPadding:
+                        const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -285,13 +288,13 @@ class _EditUserPageState extends State<EditUserPage> {
                     labelStyle: TextStyle(
                       color: Color(int.parse(Warna.colorPrimary)),
                     ),
-                    enabledBorder: UnderlineInputBorder(
+                    enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF00797C),
                         width: 2,
                       ),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF00797C),
                         width: 2,
@@ -299,7 +302,8 @@ class _EditUserPageState extends State<EditUserPage> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
+                    contentPadding:
+                        const EdgeInsetsDirectional.fromSTEB(16, 5, 0, 5),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {

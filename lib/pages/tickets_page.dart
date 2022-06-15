@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project/api/get_tiket.dart';
 import 'package:project/model/tiket.dart';
 import 'package:project/pages/detail_tiket.dart';
@@ -15,6 +16,7 @@ class TicketPage extends StatefulWidget {
 class _TicketPageState extends State<TicketPage> {
   int _index = 0;
   List<Tiket> _tikets = [];
+  bool _isLoading = true;
 
   Future<void> _sessionDetailTiket() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
@@ -33,9 +35,12 @@ class _TicketPageState extends State<TicketPage> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     idUser = pref.getString("id_user") ?? "";
     _tikets = await GetTiket.getTikets(idUser);
-    setState(() {
-      _tikets;
-    });
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+        _tikets;
+      });
+    }
   }
 
   @override
@@ -63,15 +68,11 @@ class _TicketPageState extends State<TicketPage> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
       body: _tikets.isEmpty
           ? Container(
-              decoration: BoxDecoration(
-                  // color: Color(
-                  //   int.parse(Warna.colorGrey),
-                  // ),
-                  ),
+              decoration: const BoxDecoration(),
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -81,9 +82,9 @@ class _TicketPageState extends State<TicketPage> {
                       "assets/images/ticket.png",
                       height: 60,
                       width: 60,
-                      color: Color(0xFF525252),
+                      color: const Color(0xFF525252),
                     ),
-                    Text(
+                    const Text(
                       "Tidak ada tiket",
                       style: TextStyle(
                         fontSize: 15,
@@ -95,188 +96,199 @@ class _TicketPageState extends State<TicketPage> {
                 ),
               ),
             )
-          : Container(
-              decoration: BoxDecoration(
-                  // color: Color(
-                  //   int.parse(Warna.colorGrey),
-                  // ),
+          : _isLoading
+              ? Center(
+                  child: SpinKitCircle(
+                    color: Color(int.parse(Warna.colorPrimary)),
+                    size: 60.0,
                   ),
-              child: ListView.builder(
-                  itemCount: _tikets.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: InkWell(
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 10,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  margin: const EdgeInsets.only(left: 10.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
+                )
+              : Container(
+                  decoration: const BoxDecoration(),
+                  child: ListView.builder(
+                      itemCount: _tikets.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: InkWell(
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              elevation: 10,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 10.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            'E-tiket',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF525252),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                          Column(
+                                            children: const [
+                                              Text(
+                                                'E-tiket',
+                                                style: TextStyle(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF525252),
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
-                                      ),
-                                      Divider(
-                                        height: 2,
-                                        thickness: 2,
-                                        color: Color(0xFF01797D),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 10.0),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              'Kode Tiket : ' +
-                                                  _tikets[index]
-                                                      .kodeTiket
-                                                      .toString(),
-                                              style: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF525252),
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 5.0),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              _tikets[index]
-                                                  .namaWisata
-                                                  .toString(),
-                                              style: const TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 5.0),
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              'Jumlah Tiket : ' +
-                                                  _tikets[index]
-                                                      .jumlahTiket
-                                                      .toString(),
-                                              style: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF525252),
-                                                fontSize: 15,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 30.0),
-                                              child: Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.date_range,
-                                                    size: 17,
-                                                    color: Color(0xFF525252),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 5.0),
-                                                    child: Text(
-                                                      _tikets[index]
-                                                          .tglTiket
-                                                          .toString(),
-                                                      style: const TextStyle(
-                                                          fontSize: 13),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 10.0),
-                                        child: Card(
-                                          color: Color.fromARGB(
-                                              255, 219, 228, 218),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
+                                          const Divider(
+                                            height: 2,
+                                            thickness: 2,
+                                            color: Color(0xFF01797D),
                                           ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(7.0),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 10.0),
                                             child: Column(
-                                              mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  _tikets[index]
-                                                      .status
-                                                      .toString(),
-                                                  style: TextStyle(
+                                                  'Kode Tiket : ' +
+                                                      _tikets[index]
+                                                          .kodeTiket
+                                                          .toString(),
+                                                  style: const TextStyle(
                                                     fontFamily: 'Poppins',
-                                                    color: Color.fromARGB(
-                                                        255, 1, 139, 10),
-                                                    fontSize: 13,
-                                                    fontStyle: FontStyle.italic,
+                                                    color: Color(0xFF525252),
+                                                    fontSize: 15,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                        ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 5.0),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  _tikets[index]
+                                                      .namaWisata
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 5.0),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  'Jumlah Tiket : ' +
+                                                      _tikets[index]
+                                                          .jumlahTiket
+                                                          .toString(),
+                                                  style: const TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF525252),
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 30.0),
+                                                  child: Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.date_range,
+                                                        size: 17,
+                                                        color:
+                                                            Color(0xFF525252),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                left: 5.0),
+                                                        child: Text(
+                                                          _tikets[index]
+                                                              .tglTiket
+                                                              .toString(),
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 13),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 10.0),
+                                            child: Card(
+                                              color: const Color.fromARGB(
+                                                  255, 219, 228, 218),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                              ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(7.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      _tikets[index]
+                                                          .status
+                                                          .toString(),
+                                                      style: const TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Color.fromARGB(
+                                                            255, 1, 139, 10),
+                                                        fontSize: 13,
+                                                        fontStyle:
+                                                            FontStyle.italic,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
+                            onTap: () {
+                              _index = index;
+                              _sessionDetailTiket();
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const DetailTiket();
+                                  },
+                                ),
+                              );
+                            },
                           ),
-                        ),
-                        onTap: () {
-                          _index = index;
-                          _sessionDetailTiket();
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return DetailTiket();
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                    );
-                  }),
-            ),
+                        );
+                      }),
+                ),
     );
   }
 }

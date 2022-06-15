@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:project/api/login.dart';
 import 'package:project/main.dart';
 import 'package:project/notification/alert.dart';
@@ -19,7 +19,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
-  final _alert = ShowAlert();
+  // final _alert = ShowAlert();
   String _idUser = "";
 
   final TextEditingController _emailController = TextEditingController();
@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFDADADA),
+      backgroundColor: const Color(0xFFDADADA),
       body: SingleChildScrollView(
         child: Container(
           child: Form(
@@ -66,7 +66,7 @@ class _LoginState extends State<Login> {
                 Container(
                   width: 440,
                   height: 400,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white, shape: BoxShape.rectangle),
                   child: Image.asset(
                     'assets/images/1.jpg',
@@ -78,11 +78,11 @@ class _LoginState extends State<Login> {
                 Container(
                   width: 40000,
                   height: 7,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFFDADADA),
                   ),
                 ),
-                Divider(
+                const Divider(
                   height: 2,
                   thickness: 3,
                   indent: 30,
@@ -90,9 +90,9 @@ class _LoginState extends State<Login> {
                   color: Color(0xFF00797C),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(30, 15, 30, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(30, 15, 30, 0),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFDADADA),
                     ),
                     child: Column(
@@ -100,14 +100,15 @@ class _LoginState extends State<Login> {
                       children: [
                         Row(
                           mainAxisSize: MainAxisSize.max,
-                          children: [
+                          children: const [
                             Text(
                               'Silahkan masuk untuk melanjutkan',
                             ),
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -121,13 +122,13 @@ class _LoginState extends State<Login> {
                                           Color(int.parse(Warna.colorPrimary)),
                                     ),
                                     hintText: 'example@gmail.com',
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: const UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0xFF00797C),
                                         width: 2,
                                       ),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: const UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0xFF00797C),
                                         width: 2,
@@ -136,7 +137,7 @@ class _LoginState extends State<Login> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             16, 5, 0, 5),
                                   ),
                                   validator: (value) {
@@ -152,7 +153,8 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -167,13 +169,13 @@ class _LoginState extends State<Login> {
                                           Color(int.parse(Warna.colorPrimary)),
                                     ),
                                     hintText: 'Masukan password',
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: const UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0xFF00797C),
                                         width: 2,
                                       ),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: const UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0xFF00797C),
                                         width: 2,
@@ -182,7 +184,7 @@ class _LoginState extends State<Login> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             16, 5, 0, 5),
                                   ),
                                   validator: (value) {
@@ -198,7 +200,8 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             mainAxisSize: MainAxisSize.max,
@@ -224,7 +227,8 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[

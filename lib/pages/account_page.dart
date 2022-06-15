@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project/api/get_user.dart';
-import 'package:project/notification/alert.dart';
+// import 'package:project/notification/alert.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/edit_user.dart';
 import 'package:project/pages/login_page.dart';
@@ -16,8 +17,9 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
   String? _namaUser, _tglLahir, _noHp, _email;
-  final _alert = ShowAlert();
+  // final _alert = ShowAlert();
   final _toast = ShowToast();
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -29,12 +31,15 @@ class _AccountPageState extends State<AccountPage> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String idUser = pref.getString("id_user") ?? "";
     GetUser.getUser(idUser).then((value) {
-      setState(() {
-        _namaUser = value.namaUser;
-        _tglLahir = value.tglLahir;
-        _noHp = value.noHp;
-        _email = value.email;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _namaUser = value.namaUser;
+          _tglLahir = value.tglLahir;
+          _noHp = value.noHp;
+          _email = value.email;
+        });
+      }
     });
   }
 
@@ -108,196 +113,211 @@ class _AccountPageState extends State<AccountPage> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Color(int.parse(Warna.colorWhite)),
-        ),
-        child: Container(
-          padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 5),
-          child: ListView(
-            children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Icon(Icons.account_circle,
-                      size: 140, color: Color(0xFF00797C)),
-                  TextButton(
-                    onPressed: () {
-                      _userSession();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const EditUserPage(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      "EDIT",
-                      style: TextStyle(color: Color(0xFF00797C)),
-                    ),
-                  ),
-                ],
+      body: _isLoading
+          ? Center(
+              child: SpinKitCircle(
+                color: Color(int.parse(Warna.colorPrimary)),
+                size: 60.0,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          // color: Color(0xFFDADADA),
-                          ),
-                      child: Text(
-                        'Nama',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF00797C)),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
-                    decoration: BoxDecoration(
-                        // color: Color(0xFFDADADA),
-                        ),
-                    child: Text(
-                      '$_namaUser',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    height: 2,
-                    thickness: 2,
-                    color: Color(0xFF01797D),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          // color: Color(0xFFDADADA),
-                          ),
-                      child: Text(
-                        'Email',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF00797C),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
-                    decoration: BoxDecoration(
-                        // color: Color(0xFFDADADA),
-                        ),
-                    child: Text(
-                      '$_email',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    height: 2,
-                    thickness: 2,
-                    color: Color(0xFF01797D),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          // color: Color(0xFFDADADA),
-                          ),
-                      child: Text(
-                        'Tanggal Lahir',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF00797C),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
-                    decoration: BoxDecoration(
-                        // color: Color(0xFFDADADA),
-                        ),
-                    child: Text(
-                      '$_tglLahir',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    height: 2,
-                    thickness: 2,
-                    color: Color(0xFF01797D),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          // color: Color(0xFFDADADA),
-                          ),
-                      child: Text(
-                        'Nomor Handphone',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF00797C),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
-                    decoration: BoxDecoration(
-                        // color: Color(0xFFDADADA),
-                        ),
-                    child: Text(
-                      '$_noHp',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    height: 2,
-                    thickness: 2,
-                    color: Color(0xFF01797D),
-                  ),
-                ],
+            )
+          : Container(
+              decoration: BoxDecoration(
+                color: Color(int.parse(Warna.colorWhite)),
               ),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    _showDialog();
-                  },
-                  child: const Text(
-                    "Keluar",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromARGB(255, 1, 121, 125),
+              child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(30, 20, 30, 5),
+                child: ListView(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        const Icon(Icons.account_circle,
+                            size: 140, color: Color(0xFF00797C)),
+                        TextButton(
+                          onPressed: () {
+                            _userSession();
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const EditUserPage(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "EDIT",
+                            style: TextStyle(color: Color(0xFF00797C)),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0, 25, 0, 10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                // color: Color(0xFFDADADA),
+                                ),
+                            child: const Text(
+                              'Nama',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF00797C)),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
+                          decoration: const BoxDecoration(
+                              // color: Color(0xFFDADADA),
+                              ),
+                          child: Text(
+                            '$_namaUser',
+                            style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          height: 2,
+                          thickness: 2,
+                          color: Color(0xFF01797D),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0, 15, 0, 10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                // color: Color(0xFFDADADA),
+                                ),
+                            child: const Text(
+                              'Email',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF00797C),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
+                          decoration: const BoxDecoration(
+                              // color: Color(0xFFDADADA),
+                              ),
+                          child: Text(
+                            '$_email',
+                            style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          height: 2,
+                          thickness: 2,
+                          color: Color(0xFF01797D),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0, 15, 0, 10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                // color: Color(0xFFDADADA),
+                                ),
+                            child: const Text(
+                              'Tanggal Lahir',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF00797C),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
+                          decoration: const BoxDecoration(
+                              // color: Color(0xFFDADADA),
+                              ),
+                          child: Text(
+                            '$_tglLahir',
+                            style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          height: 2,
+                          thickness: 2,
+                          color: Color(0xFF01797D),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0, 15, 0, 10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                // color: Color(0xFFDADADA),
+                                ),
+                            child: const Text(
+                              'Nomor Handphone',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF00797C),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 5),
+                          decoration: const BoxDecoration(
+                              // color: Color(0xFFDADADA),
+                              ),
+                          child: Text(
+                            '$_noHp',
+                            style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          height: 2,
+                          thickness: 2,
+                          color: Color(0xFF01797D),
+                        ),
+                      ],
+                    ),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _showDialog();
+                        },
+                        child: const Text(
+                          "Keluar",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromARGB(255, 1, 121, 125),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
+              ),
+            ),
     );
   }
 }

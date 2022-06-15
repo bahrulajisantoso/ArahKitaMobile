@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:project/api/global.dart';
-import 'package:project/model/register_response.dart';
+// import 'package:project/model/register_response.dart';
 import 'package:project/model/update_user_respones.dart';
 
 class UpdateUser {

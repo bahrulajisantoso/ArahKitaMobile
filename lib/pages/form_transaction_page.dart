@@ -158,7 +158,7 @@ class _FormTransactionState extends State<FormTransaction> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -172,9 +172,9 @@ class _FormTransactionState extends State<FormTransaction> {
               children: <Widget>[
                 //data wisata
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                   child: Container(
-                    child: Text(
+                    child: const Text(
                       'Detail Wisata',
                       style: TextStyle(
                         fontFamily: 'Poppins',
@@ -186,10 +186,11 @@ class _FormTransactionState extends State<FormTransaction> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
                     // padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 20),
-                    padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       color: Colors.white,
@@ -217,16 +218,17 @@ class _FormTransactionState extends State<FormTransaction> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 6, 0, 0),
                             child: Container(
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
                                     "$_namaWisata",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -234,7 +236,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                   ),
                                   Text(
                                     "$_kategori",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       color: Color(0xFF525252),
                                       fontSize: 15,
@@ -243,7 +245,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                   ),
                                   Text(
                                     "$_lokasi",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       color: Color(0xFF525252),
                                       fontSize: 15,
@@ -262,9 +264,9 @@ class _FormTransactionState extends State<FormTransaction> {
 
                 //detail pemesan tiket
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(30, 20, 30, 0),
                   child: Container(
-                    child: Text(
+                    child: const Text(
                       'Detail Pemesan Tiket',
                       style: TextStyle(
                         fontFamily: 'Poppins',
@@ -277,7 +279,8 @@ class _FormTransactionState extends State<FormTransaction> {
                 ),
                 Container(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       color: Colors.white,
@@ -289,21 +292,22 @@ class _FormTransactionState extends State<FormTransaction> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(20.0),
+                            padding: const EdgeInsets.all(20.0),
                             child: Container(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 2, 0, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 2, 0, 0),
                                     child: Container(
                                       width: 300,
                                       height: 20,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Colors.white,
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         'Nama',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -318,13 +322,13 @@ class _FormTransactionState extends State<FormTransaction> {
                                   Container(
                                     width: 300,
                                     height: 25,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
                                     child: Text(
                                       '$_namaUser',
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: 'Poppins',
                                         color: Colors.black,
                                         fontSize: 15,
@@ -333,15 +337,16 @@ class _FormTransactionState extends State<FormTransaction> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 2, 0, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 2, 0, 0),
                                     child: Container(
                                       width: 300,
                                       height: 20,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Colors.white,
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         'Email',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -356,13 +361,13 @@ class _FormTransactionState extends State<FormTransaction> {
                                   Container(
                                     width: 300,
                                     height: 25,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
                                     child: Text(
                                       '$_email',
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: 'Poppins',
                                         color: Colors.black,
                                         fontSize: 15,
@@ -371,15 +376,16 @@ class _FormTransactionState extends State<FormTransaction> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 2, 0, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 2, 0, 0),
                                     child: Container(
                                       width: 300,
                                       height: 20,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Colors.white,
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         'Nomor Handphone',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -394,13 +400,13 @@ class _FormTransactionState extends State<FormTransaction> {
                                   Container(
                                     width: 300,
                                     height: 25,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
                                     child: Text(
                                       '$_noHp',
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: 'Poppins',
                                         color: Colors.black,
                                         fontSize: 14,
@@ -420,9 +426,9 @@ class _FormTransactionState extends State<FormTransaction> {
 
                 //tanggal tiket
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 10),
+                  padding: const EdgeInsetsDirectional.fromSTEB(30, 20, 20, 10),
                   child: Container(
-                    child: Text(
+                    child: const Text(
                       'Tanggal Tiket',
                       style: TextStyle(
                         fontFamily: 'Poppins',
@@ -436,7 +442,7 @@ class _FormTransactionState extends State<FormTransaction> {
                 Container(
                   height: 60,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       color: Colors.white,
@@ -448,10 +454,10 @@ class _FormTransactionState extends State<FormTransaction> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20, 0, 20, 0),
                             child: IconButton(
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.date_range,
                                 color: Color(0xFF01797D),
                               ),
@@ -463,15 +469,15 @@ class _FormTransactionState extends State<FormTransaction> {
                           Container(
                             width: 150,
                             height: 20,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                             ),
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 0),
                               child: Text(
                                 _tglTiket,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Poppins',
                                   color: Colors.black,
                                   fontSize: 15,
@@ -488,9 +494,9 @@ class _FormTransactionState extends State<FormTransaction> {
 
                 //detail tiket
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
                   child: Container(
-                    child: Text(
+                    child: const Text(
                       'Detail Tiket',
                       style: TextStyle(
                         fontFamily: 'Poppins',
@@ -502,15 +508,16 @@ class _FormTransactionState extends State<FormTransaction> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                   child: Container(
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 5, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(20, 5, 0, 0),
                           child: Container(
-                            child: Text(
+                            child: const Text(
                               'Jumlah Tiket',
                               style: TextStyle(
                                 fontFamily: 'Poppins',
@@ -521,7 +528,8 @@ class _FormTransactionState extends State<FormTransaction> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(120, 0, 0, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              120, 0, 0, 0),
                           child: Container(
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -566,9 +574,9 @@ class _FormTransactionState extends State<FormTransaction> {
 
                 //detail harga
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(30, 10, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(30, 10, 20, 0),
                   child: Container(
-                    child: Text(
+                    child: const Text(
                       'Detail Harga',
                       style: TextStyle(
                         fontFamily: 'Poppins',
@@ -582,7 +590,8 @@ class _FormTransactionState extends State<FormTransaction> {
                 Container(
                   width: 400,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(30, 10, 30, 0),
                     child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       color: Colors.white,
@@ -593,11 +602,11 @@ class _FormTransactionState extends State<FormTransaction> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20, 10, 0, 0),
                             child: Container(
                               height: 30,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                               ),
                               child: Row(
@@ -606,7 +615,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                   Container(
                                     width: 150,
                                     height: 100,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
                                     child: Text(
@@ -616,7 +625,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                       ' '
                                       '$_jumlahTiket',
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15,
                                         fontWeight: FontWeight.normal,
@@ -626,13 +635,13 @@ class _FormTransactionState extends State<FormTransaction> {
                                   Container(
                                     width: 150,
                                     height: 100,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
                                     child: Text(
                                       'Rp.' '$_hargaTiket' ',-',
                                       textAlign: TextAlign.right,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: 'Poppins',
                                         color: Colors.black,
                                         fontSize: 15,
@@ -644,17 +653,17 @@ class _FormTransactionState extends State<FormTransaction> {
                               ),
                             ),
                           ),
-                          Divider(
+                          const Divider(
                             height: 2,
                             thickness: 2,
                             color: Color(0xFFDADADA),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20, 10, 0, 0),
                             child: Container(
                               height: 30,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                               ),
                               child: Row(
@@ -663,10 +672,10 @@ class _FormTransactionState extends State<FormTransaction> {
                                   Container(
                                     width: 100,
                                     height: 100,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       'Total Harga',
                                       textAlign: TextAlign.left,
                                     ),
@@ -674,13 +683,13 @@ class _FormTransactionState extends State<FormTransaction> {
                                   Container(
                                     width: 200,
                                     height: 100,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
                                     child: Text(
                                       'Rp.' '$_totalHarga' ',-',
                                       textAlign: TextAlign.right,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15,
                                         color: Color(0xFF01797D),

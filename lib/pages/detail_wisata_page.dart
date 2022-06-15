@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project/api/global.dart';
 import 'package:project/pages/form_transaction_page.dart';
 import 'package:project/theme/color.dart';
@@ -66,7 +67,7 @@ class _DetailWisataState extends State<DetailWisata> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -93,6 +94,19 @@ class _DetailWisataState extends State<DetailWisata> {
                                 width: 500,
                                 height: 200,
                                 fit: BoxFit.cover,
+                                loadingBuilder: (BuildContext context, child,
+                                    loadingProgress) {
+                                  if (loadingProgress == null) {
+                                    return child;
+                                  }
+                                  return Center(
+                                    child: SpinKitCircle(
+                                      color:
+                                          Color(int.parse(Warna.colorPrimary)),
+                                      size: 60.0,
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -104,6 +118,17 @@ class _DetailWisataState extends State<DetailWisata> {
                                 width: 500,
                                 height: 200,
                                 fit: BoxFit.cover,
+                                loadingBuilder: (BuildContext context, child,
+                                    loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return Center(
+                                    child: SpinKitCircle(
+                                      color:
+                                          Color(int.parse(Warna.colorPrimary)),
+                                      size: 60.0,
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -115,6 +140,17 @@ class _DetailWisataState extends State<DetailWisata> {
                                 width: 500,
                                 height: 200,
                                 fit: BoxFit.cover,
+                                loadingBuilder: (BuildContext context, child,
+                                    loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return Center(
+                                    child: SpinKitCircle(
+                                      color:
+                                          Color(int.parse(Warna.colorPrimary)),
+                                      size: 60.0,
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -128,7 +164,8 @@ class _DetailWisataState extends State<DetailWisata> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 5),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.max,
@@ -137,7 +174,7 @@ class _DetailWisataState extends State<DetailWisata> {
                             child: Text(
                               _namaWisata.toString(),
                               textAlign: TextAlign.left,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: 'Poppins',
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -148,7 +185,8 @@ class _DetailWisataState extends State<DetailWisata> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 5),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.max,
@@ -157,9 +195,9 @@ class _DetailWisataState extends State<DetailWisata> {
                             child: Text(
                               _kategori.toString(),
                               textAlign: TextAlign.left,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: 'Poppins',
-                                color: Color(0xFF525252),
+                                color: const Color(0xFF525252),
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -169,23 +207,24 @@ class _DetailWisataState extends State<DetailWisata> {
                             child: Text(
                               _lokasi.toString(),
                               textAlign: TextAlign.left,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: 'Poppins',
-                                color: Color(0xFF525252),
+                                color: const Color(0xFF525252),
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 5, 0, 0),
                             child: Container(
                               child: Text(
                                 'Rp.' + _hargaTiket.toString() + ',-',
                                 textAlign: TextAlign.left,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF525252),
+                                  color: const Color(0xFF525252),
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -193,8 +232,8 @@ class _DetailWisataState extends State<DetailWisata> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 10, 0, 0),
                             child: Container(),
                           ),
 
@@ -233,13 +272,13 @@ class _DetailWisataState extends State<DetailWisata> {
 
                           //tentang wisata
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 20, 0, 0),
                             child: Container(
                               child: Text(
                                 'Tentang' ' ' + _namaWisata.toString(),
                                 textAlign: TextAlign.left,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -248,14 +287,15 @@ class _DetailWisataState extends State<DetailWisata> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 5, 0, 0),
                             child: Container(
                               child: Text(
                                 _deskripsi.toString(),
                                 textAlign: TextAlign.left,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF525252),
+                                  color: const Color(0xFF525252),
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
                                 ),

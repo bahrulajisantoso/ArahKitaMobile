@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project/api/get_wisata.dart';
 import 'package:project/api/global.dart';
 import 'package:project/model/wisata.dart';
@@ -19,11 +20,15 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
   List<Wisata> _wisatas = [];
   final _imgBaseUrl = Url.imageBaseUrl;
+  bool _isLoading = true;
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
     if (mounted) {
-      setState(() {});
+      setState(() {
+        _wisatas;
+        _isLoading = false;
+      });
     }
   }
 
@@ -87,160 +92,187 @@ class _HomePageState extends State<HomePage> {
               color: Color(int.parse(Warna.colorPrimary)),
               height: 2.0,
             ),
-            preferredSize: Size.fromHeight(2.0)),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-              // color: Color(int.parse(Warna.colorGrey)),
-
+      body: _isLoading
+          ? Center(
+              child: SpinKitCircle(
+                color: Color(int.parse(Warna.colorPrimary)),
+                size: 60.0,
               ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
+            )
+          : SingleChildScrollView(
+              child: Container(
+                decoration: const BoxDecoration(
+                    // color: Color(int.parse(Warna.colorGrey)),
+                    ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: <Widget>[
-                      CarouselSlider(
-                        items: [
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(
-                                  "assets/images/selamatdatang.jpg"),
-                            ),
-                          ),
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset("assets/images/slide2.png"),
-                            ),
-                          ),
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset("assets/images/slide3.png"),
-                            ),
-                          ),
-                        ],
-                        options: CarouselOptions(
-                          autoPlay: true,
-                          enlargeCenterPage: true,
-                          viewportFraction: 1.0,
-                          // aspectRatio: 2.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
-                  ),
-                  itemCount: _wisatas.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        elevation: 5,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(0.0),
-                              child: Container(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.network(
-                                    "$_imgBaseUrl/${_wisatas[index].gambar1}",
-                                    width: 200,
-                                    height: 100,
-                                    fit: BoxFit.cover,
+                            CarouselSlider(
+                              items: [
+                                Container(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.asset(
+                                        "assets/images/selamatdatang.jpg"),
                                   ),
                                 ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 5, 20, 0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    _wisatas[index].namaWisata.toString(),
-                                    style: const TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Poppins'),
+                                Container(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child:
+                                        Image.asset("assets/images/slide2.png"),
                                   ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    _wisatas[index].kategori.toString(),
-                                    style: const TextStyle(
-                                        color: Color(0xFF525252),
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600),
+                                ),
+                                Container(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child:
+                                        Image.asset("assets/images/slide3.png"),
                                   ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'Rp.' +
-                                        _wisatas[index].hargaTiket.toString() +
-                                        ',-',
-                                    style: const TextStyle(
-                                        fontSize: 15,
-                                        color: Color(0xFF525252),
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ],
+                                ),
+                              ],
+                              options: CarouselOptions(
+                                autoPlay: true,
+                                enlargeCenterPage: true,
+                                viewportFraction: 1.0,
+                                // aspectRatio: 2.0,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      onTap: () {
-                        sessionDetailWisata();
-                        _index = index;
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return DetailWisata(
-                                gambar1: _wisatas[index].gambar1,
-                                gambar2: _wisatas[index].gambar2,
-                                gambar3: _wisatas[index].gambar3,
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 15,
+                          mainAxisSpacing: 15,
+                        ),
+                        itemCount: _wisatas.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              elevation: 5,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(0.0),
+                                    child: Container(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          "$_imgBaseUrl/${_wisatas[index].gambar1}",
+                                          width: 200,
+                                          height: 100,
+                                          fit: BoxFit.cover,
+                                          loadingBuilder: (BuildContext context,
+                                              child, loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            }
+                                            return Center(
+                                              child: SpinKitCircle(
+                                                color: Color(int.parse(
+                                                    Warna.colorPrimary)),
+                                                size: 60.0,
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            20, 5, 20, 0),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          _wisatas[index].namaWisata.toString(),
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Poppins'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 20, 0),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          _wisatas[index].kategori.toString(),
+                                          style: const TextStyle(
+                                              color: Color(0xFF525252),
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            20, 10, 20, 0),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Rp.' +
+                                              _wisatas[index]
+                                                  .hargaTiket
+                                                  .toString() +
+                                              ',-',
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              color: Color(0xFF525252),
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              sessionDetailWisata();
+                              _index = index;
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return DetailWisata(
+                                      gambar1: _wisatas[index].gambar1,
+                                      gambar2: _wisatas[index].gambar2,
+                                      gambar3: _wisatas[index].gambar3,
+                                    );
+                                  },
+                                ),
                               );
                             },
-                          ),
-                        );
-                      },
-                    );
-                  },
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
