@@ -6,6 +6,7 @@ import 'package:project/api/global.dart';
 import 'package:project/model/wisata.dart';
 import 'package:project/pages/detail_wisata_page.dart';
 import 'package:project/pages/login_page.dart';
+import 'package:project/pages/search.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,6 +22,8 @@ class _HomePageState extends State<HomePage> {
   List<Wisata> _wisatas = [];
   final _imgBaseUrl = Url.imageBaseUrl;
   bool _isLoading = true;
+  bool _isSearch = false;
+  final _searchController = TextEditingController();
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
@@ -77,22 +80,73 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(int.parse(Warna.colorGrey)),
-        title: const Text("Dashboard"),
-        titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-          color: Color(int.parse(Warna.colorPrimary)),
-        ),
-        actions: [],
+        backgroundColor: Colors.white,
+        title: !_isSearch
+            ? Text(
+                "Dashboard",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Color(int.parse(Warna.colorPrimary)),
+                ),
+              )
+            : TextField(
+                autofocus: true,
+                controller: _searchController,
+                cursorColor: Color(int.parse(Warna.colorPrimary)),
+                style: const TextStyle(
+                  fontSize: 20,
+                  // color: Color(int.parse(Warna.colorPrimary)),
+                ),
+                decoration: const InputDecoration(
+                  hintStyle: TextStyle(fontSize: 20),
+                  hintText: "Cari wisata",
+                  border: InputBorder.none,
+                ),
+                onSubmitted: (value) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return Search(
+                        keyword: _searchController.text,
+                      );
+                    }),
+                  );
+                },
+              ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                _isSearch = !_isSearch;
+                _isSearch
+                    ? _searchController.clear()
+                    : _searchController.text = "";
+              });
+            },
+            icon: !_isSearch
+                ? Icon(
+                    Icons.search,
+                    color: Color(
+                      int.parse(Warna.colorPrimary),
+                    ),
+                  )
+                : Icon(
+                    Icons.close,
+                    color: Color(
+                      int.parse(Warna.colorPrimary),
+                    ),
+                  ),
+          ),
+        ],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
-            child: Container(
-              color: Color(int.parse(Warna.colorPrimary)),
-              height: 2.0,
-            ),
-            preferredSize: const Size.fromHeight(2.0)),
+          child: Container(
+            color: Color(int.parse(Warna.colorPrimary)),
+            height: 2.0,
+          ),
+          preferredSize: const Size.fromHeight(2.0),
+        ),
       ),
       body: _isLoading
           ? Center(

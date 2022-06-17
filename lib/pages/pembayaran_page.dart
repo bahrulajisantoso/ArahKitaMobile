@@ -38,7 +38,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
     final link = WhatsAppUnilink(
       phoneNumber: '+6285755292978',
       text:
-          "Saya ingin mengkonfirmasi pembayaran tiket dengan \nkode booking  = $_kodeTransaksi  \nBukti Pembayaran : ",
+          "Saya ingin mengkonfirmasi pembayaran tiket dengan kode booking  = $_kodeTransaksi  \nBukti Pembayaran : ",
     );
     await launch('$link');
   }
