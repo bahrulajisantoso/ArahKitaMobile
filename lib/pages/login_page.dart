@@ -263,10 +263,11 @@ class _LoginState extends State<Login> {
                                     ),
                                   );
                                 },
-                                child: const Text(
+                                child: Text(
                                   "Register",
                                   style: TextStyle(
-                                      color: Color.fromARGB(255, 0, 10, 255)),
+                                      color:
+                                          Color(int.parse(Warna.colorPrimary))),
                                 ),
                               ),
                             ],

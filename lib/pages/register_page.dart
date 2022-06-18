@@ -438,10 +438,11 @@ class _RegisterState extends State<Register> {
                               ),
                             );
                           },
-                          child: const Text(
+                          child: Text(
                             "Login",
                             style: TextStyle(
-                                color: Color.fromARGB(255, 0, 10, 255)),
+                              color: Color(int.parse(Warna.colorPrimary)),
+                            ),
                           ),
                         ),
                       ],
