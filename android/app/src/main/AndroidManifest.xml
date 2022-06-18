@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.arah_kita">
+    package="com.app.arah_kita"> 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+   
    <application
         android:label="Arah Kita"
         android:name="${applicationName}"
