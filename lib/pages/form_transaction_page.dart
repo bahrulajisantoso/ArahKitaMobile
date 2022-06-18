@@ -8,6 +8,7 @@ import 'package:project/api/global.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/pembayaran_page.dart';
 import 'package:project/theme/color.dart';
+import 'package:project/theme/loading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FormTransaction extends StatefulWidget {
@@ -157,7 +158,7 @@ class _FormTransactionState extends State<FormTransaction> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),
@@ -166,12 +167,7 @@ class _FormTransactionState extends State<FormTransaction> {
             preferredSize: const Size.fromHeight(2.0)),
       ),
       body: _isLoading
-          ? Center(
-              child: SpinKitCircle(
-                color: Color(int.parse(Warna.colorPrimary)),
-                size: 60.0,
-              ),
-            )
+          ? const Loading()
           : SingleChildScrollView(
               child: Container(
                 decoration: BoxDecoration(

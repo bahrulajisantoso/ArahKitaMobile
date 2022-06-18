@@ -85,7 +85,7 @@ class _RegisterState extends State<Register> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),
@@ -150,8 +150,8 @@ class _RegisterState extends State<Register> {
                       controller: _emailController,
                       decoration: InputDecoration(
                         hintText: "Masukan email anda",
-                        prefixIcon: const Icon(Icons.email_outlined,
-                            color: Color(0xFF00797C)),
+                        prefixIcon:
+                            const Icon(Icons.email, color: Color(0xFF00797C)),
                         labelText: "Email",
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),

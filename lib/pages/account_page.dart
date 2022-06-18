@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project/api/get_user.dart';
-// import 'package:project/notification/alert.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/edit_user.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/theme/color.dart';
+import 'package:project/theme/loading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountPage extends StatefulWidget {
@@ -107,7 +107,7 @@ class _AccountPageState extends State<AccountPage> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),
@@ -116,24 +116,25 @@ class _AccountPageState extends State<AccountPage> {
             preferredSize: const Size.fromHeight(2.0)),
       ),
       body: _isLoading
-          ? Center(
-              child: SpinKitCircle(
-                color: Color(int.parse(Warna.colorPrimary)),
-                size: 60.0,
-              ),
-            )
+          ? const Loading()
           : Container(
               decoration: BoxDecoration(
-                color: Color(int.parse(Warna.colorWhite)),
+                color: Color(int.parse(Warna.colorGrey)),
               ),
               child: Container(
-                padding: const EdgeInsetsDirectional.all(30),
+                padding: const EdgeInsetsDirectional.all(40),
                 child: ListView(
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        const Icon(Icons.account_circle,
-                            size: 140, color: Color(0xFF00797C)),
+                        // const Icon(Icons.account_circle,
+                        //     size: 140, color: Color(0xFF00797C)),
+                        Image.asset(
+                          "assets/images/user.png",
+                          height: 100,
+                          width: 100,
+                          color: Color(int.parse(Warna.colorPrimary)),
+                        ),
                         TextButton(
                           onPressed: () {
                             _userSession();
@@ -144,7 +145,7 @@ class _AccountPageState extends State<AccountPage> {
                             );
                           },
                           child: const Text(
-                            "Ubah Profile",
+                            "Edit Profil",
                             style: TextStyle(
                                 color: Color(0xFF00797C),
                                 fontWeight: FontWeight.bold),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:project/api/login.dart';
 import 'package:project/main.dart';
-// import 'package:project/notification/alert.dart';
 import 'package:project/pages/register_page.dart';
 import 'dart:async';
 import 'package:project/Notification/toast.dart';
@@ -21,6 +19,7 @@ class _LoginState extends State<Login> {
   final _toast = ShowToast();
   // final _alert = ShowAlert();
   String _idUser = "";
+  String _namaUser = "";
   bool _visiblePass = true;
 
   final TextEditingController _emailController = TextEditingController();
@@ -31,7 +30,8 @@ class _LoginState extends State<Login> {
         .then((value) {
       if (value.kode == 200) {
         _idUser = value.id.toString();
-        sessionLogin();
+        _namaUser = value.nama.toString();
+        _sessionLogin();
         _toast.showToast(value.pesan);
         Navigator.pushReplacement(
           context,
@@ -45,10 +45,11 @@ class _LoginState extends State<Login> {
     });
   }
 
-  Future sessionLogin() async {
+  Future _sessionLogin() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
       pref.setString("id_user", _idUser);
+      pref.setString("nama_user", _namaUser);
       pref.setBool("is_login", true);
     });
   }

@@ -61,7 +61,7 @@ class _DetailWisataState extends State<DetailWisata> {
           color: Color(int.parse(Warna.colorPrimary)),
         ),
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),

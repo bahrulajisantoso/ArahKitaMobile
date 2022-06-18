@@ -6,6 +6,7 @@ import 'package:project/model/wisata.dart';
 import 'package:project/pages/detail_wisata_page.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/theme/color.dart';
+import 'package:project/theme/loading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Search extends StatefulWidget {
@@ -101,7 +102,7 @@ class _SearchState extends State<Search> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),
@@ -110,148 +111,153 @@ class _SearchState extends State<Search> {
             preferredSize: const Size.fromHeight(2.0)),
       ),
       body: _isLoading
-          ? Center(
-              child: SpinKitCircle(
-                color: Color(int.parse(Warna.colorPrimary)),
-                size: 60.0,
-              ),
-            )
+          ? const Loading()
           : !_cekData
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      Text(
-                        "Oops,",
-                        style: TextStyle(
-                          fontSize: 25,
+              ? Container(
+                  decoration: BoxDecoration(
+                    color: Color(int.parse(Warna.colorGrey)),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Text(
+                          "Oops,",
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Wisata tidak ditemukan",
-                        style: TextStyle(
-                          fontSize: 20,
+                        Text(
+                          "Wisata tidak ditemukan",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 )
-              : Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15,
-                    ),
-                    itemCount: _wisatas.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(0.0),
-                                child: Container(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
-                                      "$_imgBaseUrl/${_wisatas[index].gambar1}",
-                                      width: 200,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                      loadingBuilder: (BuildContext context,
-                                          child, loadingProgress) {
-                                        if (loadingProgress == null) {
-                                          return child;
-                                        }
-                                        return Center(
-                                          child: SpinKitCircle(
-                                            color: Color(
-                                                int.parse(Warna.colorPrimary)),
-                                            size: 60.0,
-                                          ),
-                                        );
-                                      },
+              : Container(
+                  decoration: BoxDecoration(
+                    color: Color(int.parse(Warna.colorGrey)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                      ),
+                      itemCount: _wisatas.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            elevation: 5,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Container(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        "$_imgBaseUrl/${_wisatas[index].gambar1}",
+                                        width: 200,
+                                        height: 100,
+                                        fit: BoxFit.cover,
+                                        loadingBuilder: (BuildContext context,
+                                            child, loadingProgress) {
+                                          if (loadingProgress == null) {
+                                            return child;
+                                          }
+                                          return Center(
+                                            child: SpinKitCircle(
+                                              color: Color(int.parse(
+                                                  Warna.colorPrimary)),
+                                              size: 60.0,
+                                            ),
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20, 5, 20, 0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      _wisatas[index].namaWisata.toString(),
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Poppins'),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20, 5, 20, 0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        _wisatas[index].namaWisata.toString(),
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Poppins'),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20, 0, 20, 0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      _wisatas[index].kategori.toString(),
-                                      style: const TextStyle(
-                                          color: Color(0xFF525252),
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        _wisatas[index].kategori.toString(),
+                                        style: const TextStyle(
+                                            color: Color(0xFF525252),
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20, 10, 20, 0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'Rp.' +
-                                          _wisatas[index]
-                                              .hargaTiket
-                                              .toString() +
-                                          ',-',
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          color: Color(0xFF525252),
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20, 10, 20, 0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        'Rp.' +
+                                            _wisatas[index]
+                                                .hargaTiket
+                                                .toString() +
+                                            ',-',
+                                        style: const TextStyle(
+                                            fontSize: 15,
+                                            color: Color(0xFF525252),
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        onTap: () {
-                          sessionDetailWisata();
-                          _index = index;
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return DetailWisata(
-                                  gambar1: _wisatas[index].gambar1,
-                                  gambar2: _wisatas[index].gambar2,
-                                  gambar3: _wisatas[index].gambar3,
-                                );
-                              },
+                              ],
                             ),
-                          );
-                        },
-                      );
-                    },
+                          ),
+                          onTap: () {
+                            sessionDetailWisata();
+                            _index = index;
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return DetailWisata(
+                                    gambar1: _wisatas[index].gambar1,
+                                    gambar2: _wisatas[index].gambar2,
+                                    gambar3: _wisatas[index].gambar3,
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
     );

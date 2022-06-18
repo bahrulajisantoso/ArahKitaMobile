@@ -8,6 +8,7 @@ import 'package:project/pages/detail_wisata_page.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/pages/search.dart';
 import 'package:project/theme/color.dart';
+import 'package:project/theme/loading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   bool _isLoading = true;
   bool _isSearch = false;
   final _searchController = TextEditingController();
+  String? _namaUser;
 
   _getData() async {
     _wisatas = await GetWisata.getWisatas();
@@ -69,18 +71,27 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  _getNamaUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      _namaUser = pref.getString("nama_user").toString();
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _cekLogin();
     _getData();
+    _getNamaUser();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
         title: !_isSearch
             ? Text(
                 "Dashboard",
@@ -149,60 +160,82 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: _isLoading
-          ? Center(
-              child: SpinKitCircle(
-                color: Color(int.parse(Warna.colorPrimary)),
-                size: 60.0,
-              ),
-            )
+          ? const Loading()
           : SingleChildScrollView(
               child: Container(
-                decoration: const BoxDecoration(
-                    // color: Color(int.parse(Warna.colorGrey)),
+                decoration: BoxDecoration(
+                  color: Color(int.parse(Warna.colorGrey)),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Halo $_namaUser, mau kemana hari ini ?",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color(int.parse(Warna.colorPrimary)),
+                            )),
+                      ),
                     ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20.0),
-                        child: Column(
-                          children: <Widget>[
-                            CarouselSlider(
-                              items: [
-                                Container(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.asset(
-                                        "assets/images/selamatdatang.jpg"),
-                                  ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                      child: Column(
+                        children: <Widget>[
+                          CarouselSlider(
+                            items: [
+                              Container(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                      "assets/images/selamatdatang.jpg"),
                                 ),
-                                Container(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:
-                                        Image.asset("assets/images/slide2.png"),
-                                  ),
-                                ),
-                                Container(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:
-                                        Image.asset("assets/images/slide3.png"),
-                                  ),
-                                ),
-                              ],
-                              options: CarouselOptions(
-                                autoPlay: true,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1.0,
-                                // aspectRatio: 2.0,
                               ),
+                              Container(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child:
+                                      Image.asset("assets/images/slide2.png"),
+                                ),
+                              ),
+                              Container(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child:
+                                      Image.asset("assets/images/slide3.png"),
+                                ),
+                              ),
+                            ],
+                            options: CarouselOptions(
+                              autoPlay: true,
+                              enlargeCenterPage: true,
+                              viewportFraction: 1.0,
+                              // aspectRatio: 2.0,
                             ),
-                          ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(2, 5, 0, 10),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Rekomendasi Wisata",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(int.parse(Warna.colorPrimary)),
+                          ),
                         ),
                       ),
-                      GridView.builder(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
@@ -322,8 +355,8 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

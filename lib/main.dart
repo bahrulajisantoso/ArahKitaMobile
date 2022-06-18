@@ -45,7 +45,7 @@ class _MainState extends State<Main> {
       bottomNavigationBar: CurvedNavigationBar(
         height: 55.0,
         color: Color(int.parse(Warna.colorPrimary)),
-        backgroundColor: Color(int.parse(Warna.colorWhite)),
+        backgroundColor: Color(int.parse(Warna.colorGrey)),
         items: <Widget>[
           Icon(Icons.home, size: 30, color: Color(int.parse(Warna.colorWhite))),
           Icon(Icons.airplane_ticket,

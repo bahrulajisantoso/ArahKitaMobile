@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/update_user.dart';
 import 'package:project/notification/alert.dart';
-// import 'package:project/notification/toast.dart';
 import 'package:project/pages/login_page.dart';
 import 'package:project/theme/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -94,7 +93,7 @@ class _EditUserPageState extends State<EditUserPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Konfirmasi"),
-          content: const Text("Apakah anda yakin ingin mengubah profil?"),
+          content: const Text("Apakah anda yakin ingin mengedit profil?"),
           actions: <Widget>[
             TextButton(
               child: const Text("Tidak"),
@@ -138,7 +137,7 @@ class _EditUserPageState extends State<EditUserPage> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),
@@ -195,8 +194,8 @@ class _EditUserPageState extends State<EditUserPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     hintText: "Email",
-                    prefixIcon: const Icon(Icons.email_outlined,
-                        color: Color(0xFF00797C)),
+                    prefixIcon:
+                        const Icon(Icons.email, color: Color(0xFF00797C)),
                     labelText: "Masukkan Email Anda",
                     labelStyle: TextStyle(
                       color: Color(int.parse(Warna.colorPrimary)),
@@ -315,10 +314,10 @@ class _EditUserPageState extends State<EditUserPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
                   child: const Text(
-                    "Ubah Profil",
+                    "Edit Profil",
                     style: TextStyle(color: Colors.white),
                   ),
                   style: ButtonStyle(

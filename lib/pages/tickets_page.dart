@@ -4,6 +4,7 @@ import 'package:project/api/get_tiket.dart';
 import 'package:project/model/tiket.dart';
 import 'package:project/pages/detail_tiket.dart';
 import 'package:project/theme/color.dart';
+import 'package:project/theme/loading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TicketPage extends StatefulWidget {
@@ -62,7 +63,7 @@ class _TicketPageState extends State<TicketPage> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),
@@ -72,7 +73,9 @@ class _TicketPageState extends State<TicketPage> {
       ),
       body: _tikets.isEmpty
           ? Container(
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(
+                color: Color(int.parse(Warna.colorGrey)),
+              ),
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -97,12 +100,7 @@ class _TicketPageState extends State<TicketPage> {
               ),
             )
           : _isLoading
-              ? Center(
-                  child: SpinKitCircle(
-                    color: Color(int.parse(Warna.colorPrimary)),
-                    size: 60.0,
-                  ),
-                )
+              ? const Loading()
               : Container(
                   decoration: const BoxDecoration(),
                   child: ListView.builder(
