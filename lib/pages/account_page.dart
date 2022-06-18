@@ -127,7 +127,7 @@ class _AccountPageState extends State<AccountPage> {
                 color: Color(int.parse(Warna.colorWhite)),
               ),
               child: Container(
-                padding: const EdgeInsetsDirectional.fromSTEB(30, 20, 30, 5),
+                padding: const EdgeInsetsDirectional.all(30),
                 child: ListView(
                   children: <Widget>[
                     Column(
@@ -144,8 +144,10 @@ class _AccountPageState extends State<AccountPage> {
                             );
                           },
                           child: const Text(
-                            "EDIT",
-                            style: TextStyle(color: Color(0xFF00797C)),
+                            "Ubah Profile",
+                            style: TextStyle(
+                                color: Color(0xFF00797C),
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
@@ -154,8 +156,8 @@ class _AccountPageState extends State<AccountPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0, 25, 0, 10),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
                           child: Container(
                             decoration: const BoxDecoration(
                                 // color: Color(0xFFDADADA),
@@ -189,8 +191,8 @@ class _AccountPageState extends State<AccountPage> {
                           color: Color(0xFF01797D),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0, 15, 0, 10),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                           child: Container(
                             decoration: const BoxDecoration(
                                 // color: Color(0xFFDADADA),
@@ -225,8 +227,8 @@ class _AccountPageState extends State<AccountPage> {
                           color: Color(0xFF01797D),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0, 15, 0, 10),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                           child: Container(
                             decoration: const BoxDecoration(
                                 // color: Color(0xFFDADADA),
@@ -261,8 +263,8 @@ class _AccountPageState extends State<AccountPage> {
                           color: Color(0xFF01797D),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0, 15, 0, 10),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                           child: Container(
                             decoration: const BoxDecoration(
                                 // color: Color(0xFFDADADA),
@@ -298,18 +300,21 @@ class _AccountPageState extends State<AccountPage> {
                         ),
                       ],
                     ),
-                    Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          _showDialog();
-                        },
-                        child: const Text(
-                          "Keluar",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color.fromARGB(255, 1, 121, 125),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _showDialog();
+                          },
+                          child: const Text(
+                            "KELUAR",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color.fromARGB(255, 1, 121, 125),
+                            ),
                           ),
                         ),
                       ),

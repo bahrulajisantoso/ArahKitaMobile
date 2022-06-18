@@ -16,7 +16,9 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   final _toast = ShowToast();
-  final _kodeNegara = "+61";
+  final String _kodeNegara = "+62";
+  bool _visiblePass = true;
+  bool _visiblePassConfirm = true;
 
   final _namaController = TextEditingController();
   // final _jenisKelController = TextEditingController();
@@ -28,11 +30,12 @@ class _RegisterState extends State<Register> {
   String? _tglLahir;
 
   void _addUser() async {
+    String _noHp = _kodeNegara + _noHpController.text;
     AddUser.createUser(
       _namaController.text.trim().toLowerCase(),
       // _jenisKelController.text.trim().toLowerCase(),
       _emailController.text.trim().toLowerCase(),
-      {_kodeNegara + _noHpController.text.trim().toLowerCase()},
+      _noHp.trim().toLowerCase(),
       _tglLahir,
       _passwordController.text.trim(),
     ).then((value) {
@@ -276,12 +279,32 @@ class _RegisterState extends State<Register> {
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
-                      obscureText: true,
+                      obscureText: _visiblePass,
                       controller: _passwordController,
                       decoration: InputDecoration(
                         hintText: "Minimal 8 karakter",
                         prefixIcon:
                             const Icon(Icons.lock, color: Color(0xFF00797C)),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _visiblePass = !_visiblePass;
+                            });
+                          },
+                          child: _visiblePass
+                              ? Icon(
+                                  Icons.visibility_off,
+                                  color: Color(
+                                    int.parse(Warna.colorPrimary),
+                                  ),
+                                )
+                              : Icon(
+                                  Icons.visibility,
+                                  color: Color(
+                                    int.parse(Warna.colorPrimary),
+                                  ),
+                                ),
+                        ),
                         labelText: "Password",
                         labelStyle: TextStyle(
                           color: Color(int.parse(Warna.colorPrimary)),
@@ -318,7 +341,7 @@ class _RegisterState extends State<Register> {
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                     child: TextFormField(
                       keyboardType: TextInputType.text,
-                      obscureText: true,
+                      obscureText: _visiblePassConfirm,
                       controller: _konfirmPasswordController,
                       decoration: InputDecoration(
                         hintText: "Konfirmasi password",
@@ -327,6 +350,26 @@ class _RegisterState extends State<Register> {
                         ),
                         prefixIcon:
                             const Icon(Icons.lock, color: Color(0xFF00797C)),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _visiblePassConfirm = !_visiblePassConfirm;
+                            });
+                          },
+                          child: _visiblePassConfirm
+                              ? Icon(
+                                  Icons.visibility_off,
+                                  color: Color(
+                                    int.parse(Warna.colorPrimary),
+                                  ),
+                                )
+                              : Icon(
+                                  Icons.visibility,
+                                  color: Color(
+                                    int.parse(Warna.colorPrimary),
+                                  ),
+                                ),
+                        ),
                         labelText: "Konfirmasi password",
                         enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(

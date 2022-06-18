@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:project/api/login.dart';
 import 'package:project/main.dart';
-import 'package:project/notification/alert.dart';
+// import 'package:project/notification/alert.dart';
 import 'package:project/pages/register_page.dart';
 import 'dart:async';
 import 'package:project/Notification/toast.dart';
@@ -21,6 +21,7 @@ class _LoginState extends State<Login> {
   final _toast = ShowToast();
   // final _alert = ShowAlert();
   String _idUser = "";
+  bool _visiblePass = true;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -161,8 +162,28 @@ class _LoginState extends State<Login> {
                               Expanded(
                                 child: TextFormField(
                                   controller: _passwordController,
-                                  obscureText: true,
+                                  obscureText: _visiblePass,
                                   decoration: InputDecoration(
+                                    suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          _visiblePass = !_visiblePass;
+                                        });
+                                      },
+                                      child: _visiblePass
+                                          ? Icon(
+                                              Icons.visibility_off,
+                                              color: Color(
+                                                int.parse(Warna.colorPrimary),
+                                              ),
+                                            )
+                                          : Icon(
+                                              Icons.visibility,
+                                              color: Color(
+                                                int.parse(Warna.colorPrimary),
+                                              ),
+                                            ),
+                                    ),
                                     labelText: 'Password',
                                     labelStyle: TextStyle(
                                       color:

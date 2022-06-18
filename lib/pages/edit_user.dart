@@ -314,21 +314,24 @@ class _EditUserPageState extends State<EditUserPage> {
                   },
                 ),
               ),
-              ElevatedButton(
-                child: const Text(
-                  "Edit",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromARGB(255, 1, 121, 125),
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: ElevatedButton(
+                  child: const Text(
+                    "Ubah Profil",
+                    style: TextStyle(color: Colors.white),
                   ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      const Color.fromARGB(255, 1, 121, 125),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _showDialog();
+                    }
+                  },
                 ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _showDialog();
-                  }
-                },
               ),
             ],
           ),
