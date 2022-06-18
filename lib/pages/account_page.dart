@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:project/api/get_user.dart';
 import 'package:project/notification/toast.dart';
 import 'package:project/pages/edit_user.dart';
@@ -76,13 +75,23 @@ class _AccountPageState extends State<AccountPage> {
           content: const Text("Apakah anda yakin ingin keluar?"),
           actions: <Widget>[
             TextButton(
-              child: const Text("Tidak"),
+              child: Text(
+                "Tidak",
+                style: TextStyle(
+                  color: Color(int.parse(Warna.colorPrimary)),
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text("Ya"),
+              child: Text(
+                "Ya",
+                style: TextStyle(
+                  color: Color(int.parse(Warna.colorPrimary)),
+                ),
+              ),
               onPressed: () {
                 _logOut();
                 Navigator.of(context).pop();

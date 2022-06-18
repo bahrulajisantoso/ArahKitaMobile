@@ -96,13 +96,23 @@ class _EditUserPageState extends State<EditUserPage> {
           content: const Text("Apakah anda yakin ingin mengedit profil?"),
           actions: <Widget>[
             TextButton(
-              child: const Text("Tidak"),
+              child: Text(
+                "Tidak",
+                style: TextStyle(
+                  color: Color(int.parse(Warna.colorPrimary)),
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text("Ya"),
+              child: Text(
+                "Ya",
+                style: TextStyle(
+                  color: Color(int.parse(Warna.colorPrimary)),
+                ),
+              ),
               onPressed: () {
                 _updateUser();
                 Navigator.of(context).pop();

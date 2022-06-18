@@ -71,43 +71,45 @@ class _TicketPageState extends State<TicketPage> {
             ),
             preferredSize: const Size.fromHeight(2.0)),
       ),
-      body: _tikets.isEmpty
-          ? Container(
-              decoration: BoxDecoration(
-                color: Color(int.parse(Warna.colorGrey)),
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/ticket.png",
-                      height: 60,
-                      width: 60,
-                      color: const Color(0xFF525252),
+      body: _isLoading
+          ? const Loading()
+          : _tikets.isEmpty
+              ? Container(
+                  decoration: BoxDecoration(
+                    color: Color(int.parse(Warna.colorGrey)),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/ticket.png",
+                          height: 60,
+                          width: 60,
+                          color: const Color(0xFF525252),
+                        ),
+                        const Text(
+                          "Tidak ada tiket",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF525252),
+                          ),
+                        ),
+                      ],
                     ),
-                    const Text(
-                      "Tidak ada tiket",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF525252),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          : _isLoading
-              ? const Loading()
+                  ),
+                )
               : Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(
+                    color: Color(int.parse(Warna.colorGrey)),
+                  ),
                   child: ListView.builder(
                       itemCount: _tikets.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10),
                           child: InkWell(
                             child: Card(
                               shape: RoundedRectangleBorder(

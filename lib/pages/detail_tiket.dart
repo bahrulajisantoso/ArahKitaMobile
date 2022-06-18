@@ -53,7 +53,7 @@ class _DetailTiketState extends State<DetailTiket> {
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 0,
         bottom: PreferredSize(
             child: Container(
               color: Color(int.parse(Warna.colorPrimary)),
@@ -114,25 +114,6 @@ class _DetailTiketState extends State<DetailTiket> {
                           ),
                         ),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(left: 30.0),
-                      //   child: Row(
-                      //     children: [
-                      //       Icon(
-                      //         Icons.date_range,
-                      //         size: 17,
-                      //         color: Color(0xFF525252),
-                      //       ),
-                      //       Padding(
-                      //         padding: const EdgeInsets.only(left: 5.0),
-                      //         child: Text(
-                      //           _tglTiket.toString(),
-                      //           style: const TextStyle(fontSize: 13),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
                       const Divider(
                         height: 3,
                         thickness: 3,

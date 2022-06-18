@@ -65,7 +65,7 @@ class _FormTransactionState extends State<FormTransaction> {
     GetUser.getUser(idUser).then((value) {
       if (mounted) {
         setState(() {
-          idUser = idUser;
+          _idUser = idUser;
           _idWisata = idWisata;
           _namaUser = value.namaUser;
           _noHp = value.noHp;
