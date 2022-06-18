@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:project/api/add_transaksi.dart';
 import 'package:project/api/get_user.dart';
@@ -49,6 +48,7 @@ class _FormTransactionState extends State<FormTransaction> {
   _getSessionWisata() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
+      _idWisata = pref.getString("id_wisata").toString();
       _namaWisata = pref.getString("nama_wisata").toString();
       _kategori = pref.getString("kategori").toString();
       _lokasi = pref.getString("lokasi").toString();
@@ -61,12 +61,10 @@ class _FormTransactionState extends State<FormTransaction> {
   _getUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String idUser = pref.getString("id_user") ?? "";
-    String idWisata = pref.getString("id_wisata") ?? "";
     GetUser.getUser(idUser).then((value) {
       if (mounted) {
         setState(() {
           _idUser = idUser;
-          _idWisata = idWisata;
           _namaUser = value.namaUser;
           _noHp = value.noHp;
           _email = value.email;
