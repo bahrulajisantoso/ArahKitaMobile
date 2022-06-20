@@ -274,7 +274,7 @@ class _PembayaranPageState extends State<PembayaranPage> {
                                   //     0, 0, 0, 0),
                                   padding: const EdgeInsets.all(10.0),
                                   child: Center(
-                                    child: Row(
+                                    child: Column(
                                       children: const [
                                         Text(
                                           // 'Jika sudah melakukan transfer sesuai total harga, silahkan\nmelakukan konfirmasi ke admin dengan klik tombol\n\"Hubungi Admin\" dan menunggu validasi dari admin paling lambat 1 jam setelah mengirim bukti transfer.',

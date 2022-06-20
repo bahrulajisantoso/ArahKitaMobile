@@ -179,7 +179,7 @@ class _FormTransactionState extends State<FormTransaction> {
                       //data wisata
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                            const EdgeInsetsDirectional.fromSTEB(30, 20, 20, 0),
                         child: Container(
                           child: const Text(
                             'Detail Wisata',
@@ -220,13 +220,17 @@ class _FormTransactionState extends State<FormTransaction> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.network(
-                                          "$_imgBaseUrl${widget.gambar1}"),
+                                        "$_imgBaseUrl${widget.gambar1}",
+                                        height: 50,
+                                        width: 20,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                 ),
                                 Container(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0, 6, 0, 0),
+                                      0, 0, 0, 0),
                                   child: Container(
                                     decoration: const BoxDecoration(),
                                     child: Column(
@@ -238,7 +242,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           "$_namaWisata",
                                           style: const TextStyle(
                                             fontFamily: 'Poppins',
-                                            fontSize: 20,
+                                            fontSize: 17,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -247,7 +251,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           style: const TextStyle(
                                             fontFamily: 'Poppins',
                                             color: Color(0xFF525252),
-                                            fontSize: 15,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
@@ -256,7 +260,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           style: const TextStyle(
                                             fontFamily: 'Poppins',
                                             color: Color(0xFF525252),
-                                            fontSize: 15,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
@@ -310,7 +314,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           padding: const EdgeInsetsDirectional
                                               .fromSTEB(0, 2, 0, 0),
                                           child: Container(
-                                            width: 300,
+                                            width: 275,
                                             height: 20,
                                             decoration: const BoxDecoration(
                                               color: Colors.white,
@@ -328,7 +332,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           ),
                                         ),
                                         Container(
-                                          width: 300,
+                                          width: 275,
                                           height: 25,
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
@@ -348,7 +352,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           padding: const EdgeInsetsDirectional
                                               .fromSTEB(0, 2, 0, 0),
                                           child: Container(
-                                            width: 300,
+                                            width: 275,
                                             height: 20,
                                             decoration: const BoxDecoration(
                                               color: Colors.white,
@@ -366,7 +370,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           ),
                                         ),
                                         Container(
-                                          width: 300,
+                                          width: 275,
                                           height: 25,
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
@@ -386,7 +390,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           padding: const EdgeInsetsDirectional
                                               .fromSTEB(0, 2, 0, 0),
                                           child: Container(
-                                            width: 300,
+                                            width: 275,
                                             height: 20,
                                             decoration: const BoxDecoration(
                                               color: Colors.white,
@@ -404,7 +408,7 @@ class _FormTransactionState extends State<FormTransaction> {
                                           ),
                                         ),
                                         Container(
-                                          width: 300,
+                                          width: 275,
                                           height: 25,
                                           decoration: const BoxDecoration(
                                             color: Colors.white,

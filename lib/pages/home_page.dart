@@ -234,7 +234,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child: GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
@@ -263,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                                         child: Image.network(
                                           "$_imgBaseUrl/${_wisatas[index].gambar1}",
                                           width: 200,
-                                          height: 100,
+                                          height: 90,
                                           fit: BoxFit.cover,
                                           loadingBuilder: (BuildContext context,
                                               child, loadingProgress) {
